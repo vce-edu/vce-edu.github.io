@@ -119,7 +119,7 @@ function registration() {
   });
   document.body.appendChild(popup);
 
-  fetch("https://script.google.com/macros/s/AKfycbyfxy1e-ryofDRWnbaaC2FzR0nt8I95oNH7txcc7XwRcyogfFIn4KkH5vi88t2MXPkzzg/exec", {
+  fetch("https://script.google.com/macros/s/AKfycbw8V9gU65BQujh0a0brj-2BfcDPzRBaajZtexgFt5S6hC481hTvJGb0ryuAAtQT1Nz0jg/exec", {
     method: "POST",
     body: JSON.stringify(data)
   })
