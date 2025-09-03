@@ -1,6 +1,6 @@
 {
-  "name": "MyWebSite",
-  "short_name": "MySite",
+  "name": "Vintech Computer Education",
+  "short_name": "VCE",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
