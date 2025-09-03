@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css"/>
+    <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>
+<script defer src="script.js"></script>
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
+<link rel="shortcut icon" href="favicon/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+<link rel="manifest" href="favicon/site.webmanifest" />
+
+</head>
+<body>
+    <section class="about-page">
+    <header class="header">
+        <a href="index.html"><div class="logo">
+            <h1 class="short">VCE</h1>
+            <p class="name">VINTECH COMPUTER EDUCATION</p>
+        </div></a>
+        <nav class="nav-bar">
+            <a href="index.html">Home</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="https://drive.google.com/drive/folders/1QW8JL2u9kn1JCPrl5hEcjBstGijkBYZS?usp=sharing " target="_blank">Events</a>
+            <a href="pratice.html">Practice</a>
+            <a href="vce-gat.html">GAT</a>
+            <a href="freelaptop.html">Free Laptop</a>
+            <a href="about.html">About Us</a>
+            
+        </nav>
+        <div class="hamburger">
+        ☰
+    </div>
+    </header>
+    <main class="form">
+        <h2>General Awareness Test Registration Form</h2><br/>
+        <marquee>Deadline for Registration is <span class="deadline">10th September</span></marquee><hr/><br/>
+        
+       <form onsubmit="registration(); return false;">
+    <label for="name">Full Name</label><br/>
+    <input type="text" id="name" name="name" pattern="^[A-Za-z]+(?: [A-Za-z]+)*$" required><br><br>
+
+    <label for="fathername">Father's Name</label><br/>
+    <input type="text" id="fathername" name="fathername" pattern="^[A-Za-z]+(?: [A-Za-z]+)*$" required><br><br>
+    
+    <label for="phonenumber">Phone Number</label><br/>
+    <input type="tel" id="phonenumber" name="phonenumber" pattern="[0-9]{10}" required><br><br>
+
+    
+    <label for="gender">Gender</label><br/>
+    <select id="gender" name="gender" required>
+      <option value="">--Select--</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      <option value="other">Other</option>
+    </select><br/><br/>
+
+    <label for="address">Address</label><br/>
+    <textarea id="address" name="address" rows="4" cols="50" required></textarea>
+
+    <input type="submit" value="Submit">
+  </form>
+    </main>
+    </section>
+    <footer>
+  <div class="footer-left">
+    <p>&copy; 2025 Vintech Computer Education. All Rights Reserved.</p>
+    <p>Created By 
+      <a href="https://mukundvishwa95.github.io/" target="_blank" rel="noopener noreferrer">
+        Mukund Vishwakarma
+      </a>
+    </p>
+  </div>
+
+  <div class="footer-center">
+    <h4>Classes Schedule</h4>
+    <p>Monday – Saturday: 8:00 AM – 8:00 PM</p>
+  <p>Sunday: Closed</p>
+  </div>
+
+  <div class="footer-right">
+    <a href="faculty.html"><p>Meet our Team</p></a>
+    <div class="footer-social">
+      <a href="https://g.page/r/CUA8zTtbBSNwEBM/review" target="_blank"><i class="fab fa-google"></i></a>
+      <a href="https://www.linkedin.com/company/vintech-computer-education" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://t.me/vc_edu" target="_blank"><i class="fab fa-telegram"></i></a>
+      <a href="mailto:info@vintecheducation.in" target="_blank"><i class="fa-solid fa-envelope"></i></i></a>
+      <a href="https://www.youtube.com/@VCE-w1e" target="_blank"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
