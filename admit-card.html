@@ -4,11 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VCE GAT FORM</title>
+  <title>VCE GAT ADMIT CARD</title>
   <script defer src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <script defer src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pdfmake@0.2.9/build/pdfmake.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pdfmake@0.2.9/build/vfs_fonts.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
@@ -18,7 +20,7 @@
 </head>
 
 <body>
-  <section class="about-page">
+  <section class="home-page">
     <header class="header">
       <a href="index.html">
         <div class="logo">
@@ -50,33 +52,18 @@
       <p class="EMI"><a href="shop.html">Buy Laptop on EMI</a></p>
     </div>
     <main class="form">
-      <h2>General Awareness Test Registration Form</h2><br />
-      <marquee>Deadline for Registration is <span class="deadline">13th September</span></marquee>
-      <hr /><br />
+      <h2>Admit Card</h2><br />
 
-      <form onsubmit="registration(); return false;">
+
+      <form onsubmit="findcard(); return false;">
         <label for="name">Full Name</label><br />
         <input type="text" id="name" name="name" required><br><br>
-
-        <label for="fathername">Father's Name</label><br />
-        <input type="text" id="fathername" name="fathername" required><br><br>
 
         <label for="phonenumber">Phone Number</label><br />
         <input type="tel" id="phonenumber" name="phonenumber" pattern="[0-9]{10}" required><br><br>
 
-
-        <label for="gender">Gender</label><br />
-        <select id="gender" name="gender" required>
-          <option value="">--Select--</option>
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-          <option value="other">Other</option>
-        </select><br /><br />
-
-        <label for="address">Address</label><br />
-        <textarea id="address" name="address" rows="4" cols="50" required></textarea>
-
         <input type="submit" value="Submit">
+        <div id="result"></div>
       </form>
     </main>
   </section>

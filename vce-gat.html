@@ -14,57 +14,68 @@
     <link rel="shortcut icon" href="favicon/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
     <link rel="manifest" href="favicon/site.webmanifest" />
-
+    <script defer src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </head>
 
 <body>
     <section class="about-page">
         <header class="header">
-            <a href="index.html">
-                <div class="logo">
-                    <h1 class="short">VCE</h1>
-                    <p class="name">VINTECH COMPUTER EDUCATION</p>
-                </div>
-            </a>
-            <nav class="nav-bar">
-            <a href="index.html">Home</a>
-            <a href="gallery.html">Gallery</a>
-            <a href="https://drive.google.com/drive/folders/1QW8JL2u9kn1JCPrl5hEcjBstGijkBYZS?usp=sharing " target="_blank">Events</a>
-            <a href="pratice.html">Practice</a>
-            <a href="vce-gat.html">GAT</a>
-            <a href="freelaptop.html">Free Laptop</a>
-            <a href="about.html">About Us</a>
-            
-        </nav>
-            <div class="hamburger">
-                ☰
+      <a href="#">
+        <div class="logo">
+          <h1 class="short" translate="no">VCE</h1>
+          <p class="name" translate="no">VINTECH COMPUTER EDUCATION</p>
+        </div>
+      </a>
+      <nav class="nav-bar">
+        <a href="index.html">Home</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="events.html">Events</a>
+        <a href="pratice.html">Practice</a>
+        <a href="vce-gat.html" translate="no">GAT</a>
+        <a href="freelaptop.html">Free Laptop</a>
+        <a href="about.html">About Us</a>
+
+      </nav>
+      <div class="hamburger">
+        ☰
+      </div>
+    </header>
+        <div class="toggle-container">
+            <p class="Back"><a href="index.html">Back</a></p>
+            <div class="toggle" id="langToggle">
+                <span class="notranslate">EN</span>
+                <span class="notranslate">हिं</span>
+                <div class="circle"></div>
             </div>
-        </header>
+            <p class="EMI"><a href="shop.html">Buy Laptop on EMI</a></p>
+            </div>
         <main class="info">
-            <h2>VCE GAT</h2>
+            <h2 translate="no">VCE GAT</h2>
             <h3>Vintech Computer Education's General Awareness Test</h3>
             <div class="win">
                 <h2 class="win-heading"><span class="emoji">🎊</span> CHANCE TO WIN EXCITING PRIZES <span
                         class="emoji">🎊</span></h2>
                 <a href="form.html">Register Now</a>
-                <p class="win-para">Show off your general knowledge and get a chance to win exciting prizes at Vintech Computer
+                <a href="admit-card.html">Admit Card</a>
+                <p class="win-para">Show off your general knowledge and get a chance to win exciting prizes at Vintech
+                    Computer
                     Education! On <b>15th Sept</b><a href="#syllabus">Read Syllabus</a></p>
             </div>
             <div class="prizes-container">
                 <div class="prize first">
-                    <h2>🥇 1st Prize</h2>
-                    <p>Branded EarPods</p>
-                    <img src="images/Earbuds-PNG.png"/>
+                    <h2 translate="no">🥇 1st Prize</h2>
+                    <p translate="no">Branded EarPods</p>
+                    <img src="images/Earbuds-PNG.png" />
                 </div>
                 <div class="prize second">
-                    <h2>🥈 2nd Prize</h2>
-                    <p>Sports Shoes</p>
-                    <img src="images/sports.png"/>
+                    <h2 translate="no">🥈 2nd Prize</h2>
+                    <p translate="no">Sports Shoes</p>
+                    <img src="images/sports.png" />
                 </div>
                 <div class="prize third">
-                    <h2>🥉 3rd Prize</h2>
-                    <p>Smart Watch</p>
-                    <img id="timg" src="images/watch.png"/>
+                    <h2 translate="no">🥉 3rd Prize</h2>
+                    <p translate="no">Smart Watch</p>
+                    <img id="timg" src="images/watch.png" />
                 </div>
                 <p><b>Every non-winning participant will be awarded a participation prize.</b></p>
             </div>
@@ -84,7 +95,8 @@
             <p>
             <ol>
                 <li>Fill registration form from the given link : <a href="form.html">Registration Link</a></li>
-                <li>After that, <strong>Submit registration fees of Rs.40 offline</strong> : <a href="contact.html">Address</a></li>
+                <li>After that, <strong>Submit registration fees of Rs.40 offline</strong> : <a
+                        href="contact.html">Address</a></li>
                 <li>Fees submission is required in order to get your <strong>Registration number.</strong></li>
                 <li><strong>Registration number</strong> is required to get your <strong>Admit card.</strong></li>
                 <li><strong>Admit Card </strong>is required to sit in <strong>VCE GAT.</strong></li>
@@ -123,6 +135,7 @@
             </div>
         </div>
     </footer>
+    <div id="google_translate_element" style="display:none;"></div>
 </body>
 
 </html>
