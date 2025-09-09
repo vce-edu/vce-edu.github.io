@@ -31,7 +31,7 @@ async function fetchLaptops() {
           <span class="new">₹${laptop.price}</span>
         </div>
         <p class="emi">Easy EMI Available</p>
-        <button onclick="window.open('https://wa.me/+91 9917930664', '_blank')"><i class="fa-brands fa-whatsapp"></i>Apply for EMI</button>
+        <button onclick="window.open('https://wa.me/+919917930664', '_blank')"><i class="fa-brands fa-whatsapp"></i>Apply for EMI</button>
       `;
       container.appendChild(card);
     });
