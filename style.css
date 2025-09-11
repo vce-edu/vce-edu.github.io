@@ -23,7 +23,7 @@ a:active {
 
 body {
   top: 0px !important;
-  overflow-x: hidden;
+  overflow-x: hidden !important;
   font-family: 'Poppins', sans-serif;
   background-color: #dbd6d6;
 }
@@ -337,6 +337,9 @@ div img {
   }
 }
 
+.other-page{
+  overflow-x: hidden !important;
+}
 .other-page::before {
   content: "VINTECH";
   position: fixed;
@@ -430,79 +433,132 @@ button {
   transition: all 0.3s ease;
 }
 
+
+
 button:hover {
   border: 1px solid #4a0566;
 }
 
-.contact {
-  z-index: -1000;
+.contact-buttons{
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  background-color: #eee8e8;
+  padding: 10px;
+  gap: 20px;
   align-items: center;
-  gap: 40px;
-  padding: 60px 20px;
-  background: linear-gradient(120deg, #f5f3ff, #ece9f9);
+  justify-content: center;
 }
 
-.contact-info {
-  z-index: 10000;
-  margin: 0 auto;
-  background: #fff;
-  padding: 30px 40px;
-  border-radius: 20px;
-  max-width: 600px;
+.contact-buttons button{
+  width: clamp(100px, 40vw,400px);
+  animation-name: left-slide;
+  animation-duration: 0.8s;
+  animation-delay: calc(var(--i) * 0.35s);
+  animation-fill-mode: forwards;
+  opacity: 0;
+  cursor: pointer;
+ transition: background 0.5s ease-in-out;
+}
+
+
+.whatsapp {
+  background-color: #25D366;
+  color: white;
+  font-weight: 600;
+  display: inline-flex;     
+  align-items: center; 
+  justify-content: center;     
+  padding: 10px 20px;      
+  border-radius: 30px;
+  text-decoration: none;
+  gap: 8px;                 
+  white-space: normal;      
+}
+
+.whatsapp i {
+  border-right: 1px solid white;
+  padding-right: 8px;
+  font-size: 1.2rem;
+}
+
+.whatsapp:hover{
+  border: none;
+  background-color: #109110;
+  color: #66f59a;
+}
+
+.email {
+  background-color: white;
+  color: rgb(0, 0, 0);
+  font-weight: 600;
+  display: inline-flex;     
+  align-items: center; 
+  justify-content: center;     
+  padding: 10px 20px;      
+  border-radius: 30px;
+  text-decoration: none;
+  gap: 8px;                 
+  white-space: normal;      
+}
+
+.email i {
+  border-right: 1px solid black;
+  padding-right: 8px;
+  font-size: 1.2rem;
+}
+
+
+.email:hover{
+  border: none;
+  background-color: black;
+  color: white;
+}
+
+.location, .call{
+  background-color: #eee8e8;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.location h2 , .call h2{
+  margin-left: 15px;
+  margin-bottom: 30px;
+  font-size: 2em;
+  color: #9e169e;
+  margin-top: 10px;
+  animation-name: popup;
+  animation-duration: 0.8s;
+  animation-delay: 0.5s;
+  animation-fill-mode: forwards;  
+  opacity: 0;
+}
+
+.location p, .call p{
+  margin-left: 15px;
+  color: #3a3939;
+  margin-top: 10px;
+  animation-name: popup;
+  animation-duration: 0.6s;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+.location i{
+  margin-right: 5px;
+  font-size: 1.5em;
+}
+
+.location iframe{
   width: 100%;
-  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  animation: popup 0.6s ease-out forwards;
+  border-radius: 10px;
+  margin-top: 10px;
+  animation-name: popup;
+  animation-duration: 0.8s;
+  animation-delay: 1.1s;
+  animation-fill-mode: forwards;  
+  opacity: 0;
 }
-
-.contact-info:hover {
-  transform: translateY(-5px);
-  box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.12);
-}
-
-.contact-info h2 {
-  font-size: 24px;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 25px;
-  color: #7a1cac;
-  letter-spacing: 1px;
-}
-
-.contact-info p {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  margin: 12px 0;
-  font-size: 16px;
-  color: #333;
-  line-height: 1.6;
-}
-
-.contact-info i {
-  font-size: 20px;
-  color: #7a1cac;
-  min-width: 25px;
-  margin-top: 2px;
-}
-
-
-.contact-info iframe {
-  display: block;
-  width: 100%;
-  max-width: 600px;
-  height: 350px;
-  margin: 0 auto;
-  border: 0;
-  border-radius: 15px;
-}
-
-#maps {
-  width: 80vw;
-}
-
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -624,12 +680,9 @@ button:hover {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   animation-name: left-slide;
   animation-duration: 0.8s;
-  /* required */
   animation-delay: calc(var(--i) * 0.3s);
-  /* staggered */
   animation-fill-mode: forwards;
   opacity: 0;
-  /* stay in final state */
 }
 
 .course-card:hover {
@@ -703,10 +756,32 @@ button:hover {
   background: #fff;
   padding: 20px;
   border-radius: 10px;
-  width: 60vw;
+  width: 100vw;
   max-width: 90%;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   animation: fadeIn 0.3s ease;
+}
+
+.modal-content .seat{
+  background-color: #05a83c;
+  font-size: 1.2em;
+  color: white;
+  font-weight: 600;
+  display: inline-flex;     
+  align-items: center; 
+  justify-content: center;     
+  padding: 10px 20px;      
+  border-radius: 30px;
+  text-decoration: none;
+  gap: 8px;                 
+  white-space: normal; 
+  width: auto;
+  margin-top: 15px;
+}
+
+.seat:hover{
+  border:none;
+  background-color: #006600;
 }
 
 .modal h2 {
@@ -1786,7 +1861,7 @@ textarea:focus {
 
 .event-date.past {
   background: #6c757d;
- 
+
 }
 
 .event-date .day {
@@ -1902,10 +1977,10 @@ textarea:focus {
 }
 
 select:disabled {
-  background-color: #e0e0e0;  
-  color: #666;                
-  cursor: not-allowed;       
-  opacity: 1;                
+  background-color: #e0e0e0;
+  color: #666;
+  cursor: not-allowed;
+  opacity: 1;
 }
 
 .form-box button.disabled {
