@@ -1,0 +1,5 @@
+User-agent: *
+Disallow:
+
+
+Sitemap: https://vintecheducation.org/sitemap.xml

@@ -599,7 +599,7 @@ button:hover {
   align-items: center;
 }
 
-.lightbox:target {
+.lightbox:target, .lightbox.show{
   display: flex;
 }
 
@@ -1988,4 +1988,41 @@ select:disabled {
   color: #666 !important;
   cursor: not-allowed !important;
   opacity: 0.5 !important;
+}
+
+
+.wrapper-fees{
+  margin-top: -50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  height: 100vh;
+}
+
+.options{
+  background-color: #dde2dd;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90vw;
+  text-align: center;
+}
+
+.options h2{
+  margin-bottom: 10px;
+  font-size: 1.85em;
+}
+
+.options button{
+  width: clamp(200px,20vw,400px);
+  margin-bottom: 5px;
+  font-size: 1.2em;
+  border: 2px solid black;
+}
+
+.options button:hover{
+  background-color: black;
+  color:whitesmoke;
+  cursor: pointer;
 }
