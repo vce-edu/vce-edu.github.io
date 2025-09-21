@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VCE GAT Certificate</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/pdfmake@0.2.9/build/pdfmake.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pdfmake@0.2.9/build/vfs_fonts.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      margin: 0;
+      padding: 50px 0;
+    }
+
+    .container {
+      background: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+      width: 400px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #6A1B9A;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      margin: 6px 0 12px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background: linear-gradient(90deg, #8E24AA, #BA68C8);
+      border: none;
+      border-radius: 6px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:disabled {
+      background: #aaa;
+      cursor: not-allowed;
+    }
+
+    #result {
+      margin-top: 15px;
+      text-align: center;
+      font-weight: bold;
+      color: #311B92;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h2>VCE GAT Certificate</h2>
+    <form id="certificateForm">
+      <label for="regnumber">Registration Number</label>
+      <input type="text" id="regnumber" name="regnumber" required>
+      <input type="submit" value="Get My Certificate">
+      <div id="result"></div>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('certificateForm');
+    const resultDiv = document.getElementById('result');
+    const submitButton = form.querySelector("input[type='submit']");
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const regNumber = document.getElementById("regnumber").value.trim();
+
+      if (!regNumber) return;
+
+      // Disable button & show message
+      submitButton.disabled = true;
+      submitButton.value = "Getting...";
+      resultDiv.textContent = "Fetching Information...";
+
+      try {
+        const studentName = await getStudentInfo(regNumber);
+
+        if (!studentName) {
+          resultDiv.innerHTML = `<span style="color:red;">No student found for ${regNumber}</span>`;
+          submitButton.disabled = false;
+          submitButton.value = "Get My Certificate";
+          return;
+        }
+
+        resultDiv.textContent = "Generating Certificate...";
+        await createCertificateExactSize(studentName, regNumber);
+
+        resultDiv.textContent = "Certificate Generated Successfully!";
+      } catch (err) {
+        console.error(err);
+        resultDiv.innerHTML = `<span style="color:red;">Error: ${err.message}</span>`;
+      }
+
+      submitButton.disabled = false;
+      submitButton.value = "Get My Certificate";
+    });
+
+    async function getStudentInfo(regNumber) {
+      try {
+        const response = await fetch(
+          "https://script.google.com/macros/s/AKfycbw1cwO9N2Ft-dMNouU_rlQlSihY9cIBB8esUyhplvRZqTZDe0NG_5PaHdaUKVNQThzI/exec",
+          {
+            method: "POST",
+            body: JSON.stringify({ regNumber: regNumber })
+          }
+        );
+
+        const data = await response.json();
+
+        if (data.Name) return data.Name;
+        if (data.message) return data.message;
+        if (data.error) return data.error;
+
+        return null;
+      } catch (err) {
+        console.error("Network error:", err);
+        resultDiv.innerHTML = `<span style="color:red;">Error fetching data.</span>`;
+        return null;
+      }
+    }
+
+    async function createCertificateExactSize(name, regNumber) {
+      const certificateURL = 'https://i.ibb.co/0y53K8KC/Purple-and-Gold-Geometric-Certificate-of-Participation-1.png';
+      const img = await loadImage(certificateURL);
+
+      const pageWidth = img.width;
+      const pageHeight = img.height;
+
+      const canvas = document.createElement('canvas');
+      canvas.width = pageWidth;
+      canvas.height = pageHeight;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0);
+      const dataUrl = canvas.toDataURL('image/png');
+
+      const docDefinition = {
+        pageSize: { width: pageWidth, height: pageHeight },
+        pageMargins: [0, 0, 0, 0],
+        content: [
+          { image: dataUrl, width: pageWidth, height: pageHeight },
+          {
+            text: name,
+            fontSize: 50,
+            bold: true,
+            color: '#311B92',
+            alignment: 'center',
+            absolutePosition: { x: 0, y: pageHeight * 0.45 },
+            width: pageWidth
+          }
+        ]
+      };
+
+      pdfMake.createPdf(docDefinition).download(`Certificate_${regNumber}.pdf`);
+    }
+
+    function loadImage(url) {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.crossOrigin = "anonymous";
+        img.onload = () => resolve(img);
+        img.onerror = (err) => reject(err);
+        img.src = url;
+      });
+    }
+  </script>
+
+</body>
+</html>
