@@ -2,7 +2,7 @@
 
 const notesLinks = {
   word: {
-    en: "https://drive.google.com/uc?export=download&id=1i9Re5GbaQYIHrfxAIXGYE_kQRkaEfha",
+    en: "https://drive.google.com/uc?export=download&id=1i9Re5GbaQYIHrfxAIXGYE_kQRkaEfhaj",
     hi: "https://drive.google.com/uc?export=download&id=1kr5qlgEuYPgK_2uTTWWRmMpJRccjjK7x"
   },
   excel: {
@@ -475,4 +475,5 @@ window.addEventListener("scroll", () => {
     toggleContainer.classList.remove("toggle-docked");
   }
 });
+
 
