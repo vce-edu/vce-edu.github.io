@@ -2,24 +2,24 @@
 
 const notesLinks = {
   word: {
-    en: "https://drive.google.com/uc?export=download&id=1dQye0XV-lG3O_vzfbxYtyX8_ashehlAE",
-    hi: "https://drive.google.com/uc?export=download&id=1DMJq2j58XDdcBUR2nazHDAC_cgBYOzCs"
+    en: "https://drive.google.com/uc?export=download&id=1i9Re5GbaQYIHrfxAIXGYE_kQRkaEfha",
+    hi: "https://drive.google.com/uc?export=download&id=1kr5qlgEuYPgK_2uTTWWRmMpJRccjjK7x"
   },
   excel: {
-    en: "https://drive.google.com/uc?export=download&id=1EAcKnG0G6QXkVmVKTr0UHu58mPBUbYbR",
-    hi: "https://drive.google.com/uc?export=download&id=1q7ELnapYRyTG9E9zUm9f7KODFiLl-6x3"
+    en: "https://drive.google.com/uc?export=download&id=19qIiNFgnNauVz4Y-aYUPXqKSiwAuWlUQ",
+    hi: "https://drive.google.com/uc?export=download&id=1QTMI8Rsrzwea9OQ_pjk-ul8-daO9pPnn"
   },
   powerpoint: {
-    en: "https://drive.google.com/uc?export=download&id=1xI_KErJGYJ-2GFZD6c0Ou_TCprzz_nf0",
-    hi: "https://drive.google.com/uc?export=download&id=1x76oa2xP8Y7jQeu7ifBzqbvqFfr6DZvp"
+    en: "https://drive.google.com/uc?export=download&id=1r4SwL6wnmCTYfVZK4lO5__wpMIogeMaP",
+    hi: "https://drive.google.com/uc?export=download&id=1gdWekQeUS8PEQry0xPtPb3NPryj8ZHlK"
   },
   photoshop: {
-    en: "https://drive.google.com/uc?export=download&id=18KAyJ1SaihwD6RN-jT44Z_JOGF_gJzR-",
-    hi: "https://drive.google.com/uc?export=download&id=1Z9hk2HUb_CSq9qcbBnH1-VlMpq4oTNRw"
+    en: "https://drive.google.com/uc?export=download&id=1-CK-P74mjhUr7LPLRE_bmlA7RD-TM3qB",
+    hi: "https://drive.google.com/uc?export=download&id=1KlVDi7hHoZIpVGwDJoK-QCDkAs2o_BB9"
   },
   coreldraw: {
-    en: "https://drive.google.com/uc?export=download&id=1jL-TQAp2tsEpbuJ4wzBCMDcksABJcW9F",
-    hi: "https://drive.google.com/uc?export=download&id=148XnqHX3WonCfayCHpAnJfDdDEkdPpJP"
+    en: "https://drive.google.com/uc?export=download&id=1vG1RmVwEpKmrR29dZZtOWWeC2iLKZdAY",
+    hi: "https://drive.google.com/uc?export=download&id=1xEQGtnmpfSBAf0AdfrbUHdf86Mj6a9Cc"
   },
   tallyprime: {
     en: "https://drive.google.com/uc?export=download&id=1yKTUC9ymRCk5olwIB9UyAHcaDtTgaXrG",
@@ -66,16 +66,16 @@ const notesLinks = {
     en: "https://drive.google.com/uc?export=download&id=12bZmkO6CxXGk6cNBoSsXnj-4IwNBvrcj"
   },
   writer: {
-    en: "https://drive.google.com/uc?export=download&id=10qPP5xayXxvZ2LTThsZEWIwF5zYrHtQi",
-    hi: "https://drive.google.com/uc?export=download&id=1Q-GuCgc98W1EfX0_radEe264LPynHkiN"
+    en: "https://drive.google.com/uc?export=download&id=1CSoDUmRhvplrUCoICZIkDkERmDG9ljIQ",
+    hi: "https://drive.google.com/uc?export=download&id=1Clh7IA5hGTOuQBShBNYgJJOOnORZnvFN"
   },
   calc: {
-    en: "https://drive.google.com/uc?export=download&id=1H0JH8hwv7RKxpIiYhZWCexDdz8LLgM7j",
-    hi: "https://drive.google.com/uc?export=download&id=1QLJMX_dFIkebZGK8PZI1tT9BP9YI8-F3"
+    en: "https://drive.google.com/uc?export=download&id=15bwV88lfNMgK_S2i-ZrAkTZQI307aV4K",
+    hi: "https://drive.google.com/uc?export=download&id=1InO26lSsoISGJiL4FpU0VrfrXd7e_8Vy"
   },
   impress: {
-    en: "https://drive.google.com/uc?export=download&id=18ekINKrny0ARNljPZhqXxTiN8PJtrsPG",
-    hi: "https://drive.google.com/uc?export=download&id=1R0GYtzS7BRxKCTgDowyYLyCp2x4g-ZGo"
+    en: "https://drive.google.com/uc?export=download&id=19Bj8i1X41zwEfD-5lANkjmcf0dizUGsR",
+    hi: "https://drive.google.com/uc?export=download&id=1eiXA8GkFKk6Jlc5EVAN07b1K7gPaBgpn"
   },
 
 };
@@ -475,3 +475,4 @@ window.addEventListener("scroll", () => {
     toggleContainer.classList.remove("toggle-docked");
   }
 });
+
