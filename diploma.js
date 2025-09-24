@@ -40,7 +40,7 @@ async function finddiploma() {
   let link = "https://raw.githubusercontent.com/vce-edu/diploma/main/" + diploma_input + ".pdf";
 
   try {
-    let response = await fetch(link, { method: "HEAD" }); // only check headers, faster than GET
+    let response = await fetch(link, { method: "HEAD" }); 
 
       if (response.ok) {
       showMessage("Roll number is verified.", "success");
@@ -67,7 +67,7 @@ async function finddiploma() {
   function showMessage(text, type = 'info') {
     if (!msg) return;
     msg.textContent = text;
-    msg.className = 'message-box'; // reset
+    msg.className = 'message-box'; 
     msg.classList.add(type);
     msg.style.display = 'block';
     setTimeout(() => {
@@ -76,7 +76,7 @@ async function finddiploma() {
     }, 3000);
   }
 
-  // INITIAL MESSAGE
+  
   showMessage('Ready. Enter your roll number and click "Find Diploma".', 'info');
 
   // COPY EXAMPLE
