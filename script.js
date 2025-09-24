@@ -173,17 +173,6 @@ function showMessage(message, type = "error") {
   }, 3000);
 }
 
-function finddiploma() {
-  let diploma_input = document.getElementById("diploma-input").value.trim().toLowerCase();
-
-  if (!diploma_input) {
-    showMessage("Please Input your roll Number", "error");
-  } else {
-    let link = "https://raw.githubusercontent.com/vce-edu/diploma/main/" + diploma_input + ".pdf";
-    window.open(link, "_blank");
-    showMessage("Fetching diploma for " + diploma_input, "success");
-  }
-}
 
 function findresult() {
   window.open("https://certificate.nielit.gov.in/results/Frm_PreResult.aspx", "_blank");

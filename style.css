@@ -337,9 +337,10 @@ div img {
   }
 }
 
-.other-page{
+.other-page {
   overflow-x: hidden !important;
 }
+
 .other-page::before {
   content: "VINTECH";
   position: fixed;
@@ -380,7 +381,6 @@ div img {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  animation: popup 0.6s ease-out forwards;
 }
 
 .input-vce input,
@@ -439,7 +439,7 @@ button:hover {
   border: 1px solid #4a0566;
 }
 
-.contact-buttons{
+.contact-buttons {
   display: flex;
   flex-wrap: wrap;
   background-color: #eee8e8;
@@ -449,15 +449,15 @@ button:hover {
   justify-content: center;
 }
 
-.contact-buttons button{
-  width: clamp(100px, 40vw,400px);
+.contact-buttons button {
+  width: clamp(100px, 40vw, 400px);
   animation-name: left-slide;
   animation-duration: 0.8s;
   animation-delay: calc(var(--i) * 0.35s);
   animation-fill-mode: forwards;
   opacity: 0;
   cursor: pointer;
- transition: background 0.5s ease-in-out;
+  transition: background 0.5s ease-in-out;
 }
 
 
@@ -465,14 +465,14 @@ button:hover {
   background-color: #25D366;
   color: white;
   font-weight: 600;
-  display: inline-flex;     
-  align-items: center; 
-  justify-content: center;     
-  padding: 10px 20px;      
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
   border-radius: 30px;
   text-decoration: none;
-  gap: 8px;                 
-  white-space: normal;      
+  gap: 8px;
+  white-space: normal;
 }
 
 .whatsapp i {
@@ -481,7 +481,7 @@ button:hover {
   font-size: 1.2rem;
 }
 
-.whatsapp:hover{
+.whatsapp:hover {
   border: none;
   background-color: #109110;
   color: #66f59a;
@@ -491,14 +491,14 @@ button:hover {
   background-color: white;
   color: rgb(0, 0, 0);
   font-weight: 600;
-  display: inline-flex;     
-  align-items: center; 
-  justify-content: center;     
-  padding: 10px 20px;      
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
   border-radius: 30px;
   text-decoration: none;
-  gap: 8px;                 
-  white-space: normal;      
+  gap: 8px;
+  white-space: normal;
 }
 
 .email i {
@@ -508,19 +508,21 @@ button:hover {
 }
 
 
-.email:hover{
+.email:hover {
   border: none;
   background-color: black;
   color: white;
 }
 
-.location, .call{
+.location,
+.call {
   background-color: #eee8e8;
   margin-top: 10px;
   padding: 10px;
 }
 
-.location h2 , .call h2{
+.location h2,
+.call h2 {
   margin-left: 15px;
   margin-bottom: 30px;
   font-size: 2em;
@@ -529,11 +531,12 @@ button:hover {
   animation-name: popup;
   animation-duration: 0.8s;
   animation-delay: 0.5s;
-  animation-fill-mode: forwards;  
+  animation-fill-mode: forwards;
   opacity: 0;
 }
 
-.location p, .call p{
+.location p,
+.call p {
   margin-left: 15px;
   color: #3a3939;
   margin-top: 10px;
@@ -544,21 +547,22 @@ button:hover {
   opacity: 0;
 }
 
-.location i{
+.location i {
   margin-right: 5px;
   font-size: 1.5em;
 }
 
-.location iframe{
+.location iframe {
   width: 100%;
   border-radius: 10px;
   margin-top: 10px;
   animation-name: popup;
   animation-duration: 0.8s;
   animation-delay: 1.1s;
-  animation-fill-mode: forwards;  
+  animation-fill-mode: forwards;
   opacity: 0;
 }
+
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -599,7 +603,8 @@ button:hover {
   align-items: center;
 }
 
-.lightbox:target, .lightbox.show{
+.lightbox:target,
+.lightbox.show {
   display: flex;
 }
 
@@ -762,25 +767,25 @@ button:hover {
   animation: fadeIn 0.3s ease;
 }
 
-.modal-content .seat{
+.modal-content .seat {
   background-color: #05a83c;
   font-size: 1.2em;
   color: white;
   font-weight: 600;
-  display: inline-flex;     
-  align-items: center; 
-  justify-content: center;     
-  padding: 10px 20px;      
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
   border-radius: 30px;
   text-decoration: none;
-  gap: 8px;                 
-  white-space: normal; 
+  gap: 8px;
+  white-space: normal;
   width: auto;
   margin-top: 15px;
 }
 
-.seat:hover{
-  border:none;
+.seat:hover {
+  border: none;
   background-color: #006600;
 }
 
@@ -1085,15 +1090,6 @@ marquee p {
 }
 
 
-#diploma-input {
-  margin-bottom: -20px;
-  animation: popdown 0.6s ease-out forwards;
-}
-
-#diploma-button {
-  margin-top: 20px;
-  animation: popdown 0.6s ease-out forwards;
-}
 
 
 
@@ -1991,7 +1987,7 @@ select:disabled {
 }
 
 
-.wrapper-fees{
+.wrapper-fees {
   margin-top: -50px;
   display: flex;
   align-items: center;
@@ -2001,7 +1997,7 @@ select:disabled {
   height: 100vh;
 }
 
-.options{
+.options {
   background-color: #dde2dd;
   padding: 20px;
   border-radius: 10px;
@@ -2009,20 +2005,289 @@ select:disabled {
   text-align: center;
 }
 
-.options h2{
+.options h2 {
   margin-bottom: 10px;
   font-size: 1.85em;
 }
 
-.options button{
-  width: clamp(200px,20vw,400px);
+.options button {
+  width: clamp(200px, 20vw, 400px);
   margin-bottom: 5px;
   font-size: 1.2em;
   border: 2px solid black;
 }
 
-.options button:hover{
+.options button:hover {
   background-color: black;
-  color:whitesmoke;
+  color: whitesmoke;
   cursor: pointer;
+}
+
+/* Diploma Card Section */
+.diploma-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.card {
+  background: #fff;
+  max-width: 633px;
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 2.5rem;
+  font-family: Arial, sans-serif;
+}
+
+.card-head h1 {
+  font-size: 1.5rem;
+  margin: 0;
+  color: #36005c;
+}
+
+.card-head .muted {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 0.5rem;
+  line-height: 1.4;
+}
+
+.card-body {
+  margin-top: 1rem;
+}
+
+/* Input row */
+.input-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+#diploma-input {
+  flex: 1;
+  padding: 0.6rem 0.8rem;
+  font-size: 1rem;
+  max-height: 10%;
+  border: 1px solid #575555;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s ease;
+  height: 10%;
+}
+
+#diploma-input:focus {
+  border-color: #6a0dad;
+  /* purple highlight */
+}
+
+/* Button styling */
+#diploma-button.primary {
+  background: #6a0dad;
+  width: auto;
+  height: auto;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+#diploma-button.primary:hover {
+  background: #580b9e;
+}
+
+/* Accessibility helper */
+.sr-only {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.65rem;
+  margin-top: 0.75rem;
+  font-family: Arial, sans-serif;
+  font-size: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.meta-row small {
+  font-size: 1.05em;
+  color: #555;
+}
+
+.meta-row code {
+  background: #f4f4f4;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-size: 0.85em;
+}
+
+/* Copy button styled like a subtle link */
+.link-btn {
+  width: auto;
+  box-shadow: none;
+  background: none;
+  border: none;
+  color: #6a0dad;
+  font-size: 0.85rem;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.link-btn:hover {
+  border: none;
+  padding: 5px;
+  color: #580b9e;
+  text-decoration: none;
+}
+
+/* Help link */
+.help-link {
+  color: #0077cc;
+  font-size: 0.85rem;
+  text-decoration: underline;
+}
+
+.help-link:hover {
+  color: #005fa3;
+  text-decoration: none;
+}
+
+
+.message-box {
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  display: none;
+}
+
+.message-box.info {
+  background: #d9edf7;
+  color: #31708f;
+}
+
+.message-box.success {
+  background: #dff0d8;
+  color: #3c763d;
+}
+
+.message-box.error {
+  background: #f2dede;
+  color: #a94442;
+}
+
+
+/* Extra buttons row */
+.extra {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* Secondary buttons */
+button.secondary {
+  width: auto;
+  background: #f4f4f4;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+button.secondary:hover {
+  background: #e9e9e9;
+  border-color: #bbb;
+}
+
+#tips-container {
+  margin-top: -50px;
+}
+
+.video-wrap {
+  margin-top: 20px;
+}
+
+.video-wrap iframe {
+  border: 0;
+  border-radius: 12px;
+  width: 45vw;
+  height: 45vh;
+  min-width: 300px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Confirm Box Overlay */
+.confirm-box {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 2000;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Confirm Box Content */
+.confirm-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0px 6px 20px rgba(0,0,0,0.25);
+  animation: fadeIn 0.25s ease-in-out;
+}
+
+.confirm-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.confirm-actions button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+#confirm-cancel {
+  background: #ccc;
+  color: #333;
+  width: auto;
+}
+
+#confirm-ok {
+  background: #4a0566;
+  color: white;
+  width: auto;
+}
+
+@keyframes fadeIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
 }
