@@ -201,17 +201,21 @@ function registration() {
   let submitBtn = document.querySelector("input[type='submit']");
   submitBtn.disabled = true;
   submitBtn.value = "Submitting...";
-  let data = {
-    name: document.getElementById("name").value,
-    fatherName: document.getElementById("fathername").value,
-    phone: document.getElementById("phonenumber").value,
-    gender: document.getElementById("gender").value,
-    address: document.getElementById("address").value,
-  };
 
+  let data = {
+  fullName: document.getElementById("name").value.toLowerCase().trim(),
+  fatherName: document.getElementById("fathername").value.toLowerCase().trim(),
+  phone: document.getElementById("phonenumber").value.trim(), 
+  school: document.getElementById("school").value.toLowerCase().trim(),
+  gender: document.getElementById("gender").value.toLowerCase().trim(),
+  address: document.getElementById("address").value.toLowerCase().trim(),
+};
+
+
+  
   let popup = document.createElement("div");
   popup.id = "statusPopup";
-  popup.innerText = "⏳ Submitting your form...";
+  popup.innerText = "📤 Sending data...";
   Object.assign(popup.style, {
     position: "fixed",
     top: "20px",
@@ -226,33 +230,41 @@ function registration() {
   });
   document.body.appendChild(popup);
 
-  fetch("https://script.google.com/macros/s/AKfycbw8V9gU65BQujh0a0brj-2BfcDPzRBaajZtexgFt5S6hC481hTvJGb0ryuAAtQT1Nz0jg/exec", {
+  fetch("https://script.google.com/macros/s/AKfycbzufgRttlbAhgR1-5jNXqZw9ymHz97ONI4t6B7K7m2SX0E8nOpAsIZ0QH0QPrFfrm_f/exec", {
     method: "POST",
     body: JSON.stringify(data)
   })
     .then(res => res.json())
     .then(response => {
-      if (response.status === "ok") {
-        popup.innerText = "☑️ Registration successful!";
-      }
+      if (response.status === "success") {
+        popup.innerText = "☑️ Registered successfully!";
+        setTimeout(() => {
+          window.location.href = "/registration_fees.html"; 
+        }, 1000);
+      } 
       else if (response.message === "Duplicate entry") {
         popup.innerText = "🙅 Duplicate entry";
-      }
+        setTimeout(() => popup.remove(), 3000);
+      } 
       else {
-        popup.innerText = "⚠️error⚠️ : " + response.message;
+        console.log(response)
+        popup.innerText = "⚠️ Error: " + response.message;
+        setTimeout(() => popup.remove(), 3000);
       }
-      setTimeout(() => popup.remove(), 3000);
     })
     .catch(err => {
-      popup.innerText = "⚠️Error⚠️ : Network error!";
+      console.error(err)
+      popup.innerText = "⚠️ Network error!";
       setTimeout(() => popup.remove(), 3000);
     })
     .finally(() => {
       submitBtn.disabled = false;
       submitBtn.value = "Submit";
-      window.location.href = "/vce-gat.html";
     });
 }
+
+
+
 
 async function findcard() {
   const name = document.getElementById("name").value;

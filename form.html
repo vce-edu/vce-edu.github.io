@@ -61,19 +61,29 @@
       <p class="EMI"><a href="shop.html">Buy Laptop on EMI</a></p>
     </div>
     <main class="form">
-      <h2>General Awareness Test Registration Form</h2><br />
-      <marquee>Deadline for Registration is <span class="deadline">13th September</span></marquee>
+      <h2>Scholarship Exam Registration Form</h2><br />
+      <marquee>Deadline for Registration is <span class="deadline">3rd October</span></marquee>
       <hr /><br />
 
       <form onsubmit="registration(); return false;">
         <label for="name">Full Name</label><br />
-        <input type="text" id="name" name="name" required><br><br>
+        <input type="text" id="name" name="name" 
+       pattern="[a-zA-Z\s]{3,}" 
+       title="Full Name must be at least 3 letters, only alphabets and spaces" 
+       required>
+<br><br>
 
         <label for="fathername">Father's Name</label><br />
-        <input type="text" id="fathername" name="fathername" required><br><br>
+        <input type="text" id="fathername" name="fathername" 
+       pattern="[a-zA-Z\s]{3,}" 
+       title="Father's Name must be at least 3 letters, only alphabets and spaces" 
+       required><br><br>
 
         <label for="phonenumber">Phone Number</label><br />
-        <input type="tel" id="phonenumber" name="phonenumber" pattern="[0-9]{10}" required><br><br>
+        <input type="tel" id="phonenumber" name="phonenumber" pattern="[0-9]{10}" title="Phone number should of atleast 10 digits"  required><br><br>
+        
+        <label for="school">Shcool/College Name</label><br />
+        <input type="text" id="school" name="school" required><br><br>
 
 
         <label for="gender">Gender</label><br />
