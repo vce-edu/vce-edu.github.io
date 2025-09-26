@@ -2066,3 +2066,117 @@ button.secondary:hover {
   from { transform: scale(0.9); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
 }
+
+
+.scholarship {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+  background: #f9f9fb;
+}
+
+.scholarship-card {
+  background: #fff;
+  max-width: 900px;
+  width: 100%;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+.scholarship-card h1 {
+  font-size: 2rem;
+  color: #4b0082;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.scholarship-card p {
+  font-size: 1.1rem;
+  color: #444;
+  text-align: center;
+}
+
+.highlight {
+  color: #6a0dad;
+  font-weight: bold;
+}
+
+.scholarship-section {
+  margin-top: 30px;
+}
+
+.scholarship-section h2 {
+  font-size: 1.4rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.scholarship-section ul {
+  list-style: none;
+  padding: 0;
+  line-height: 1.8;
+}
+
+.scholarship-section ul li::before {
+  content: "✔ ";
+  color: #6a0dad;
+  font-weight: bold;
+}
+
+.scholarship-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  font-size: 1rem;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.scholarship-table thead {
+  background: linear-gradient(90deg, #6a0dad, #9b4dff);
+  color: #fff;
+  text-align: left;
+}
+
+.scholarship-table th, 
+.scholarship-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.scholarship-table tr:nth-child(even) {
+  background-color: #faf5ff;
+}
+
+.scholarship-table tr:hover {
+  background: #f3e8ff;
+  transition: 0.2s;
+}
+
+
+.center-btn {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.btn-register {
+  display: inline-block;
+  background: linear-gradient(90deg, #6a0dad, #9b4dff);
+  color: #fff;
+  padding: 14px 28px;
+  font-size: 18px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn-register:hover {
+  background: linear-gradient(90deg, #5a0dad, #7b3ce0);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+.contact p {
+  margin: 6px 0;
+}

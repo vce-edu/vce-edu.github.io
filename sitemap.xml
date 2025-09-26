@@ -30,6 +30,11 @@
     <loc>https://vintecheducation.org/events.html</loc>
     <priority>0.7</priority>
   </url>
+  
+  <url>
+    <loc>https://vintecheducation.org/scholarship.html</loc>
+    <priority>0.7</priority>
+  </url>
 
   <url>
     <loc>https://vintecheducation.org/faculty.html</loc>
