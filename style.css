@@ -829,12 +829,14 @@ marquee p {
 .about-page {
   display: flex;
   flex-wrap: wrap;
+  overflow-x: hidden !important;
 }
 
 .about-box {
   margin-bottom: 10px;
   align-self: center;
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
   margin-top: 30px;
@@ -861,50 +863,118 @@ marquee p {
     inset 0 2px 6px rgba(255, 255, 255, 0.7);
 }
 
-.image img {
-  margin-top: 25px;
-  width: clamp(200px, 20vw, 300px);
+.about-box h1{
+  color:#4B0082;
+}
+
+.about-box h2{
+  color: #6a17a5;
+  font-size: 1.7em;
+  margin-left: 15px;
+}
+
+.image{
+  width: 30%;
   height: auto;
-  object-fit: cover;
-  border-radius: 15px;
-}
-
-
-.caption {
   text-align: center;
-  color: #555;
-  font-size: 0.8em;
-  font-style: italic;
 }
 
-.about-center p.faculty {
-  font-size: 0.8em;
-  color: #948f8f;
-  font-style: italic;
+
+.image img{
+  width: clamp(150px,100%,100%);
+  height: auto;
+  border-radius: 10px;
 }
 
-.about-center p.laptop {
-  font-size: 0.8em;
-  color: #948f8f;
-  font-style: italic;
-  float: right;
+.image p{
+  font-size: 0.65em;
+  color: #666;
+}
+.founding{
+  display: flex;
+  flex-wrap: wrap;
+  gap:50px;
 }
 
-.about-center {
-  margin-top: 25px;
-  align-self: flex-start;
+.founding p{
+  color: #6e6c6c;
+  font-weight: 501;
 }
 
-.about-center h2 {
-  color: #8e44ad;
-  font-size: 2em;
+.information{
+  width: 60%;
+}
+.information p{
+  margin-left: 20px;
+  line-height: 32px;
 }
 
-.about-center p {
-  line-height: 30px;
-  color: #535050;
-  margin-top: 10px;
-  font-size: 1.1em;
+.about-box span{
+  color: #5e5858;
+}
+
+
+
+
+#infra-img{
+  width:110%;
+  height: 110%;
+}
+
+
+@media (max-width: 570px){
+  .founding{
+    flex-direction: column;
+  }
+  .image{
+    margin-left: 20px;
+    text-align: left;
+  }
+  .image p{
+    margin-left: 20px;
+  }
+}
+
+
+@media (max-width: 1094px){
+  .information{
+    width: 100%;
+  }
+  .image{
+    width:50%;
+    margin-right: 250px;
+  }
+}
+
+@media (max-width: 572px){
+  .information.infra p{
+    width:75%;
+  }
+    .acomodities{
+    margin-top:-35px;
+  }
+}
+
+@media (max-width: 405px){
+    .acomodities{
+    margin-top:-120px;
+  }
+}
+
+@media (max-width: 405px){
+  .information{
+    width:90%;
+  }
+}
+@media (max-width: 340px){
+  .information{
+    width:80%;
+  }
+}
+
+
+.additional{
+  line-height: 28px;
 }
 
 .about-laptop h2 {
@@ -2180,3 +2250,76 @@ button.secondary:hover {
 .contact p {
   margin: 6px 0;
 }
+
+
+.practice-zone header{
+ background-color: white;
+  width: 100%;
+  height: auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 30px;
+  flex-wrap: wrap;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+}
+
+.practice-zone nav{
+  display: none;
+}
+.practice-zone ul{
+  list-style-type: none;
+  display:flex;
+}
+
+.plogo{
+  display: flex;
+  justify-content: center;
+}
+
+.plogo h1{
+  color: rgb(120, 0, 120);
+  margin-left: 30px;
+  font-size: 4em;
+}
+
+.plogo p , .powered p{
+  margin-top: 4.8%;
+  margin-left: 20px;
+  color:#5a005a;
+  font-size: 1.3em;
+}
+
+.powered p{
+  border-bottom: 2px dashed #360062;
+}
+
+.plogo .emoji{
+  margin-top: 1px;
+  font-size: 3em;
+  animation: motion 3s ease-out infinite;
+  opacity: 0;
+}
+
+
+@keyframes motion{
+  0%{
+    transform: translate(20%,125%);
+    opacity: 1;
+  }
+  30%{
+    transform: translate(0,0);
+    opacity: 1;
+  }
+  60%{
+    transform: translate(0,-1px);
+    opacity: 1;
+  }
+  100%{
+    transform: translate(500%,-450%);
+    opacity: 0;
+  }
+}
+
