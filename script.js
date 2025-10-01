@@ -478,3 +478,18 @@ window.addEventListener("scroll", () => {
 });
 
 
+
+
+
+const gridMenu = document.querySelector(".grid-menu");
+const menuItems = document.querySelector(".menu-items");
+
+gridMenu.addEventListener("click", () => {
+  const isOpen = menuItems.classList.toggle("menu-items-show");
+
+  if (isOpen) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "";
+  }
+});
