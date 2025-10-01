@@ -13,68 +13,89 @@
   gtag('config', 'G-EMHX2RMVVC');
 </script>
 
-<!-- Schema Markup -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "ItemList",
-  "name": "Faculty of Vintech Computer Education",
-  "description": "Meet the highly experienced faculty of Vintech Computer Education (VCE). Our instructors specialize in Computer Applications, IT, Accounting, Programming, and Digital Skills training.",
-  "url": "https://vintecheducation.org/faculty.html",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://vintecheducation.org/faculty.html"
-  },
-  "itemListElement": [
+  "@graph": [
     {
-      "@type": "Person",
-      "name": "Mr. Manish Vishwakarma",
-      "image": "https://vintecheducation.org/images/center-director.jpg",
-      "jobTitle": "Center Director & Senior IT Instructor",
-      "description": "Mr. Manish Vishwakarma is the Director of Vintech Computer Education with over 25 years of experience in Computer Science and IT training. Known for his friendly and approachable teaching style, he personally checks in with students to ensure their studies are going smoothly and addresses any concerns with staff on a weekly basis. His strength lies in making complex computer concepts easy to understand, covering subjects such as Microsoft Office, Tally, and programming, while guiding students with a focus on practical learning and career growth.",
-      "worksFor": {
-        "@id": "https://vintecheducation.org#organization"
+      "@type": "WebPage",
+      "@id": "https://vintecheducation.org/faculty.html",
+      "url": "https://vintecheducation.org/faculty.html",
+      "name": "Faculty of Vintech Computer Education",
+      "description": "Meet the highly experienced faculty of Vintech Computer Education (VCE). Our instructors specialize in Computer Applications, IT, Accounting, Programming, and Digital Skills training.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://vintecheducation.org#website"
+      },
+      "mainEntity": {
+        "@id": "https://vintecheducation.org/faculty.html#faculty-list"
       }
     },
     {
-      "@type": "Person",
-      "name": "Mr. Prem Pal Singh",
-      "image": "https://vintecheducation.org/images/Prem-Pal-Singh.jpg",
-      "jobTitle": "Computer Applications & Accounting Faculty",
-      "description": "Mr. Prem Pal Singh is a Computer Applications & Accounting faculty at Vintech Computer Education with over 3 years of teaching experience. He is known for his friendly and approachable nature, making it easier for students to grasp complex concepts. His expertise includes Microsoft Office Suite, graphic design tools such as Photoshop and CorelDraw, and accounting software like Tally (9 & Prime), Busy, and Marg. He focuses on delivering practical, skill-based learning that prepares students for real-world applications.",
-      "worksFor": {
-        "@id": "https://vintecheducation.org#organization"
-      }
-    },
-    {
-      "@type": "Person",
-      "name": "Mr. Mukund Vishwakarma",
-      "image": "https://vintecheducation.org/images/Mukund-Vishwakarma.png",
-      "jobTitle": "Computer Science & IT Faculty",
-      "description": "Mr. Mukund Vishwakarma is a Computer Science & IT faculty at Vintech Computer Education, known for his disciplined yet friendly approach to teaching. He specializes in programming languages such as C, C++, Java, Python, and modern frameworks and libraries including NumPy and spaCy. He also trains students in web development and full-stack technologies, while introducing emerging languages like Rust and essential networking concepts. His unique teaching style blends technical depth with storytelling, making complex topics easier to understand and engaging for students.",
-      "worksFor": {
-        "@id": "https://vintecheducation.org#organization"
-      }
-    },
-    {
-      "@type": "Person",
-      "name": "Mr. Esub",
-      "image": "https://vintecheducation.org/images/Esub.jpg",
-      "jobTitle": "Computer Applications Faculty",
-      "description": "Mr. Esub teaches core computer applications including MS Word, Excel, PowerPoint, and Internet basics. He focuses on helping students build strong digital literacy skills.",
-      "worksFor": {
-        "@id": "https://vintecheducation.org#organization"
-      }
-    },
-    {
-      "@type": "Person",
-      "name": "Mr. Rahul Thakur",
-      "image": "https://vintecheducation.org/images/rahul-thakur.jpg",
-      "jobTitle": "Senior Computer Applications Faculty",
-      "description": "Mr. Rahul Thakur is a Senior Computer Applications Faculty at Vintech Computer Education. With a lively and engaging teaching style, he creates an energetic classroom environment that keeps students deeply involved in learning. Known for his friendly nature and unique delivery, he ensures that even complex concepts in computer applications become memorable and easier to grasp.",
-      "worksFor": {
-        "@id": "https://vintecheducation.org#organization"
-      }
+      "@type": "ItemList",
+      "@id": "https://vintecheducation.org/faculty.html#faculty-list",
+      "name": "Faculty of Vintech Computer Education",
+      "description": "List of faculty members at Vintech Computer Education.",
+      "url": "https://vintecheducation.org/faculty.html",
+      "itemListOrder": "http://schema.org/ItemListOrderAscending",
+      "numberOfItems": 5,
+      "itemListElement": [
+        {
+          "@type": "Person",
+          "@id": "https://vintecheducation.org/faculty.html#manish-vishwakarma",
+          "name": "Mr. Manish Vishwakarma",
+          "image": "https://vintecheducation.org/images/center-director.jpg",
+          "jobTitle": "Center Director & Senior IT Instructor",
+          "description": "Director of Vintech Computer Education with 25+ years of experience in Computer Science and IT training. Specializes in Microsoft Office, Tally, and programming with focus on practical learning.",
+          "worksFor": {
+            "@id": "https://vintecheducation.org#organization"
+          }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://vintecheducation.org/faculty.html#prem-pal-singh",
+          "name": "Mr. Prem Pal Singh",
+          "image": "https://vintecheducation.org/images/Prem-Pal-Singh.jpg",
+          "jobTitle": "Computer Applications & Accounting Faculty",
+          "description": "Teaches Microsoft Office, Photoshop, CorelDraw, Tally, Busy, and Marg with focus on practical skills.",
+          "worksFor": {
+            "@id": "https://vintecheducation.org#organization"
+          }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://vintecheducation.org/faculty.html#mukund-vishwakarma",
+          "name": "Mr. Mukund Vishwakarma",
+          "image": "https://vintecheducation.org/images/Mukund-Vishwakarma.png",
+          "jobTitle": "Computer Science & IT Faculty",
+          "description": "Specialist in C, C++, Java, Python, Rust, web development, NumPy, spaCy, and networking. Known for technical depth and storytelling-based teaching.",
+          "worksFor": {
+            "@id": "https://vintecheducation.org#organization"
+          }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://vintecheducation.org/faculty.html#esub",
+          "name": "Mr. Esub",
+          "image": "https://vintecheducation.org/images/Esub.jpg",
+          "jobTitle": "Computer Applications Faculty",
+          "description": "Teaches MS Word, Excel, PowerPoint, Internet basics, and digital literacy skills.",
+          "worksFor": {
+            "@id": "https://vintecheducation.org#organization"
+          }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://vintecheducation.org/faculty.html#rahul-thakur",
+          "name": "Mr. Rahul Thakur",
+          "image": "https://vintecheducation.org/images/rahul-thakur.jpg",
+          "jobTitle": "Senior Computer Applications Faculty",
+          "description": "Creates engaging classrooms with memorable lessons in computer applications. Known for lively teaching style.",
+          "worksFor": {
+            "@id": "https://vintecheducation.org#organization"
+          }
+        }
+      ]
     }
   ]
 }

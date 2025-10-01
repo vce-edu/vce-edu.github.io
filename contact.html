@@ -16,92 +16,112 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "EducationalOrganization",
-  "@id": "https://vintecheducation.org#organization",
-  "name": "Vintech Computer Education",
-  "url": "https://vintecheducation.org/reach.html",
-  "department": [
+  "@graph": [
+    {
+      "@type": "ContactPage",
+      "@id": "https://www.vintechcomputereducation.org/reach.html#contactpage",
+      "url": "https://www.vintechcomputereducation.org/reach.html",
+      "name": "Contact Vintech Computer Education",
+      "description": "Get in touch with Vintech Computer Education. Find our Bareilly branches, contact numbers, email, WhatsApp, and directions via Google Maps.",
+      "publisher": {
+        "@id": "https://www.vintechcomputereducation.org#organization"
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://www.vintechcomputereducation.org#website"
+      }
+    },
     {
       "@type": "EducationalOrganization",
-      "name": "Vintech Computer Education - Main Branch",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "2nd Floor, Maurya Tower, Doraha Road, Opp. Vedanta Hospital, Chandpur Bichpuri",
-        "addressLocality": "Bareilly",
-        "addressRegion": "Uttar Pradesh",
-        "postalCode": "243006",
-        "addressCountry": "IN"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 28.3786838,
-        "longitude": 79.4684797
-      },
-      "contactPoint": [
+      "@id": "https://www.vintechcomputereducation.org#organization",
+      "name": "Vintech Computer Education",
+      "url": "https://www.vintechcomputereducation.org",
+      "logo": "https://www.vintechcomputereducation.org/images/og-banner.jpg",
+      "email": "contact@vintecheducation.org",
+      "sameAs": [
+        "https://www.linkedin.com/company/vintech-computer-education",
+        "https://www.youtube.com/@VCE-w1e",
+        "https://t.me/vc_edu",
+        "https://g.page/r/CUA8zTtbBSNwEBM/review"
+      ],
+      "department": [
         {
-          "@type": "ContactPoint",
-          "telephone": "+91-9068485233",
-          "contactType": "customer service",
-          "availableLanguage": ["en", "hi"]
+          "@type": "EducationalOrganization",
+          "@id": "https://www.vintechcomputereducation.org#branch1",
+          "name": "Vintech Computer Education - Main Branch",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "2nd Floor, Maurya Tower, Doraha Road, Opp. Vedanta Hospital, Chandpur Bichpuri",
+            "addressLocality": "Bareilly",
+            "addressRegion": "Uttar Pradesh",
+            "postalCode": "243006",
+            "addressCountry": "IN"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 28.3786838,
+            "longitude": 79.4684797
+          },
+          "contactPoint": [
+            {
+              "@type": "ContactPoint",
+              "telephone": "+91-9068485233",
+              "contactType": "customer service",
+              "availableLanguage": ["hi", "en"]
+            },
+            {
+              "@type": "ContactPoint",
+              "telephone": "+91-9548676643",
+              "contactType": "customer service",
+              "availableLanguage": ["hi", "en"]
+            }
+          ]
         },
         {
-          "@type": "ContactPoint",
-          "telephone": "+91-9548676643",
-          "contactType": "customer service",
-          "availableLanguage": ["en", "hi"]
+          "@type": "EducationalOrganization",
+          "@id": "https://www.vintechcomputereducation.org#branch2",
+          "name": "Vintech Computer Education - Second Branch",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Bareilly Rd, Harunagla",
+            "addressLocality": "Bareilly",
+            "addressRegion": "Uttar Pradesh",
+            "postalCode": "243006",
+            "addressCountry": "IN"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 28.3603057,
+            "longitude": 79.4624692
+          },
+          "contactPoint": [
+            {
+              "@type": "ContactPoint",
+              "telephone": "+91-9456489436",
+              "contactType": "branch office",
+              "availableLanguage": ["hi", "en"]
+            }
+          ]
         }
-      ]
-    },
-    {
-      "@type": "EducationalOrganization",
-      "name": "Vintech Computer Education - Second Branch",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Bareilly Rd, Harunagla",
-        "addressLocality": "Bareilly",
-        "addressRegion": "Uttar Pradesh",
-        "postalCode": "243006",
-        "addressCountry": "IN"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 28.3603057,
-        "longitude": 79.4624692
-      },
-      "contactPoint": [
-        {
-          "@type": "ContactPoint",
-          "telephone": "+91-9456489436",
-          "contactType": "branch office",
-          "availableLanguage": ["en", "hi"]
-        }
-      ]
-    }
-  ],
-  "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday"
       ],
-      "opens": "08:00",
-      "closes": "20:00"
-    },
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": "Sunday",
-      "opens": "Closed",
-      "closes": "Closed"
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday"
+        ],
+        "opens": "08:00",
+        "closes": "20:00"
+      }
     }
-  ],
-  "email": "contact@vintecheducation.org"
+  ]
 }
 </script>
+
 
 
   <meta charset="UTF-8">
