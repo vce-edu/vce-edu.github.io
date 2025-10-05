@@ -65,10 +65,4 @@
     <loc>https://vintecheducation.org/pratice.html</loc>
     <priority>0.6</priority>
   </url>
-
-  <url>
-    <loc>https://vintecheducation.org/shop.html</loc>
-    <priority>0.6</priority>
-  </url>
-
 </urlset>

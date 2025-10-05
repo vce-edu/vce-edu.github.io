@@ -477,19 +477,24 @@ window.addEventListener("scroll", () => {
   }
 });
 
+const icon = document.querySelector(".icon");
+const menu = document.querySelector(".grid-menu-hide");
 
+icon.addEventListener("click", () => {
+  const isVisible = menu.classList.contains("grid-menu");
 
-
-
-const gridMenu = document.querySelector(".grid-menu");
-const menuItems = document.querySelector(".menu-items");
-
-gridMenu.addEventListener("click", () => {
-  const isOpen = menuItems.classList.toggle("menu-items-show");
-
-  if (isOpen) {
-    document.body.style.overflow = "hidden";
+  if (isVisible) {
+    menu.classList.remove("grid-menu");
+    document.body.style.overflow = "auto"; 
   } else {
-    document.body.style.overflow = "";
+    menu.classList.add("grid-menu");
+    document.body.style.overflow = "hidden"; 
   }
+});
+
+document.querySelectorAll('.grid-item').forEach(item => {
+  item.addEventListener('click', () => {
+    let page = item.getAttribute('data-page');
+    window.location.href = page;
+  });
 });
