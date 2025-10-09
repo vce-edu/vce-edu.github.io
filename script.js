@@ -33,7 +33,8 @@ const notesLinks = {
     hi: "https://drive.google.com/uc?export=download&id=1UYF2Si60fshS2Wqdq8Kk_wHzG9A_IQAO"
   },
   tally9: {
-    hi: "https://drive.google.com/uc?export=download&id=1WE1CRoCgMKdUorkprMUAwk0SDsSqv8K-"
+    en: "https://drive.google.com/uc?export=download&id=1yv7MWW9dtXRZdm7gnZYtGX9d_x_lD0N-",
+    hi: "https://drive.google.com/uc?export=download&id=1-2OUWjL29M0WCHw7jCKq5bNXim_tCt6k"
   },
   mangal: {
     hi: "https://drive.google.com/uc?export=download&id=18DOsEqzfjVe5973uzqGTw67G5KPEbXtu"
@@ -81,7 +82,7 @@ const notesLinks = {
 };
 
 const englishOnly = ["shortcuts", "python", "c", "cpp", "java", "html", "css", "javascript"];
-const hindiOnly = ["tally9", "mangal", "krutidev"];
+const hindiOnly = ["mangal", "krutidev"];
 
 document.querySelector(".hamburger").addEventListener("click", () => {
   document.querySelector(".nav-bar").classList.toggle("active");
@@ -498,3 +499,4 @@ document.querySelectorAll('.grid-item').forEach(item => {
     window.location.href = page;
   });
 });
+
