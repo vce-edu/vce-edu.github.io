@@ -78,10 +78,13 @@ const notesLinks = {
     en: "https://drive.google.com/uc?export=download&id=19Bj8i1X41zwEfD-5lANkjmcf0dizUGsR",
     hi: "https://drive.google.com/uc?export=download&id=1eiXA8GkFKk6Jlc5EVAN07b1K7gPaBgpn"
   },
+  w3css: {
+    en: "https://drive.google.com/uc?export=download&id=1pn3LBkia0H5Z5fX-hTVYRCsJqnZF5lXP"
+  },
 
 };
 
-const englishOnly = ["shortcuts", "python", "c", "cpp", "java", "html", "css", "javascript"];
+const englishOnly = ["shortcuts", "python", "c", "cpp", "java", "html", "css", "javascript", "w3css"];
 const hindiOnly = ["mangal", "krutidev"];
 
 document.querySelector(".hamburger").addEventListener("click", () => {
@@ -499,4 +502,5 @@ document.querySelectorAll('.grid-item').forEach(item => {
     window.location.href = page;
   });
 });
+
 
