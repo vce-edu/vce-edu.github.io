@@ -81,10 +81,16 @@ const notesLinks = {
   w3css: {
     en: "https://drive.google.com/uc?export=download&id=1pn3LBkia0H5Z5fX-hTVYRCsJqnZF5lXP"
   },
+  pl:{
+    en: "https://drive.google.com/uc?export=download&id=1GmYmZVW5QEpMviBtcrLXHFGvM4I1uKgG"
+  },
+  pw: {
+    en: "https://drive.google.com/uc?export=download&id=1o_jT_VqvdWXCdg64T46X1jJcbjkR-QP8"
+  }
 
 };
 
-const englishOnly = ["shortcuts", "python", "c", "cpp", "java", "html", "css", "javascript", "w3css"];
+const englishOnly = ["shortcuts", "python", "c", "cpp", "java", "html", "css", "javascript", "w3css", "pl","pw"];
 const hindiOnly = ["mangal", "krutidev"];
 
 document.querySelector(".hamburger").addEventListener("click", () => {
@@ -502,5 +508,6 @@ document.querySelectorAll('.grid-item').forEach(item => {
     window.location.href = page;
   });
 });
+
 
 
