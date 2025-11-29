@@ -85,7 +85,7 @@ const notesLinks = {
     en: "https://drive.google.com/uc?export=download&id=1GmYmZVW5QEpMviBtcrLXHFGvM4I1uKgG"
   },
   pw: {
-    en: "https://drive.google.com/uc?export=download&id=1o_jT_VqvdWXCdg64T46X1jJcbjkR-QP8"
+    en: "https://drive.google.com/uc?export=download&id=15WQk6twR9U_qrY7cFTJ5xpOD3s5LMbao"
   }
 
 };
@@ -508,6 +508,7 @@ document.querySelectorAll('.grid-item').forEach(item => {
     window.location.href = page;
   });
 });
+
 
 
 
