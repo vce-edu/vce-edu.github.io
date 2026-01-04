@@ -86,6 +86,9 @@ const notesLinks = {
   },
   pw: {
     en: "https://drive.google.com/uc?export=download&id=15WQk6twR9U_qrY7cFTJ5xpOD3s5LMbao"
+  },
+  iot:{
+    en: "https://drive.google.com/uc?export=download&id=1VyfIwGg16u1va7cnFOJPO4Vw1rsMtEEG"
   }
 
 };
@@ -508,6 +511,7 @@ document.querySelectorAll('.grid-item').forEach(item => {
     window.location.href = page;
   });
 });
+
 
 
 
