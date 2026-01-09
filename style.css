@@ -2165,6 +2165,11 @@ button.secondary:hover {
   }
 }
 
+.se-container {
+  display: flex;
+  justify-content: center;
+}
+
 #scholarship-box {
   display: block;
   width: 93vw;
@@ -2957,6 +2962,7 @@ textarea {
   transform: translateX(-100%);
   opacity: 0;
 }
+
 .slide-form.exit-right {
   transform: translateX(100%);
   opacity: 0;
@@ -3139,7 +3145,7 @@ textarea {
   width: 220px;
   height: 220px;
   border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 .qr-hint {
@@ -3163,5 +3169,10 @@ textarea {
   top: 50%;
 }
 
-.or-divider::before { left: 0; }
-.or-divider::after { right: 0; }
+.or-divider::before {
+  left: 0;
+}
+
+.or-divider::after {
+  right: 0;
+}
