@@ -19,11 +19,10 @@
     <meta name="description"
         content="Submit your course fees securely at Vintech Computer Education. Pay via UPI options : QR code, or direct payment link for hassle-free transactions.">
 
-    <title>Fees Submission | Vintech Computer Education</title>
+    <title>Pay Due Fees - Vintech Computer Education</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <script defer src="script.js"></script>
-    <script defer src="fees.js"></script>
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
@@ -43,38 +42,133 @@
                 </div>
             </a>
             <nav class="nav-bar">
-        <a href="index.html">Home</a>
-        <a href="gallery.html">Gallery</a>
-        <a href="events.html">Events</a>
-        <a href="scholarship.html">Scholarship Exam</a>
-        <a href="about.html">About Us</a>
+                <a href="index.html">Home</a>
+                <a href="registration.html">Enroll Now</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="events.html">Events</a>
+                <a href="scholarship.html">Scholarship</a>
+                <a href="about.html">About Us</a>
 
-      </nav>
+            </nav>
             <div class="hamburger">
                 ☰
             </div>
         </header>
-        <div class="toggle-container">
-            <p class="Back"><a href="index.html">Back</a></p>
-            <div class="toggle" id="langToggle">
-                <span class="notranslate">EN</span>
-                <span class="notranslate">हिं</span>
-                <div class="circle"></div>
-            </div>
-            <p class="EMI"><a href="https://shop.vintecheducation.org">Buy Laptop on EMI</a></p>
-        </div>
-        <div class="wrapper-fees">
-            <div class="options">
-                <h2>UPI Payment Options</h2>
-                <a href="upi://pay?pa=manishmont-1@okaxis&pn=Vintech%20Computer%20Education"><button>Direct Payment
-                        Link</button></a><br /><br />
-                <button id="qr">OR Code</button>
-                <div class="lightbox" id="qr-image">
-                    <span class="close"><a href="#">&times;</a></span>
-                    <img src="images/qr-code.jpg" alt="Qr Code for Fee Payment of Vintech Computer Education Course">
+
+        <div class="form-page-wrapper">
+            <div class="slide-form-wrapper">
+
+                <!-- STEP 1 -->
+                <div class="slide-form active" id="step1">
+                    <h2 class="form-title">Pay Due Fees</h2>
+                    <p class="form-subtitle">Enter roll number to continue</p>
+
+                    <form id="feesForm">
+                        <div class="input-group">
+                            <label>Roll Number</label>
+                            <input id="rollInput" type="text" required translate="no" />
+                            <button type="button" class="link-btn" onclick="openRollHelp()">
+                                Don’t know your roll number?
+                            </button>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Branch</label>
+                            <select id="branchInput" required translate="no">
+                                <option value="">Select Branch</option>
+                                <option value="main">Main – Maurya Tower</option>
+                                <option value="second">Second – Greater Green Park</option>
+                                <option value="third">Third – Umed Pur Puliya</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="primary-btn">Continue</button>
+                    </form>
                 </div>
+
+                <!-- STEP 2 -->
+                <div class="slide-form" id="step2">
+                    <h2 class="form-title">Confirm Details</h2>
+                    <p class="form-subtitle">Verify before proceeding</p>
+
+                    <form id="confirmFeesForm">
+
+                        <div class="input-group">
+                            <label>Roll Number</label>
+                            <input id="cf_roll" readonly />
+                        </div>
+
+                        <div class="input-group">
+                            <label>Student Name</label>
+                            <input id="cf_student" readonly />
+                        </div>
+
+                        <div class="input-group">
+                            <label>Father's Name</label>
+                            <input id="cf_father" readonly />
+                        </div>
+
+                        <div class="input-group">
+                            <label>Course</label>
+                            <input id="cf_course" readonly />
+                        </div>
+
+                        <div class="input-group">
+                            <label>Amount to Pay (Monthly)</label>
+                            <input id="cf_amount" type="number" required />
+                        </div>
+
+                        <div class="dual-btn">
+                            <button type="button" class="secondary-btn" onclick="goBack()">Back</button>
+                            <button type="submit" class="primary-btn">Confirm</button>
+                        </div>
+
+                    </form>
+                </div>
+                <!-- STEP 3 -->
+                <div class="slide-form" id="step3">
+                    <h2 class="form-title">Scan & Pay</h2>
+                    <p class="form-subtitle">Complete payment to proceed</p>
+
+                    <div class="pay-box">
+                        <p class="pay-amount">
+                            Amount to Pay: ₹<span id="pay_amount"></span>
+                        </p>
+
+                        <!-- QR -->
+                        <div class="qr-box">
+                            <img id="upiQR" alt="UPI QR Code" />
+                            <p class="qr-hint">Scan using any UPI app</p>
+                        </div>
+
+                        <div class="or-divider">OR</div>
+
+                        <!-- Direct Link -->
+                        <button type="button" class="primary-btn" id="upiLinkBtn">
+                            Pay Using UPI App
+                        </button>
+
+                        <p class="payment-note">
+                            After completing the payment, click the button below.
+                        </p>
+
+                        <!-- SUBMIT PAYMENT -->
+                        <button type="button" class="primary-btn" id="submitPaymentBtn">
+                            Submit
+                        </button>
+
+                        <div class="dual-btn" style="margin-top:14px;">
+                            <button type="button" class="secondary-btn" onclick="goBackToStep2()">
+                                Back
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
         </div>
+
     </section>
     <footer>
         <div class="footer-left">
@@ -93,8 +187,14 @@
         </div>
 
         <div class="footer-right">
+            <a href="privacypolicy.html">
+                <p>Privacy Policy</p>
+            </a>
             <a href="faculty.html">
                 <p>Meet our Team</p>
+            </a>
+            <a href="t&c.html">
+                <p>Terms & Conditions</p>
             </a>
             <div class="footer-social">
                 <a href="https://g.page/r/CUA8zTtbBSNwEBM/review" target="_blank"><i class="fab fa-google"></i></a>
@@ -107,7 +207,276 @@
             </div>
         </div>
     </footer>
+    <!-- FIND ROLL NUMBER MODAL -->
+    <div class="modal-overlay" id="rollModal">
+        <div class="modal-card">
+
+            <h3 class="modal-title">Find Your Roll Number</h3>
+            <p class="modal-subtitle">
+                Enter the details used during admission
+            </p>
+
+            <form id="findRollForm">
+
+                <div class="input-group">
+                    <label>Student Name</label>
+                    <input type="text" placeholder="STUDENT NAME" required translate="no" />
+                </div>
+
+                <div class="input-group">
+                    <label>Father's Name</label>
+                    <input type="text" placeholder="FATHER'S NAME" required translate="no" />
+                </div>
+
+                <div class="input-group">
+                    <label>Mother's Name</label>
+                    <input type="text" placeholder="MOTHER'S NAME" required translate="no" />
+                </div>
+
+                <div class="input-group">
+                    <label>Branch</label>
+                    <select required translate="no">
+                        <option value="">Select Branch</option>
+                        <option value="main">Main – Maurya Tower, Doraha Road</option>
+                        <option value="second">Second – Greater Green Park Colony</option>
+                        <option value="third">Third – Umed Pur Puliya, Bhuta</option>
+                    </select>
+                </div>
+                <p id="rollResult" style="margin-top:10px;font-weight:600;"></p>
+                <div class="modal-actions">
+                    <button type="button" class="secondary-btn" onclick="closeRollModal()">Cancel</button>
+                    <button type="submit" class="primary-btn">Find Roll</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
     <div id="google_translate_element" style="display:none;"></div>
 </body>
+<script src="https://unpkg.com/@supabase/supabase-js"></script>
+<script>
+    const supaBase = supabase.createClient(
+        "https://pgvwjskubfonmirtaodo.supabase.co",
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBndndqc2t1YmZvbm1pcnRhb2RvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk4MjY2OTUsImV4cCI6MjA3NTQwMjY5NX0.dTHvwiH_UZC7K8pxLYIt5VOstu-4Shy0DW3n3C8TJsg"
+    );
+    const supaBase2 = supabase.createClient(
+        "https://auygeiqcsygchfmitfxv.supabase.co",
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF1eWdlaXFjc3lnY2hmbWl0Znh2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjcxMDUzOTEsImV4cCI6MjA4MjY4MTM5MX0.WVpNirNUPa3v3VP5vusjAFezPvH1C8ZF16dWRPcKH-4"
+    );
+</script>
+<script>
+    const step1 = document.getElementById("step1");
+    const step2 = document.getElementById("step2");
+    const step3 = document.getElementById("step3");
+
+    function goToStep2() {
+        step1.classList.remove("active");
+        step1.classList.add("exit-left");
+
+        step2.classList.remove("exit-right");
+        step2.classList.add("active");
+    }
+
+    function goBack() {
+        step2.classList.remove("active");
+        step2.classList.add("exit-right");
+
+        step1.classList.remove("exit-left");
+        step1.classList.add("active");
+    }
+
+    function goToStep3() {
+        step2.classList.remove("active");
+        step2.classList.add("exit-left");
+
+        step3.classList.remove("exit-right");
+        step3.classList.add("active");
+    }
+
+    function goBackToStep2() {
+        step3.classList.remove("active");
+        step3.classList.add("exit-right");
+
+        step2.classList.remove("exit-left");
+        step2.classList.add("active");
+    }
+
+    document.getElementById("feesForm").addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        let roll = rollInput.value.trim();
+        const branch = branchInput.value;
+        // Normalize roll number
+        if (!/^[a-zA-Z]_/.test(roll.toLowerCase())) {
+            const prefix = branch.charAt(0).toLowerCase();
+            roll = `${prefix}_${roll}`;
+        }
+
+
+        try {
+            const { data, error } = await supaBase
+                .from("students")
+                .select("roll_number, student_name, father_name, course, fee_month")
+                .eq("roll_number", roll)
+                .eq("branch", branch)
+                .single();
+
+            if (error || !data) {
+                alert("Student not found");
+                return;
+            }
+
+            cf_roll.value = data.roll_number;
+            cf_student.value = data.student_name;
+            cf_father.value = data.father_name;
+            cf_course.value = data.course;
+            cf_amount.value = data.fee_month ?? "";
+
+            goToStep2();
+
+        } catch (err) {
+            console.error(err);
+            alert("Error fetching data");
+        }
+    });
+
+    document.getElementById("confirmFeesForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const amount = document.getElementById("cf_amount").value;
+        const roll = document.getElementById("cf_roll").value;
+
+        if (!amount || Number(amount) <= 0) {
+            alert("Invalid amount");
+            return;
+        }
+
+        // Fill payment UI
+        document.getElementById("pay_amount").textContent = amount;
+
+        const note = encodeURIComponent(`Roll:${roll} Fees`);
+        const upiString =
+            `upi://pay?pa=manishmont-1@okaxis&pn=VINTECH%20COMPUTER%20EDUCATION&am=${amount}&cu=INR&tn=${note}`;
+
+        // QR
+        document.getElementById("upiQR").src =
+            `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(upiString)}`;
+
+        // Link button
+        document.getElementById("upiLinkBtn").onclick = () => {
+            window.location.href = upiString;
+        };
+
+        goToStep3();
+    });
+
+
+    function openRollHelp() {
+        document.getElementById("rollModal").style.display = "flex";
+    }
+
+    function closeRollModal() {
+        document.getElementById("rollModal").style.display = "none";
+    }
+
+    document.getElementById("rollModal").addEventListener("click", (e) => {
+        if (e.target.id === "rollModal") closeRollModal();
+    });
+
+    document
+        .querySelectorAll("#findRollForm input")
+        .forEach(el => {
+            el.style.textTransform = "uppercase";
+            el.addEventListener("input", () => {
+                el.value = el.value.toUpperCase();
+            });
+        });
+
+    document.getElementById("findRollForm").addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const inputs = e.target.querySelectorAll("input, select");
+        const [student, father, mother, branch] = [...inputs].map(i => i.value.trim());
+
+        const resultBox = document.getElementById("rollResult");
+        resultBox.textContent = "Searching...";
+        resultBox.style.color = "#555";
+
+        try {
+            const { data, error } = await supaBase
+                .from("students")
+                .select("roll_number")
+                .ilike("student_name", student)
+                .ilike("father_name", father)
+                .ilike("mother_name", mother)
+                .eq("branch", branch);
+
+            if (error) throw error;
+
+            if (!data || data.length === 0) {
+                resultBox.textContent = "No matching record found.";
+                resultBox.style.color = "red";
+                return;
+            }
+
+            if (data.length > 1) {
+                resultBox.textContent =
+                    "Multiple records found. Please contact office.";
+                resultBox.style.color = "orange";
+                return;
+            }
+
+            const roll = data[0].roll_number;
+
+            resultBox.innerHTML = `Your Roll Number: <strong>${roll}</strong>`;
+            resultBox.style.color = "green";
+
+            const rollInput = document.getElementById("rollInput");
+            if (rollInput) rollInput.value = roll;
+
+        } catch (err) {
+            console.error(err);
+            resultBox.textContent = "Error fetching roll number. Try again.";
+            resultBox.style.color = "red";
+        }
+    });
+    document.getElementById("submitPaymentBtn").addEventListener("click", async () => {
+        const roll = document.getElementById("cf_roll").value;
+        const amount = document.getElementById("cf_amount").value;
+
+        if (!roll || !amount) {
+            alert("Missing payment details");
+            return;
+        }
+
+        const paidOn = new Date().toISOString().split("T")[0];
+
+        try {
+            const { error } = await supaBase2
+                .from("payments")
+                .insert([
+                    {
+                        roll_number: roll,
+                        amount_paid: amount,
+                        paid_on: paidOn
+                    }
+                ]);
+
+            if (error) {
+                console.error(error);
+                alert("Payment submission failed. Please contact office.");
+                return;
+            }
+
+            alert("Payment submitted successfully!");
+
+        } catch (err) {
+            console.error(err);
+            alert("Unexpected error occurred.");
+        }
+    });
+</script>
 
 </html>

@@ -19,7 +19,14 @@ const courseDetails = {
     <p>–> Python (Optional)</p>
     <p>–> Busy (Option)</p>
     <p>Any one optional as per your choice</p>
-    <a href="https://wa.me/+919068485233" target="_blank"><button class="seat"><i class="fa-brands fa-whatsapp"></i>Book a Seat Now!</button></a>
+    <div class="register-action">
+    <button class="outline-btn syllabus-btn" data-course="adca">
+     Download Syllabus
+  </button>
+    <button class="seat register-btn" data-course="adca">
+  Register Now
+</button>
+</div>
   `,
   mdca: `
     <h2>MDCA - Master Diploma in Computer Application</h2><br/>
@@ -40,7 +47,14 @@ const courseDetails = {
     <p>–> Marg</p>
     <p>–> E-Commerce</p>
     <p>–> Coding</p>
-    <a href="https://wa.me/+919068485233" target="_blank"><button class="seat"><i class="fa-brands fa-whatsapp"></i>Book a Seat Now!</button></a>
+    <div class="register-action">
+    <button class="outline-btn syllabus-btn" data-course="adca">
+     Download Syllabus
+  </button>
+    <button class="seat register-btn" data-course="adca">
+  Register Now
+</button>
+</div>
   `,
   ccc: `
     <h2>CCC - Course on Computer Concepts</h2><br/>
@@ -55,7 +69,14 @@ const courseDetails = {
     <p>–> Digital Financial Services</p>
     <p>–> Communication and Collaboration</p>
     <p>–> GUI based Operating Systems</p>
-    <a href="https://wa.me/+919068485233" target="_blank"><button class="seat"><i class="fa-brands fa-whatsapp"></i>Book a Seat Now!</button></a>
+    <div class="register-action">
+    <button class="outline-btn syllabus-btn" data-course="adca">
+     Download Syllabus
+  </button>
+    <button class="seat register-btn" data-course="adca">
+  Register Now
+</button>
+</div>
   `,
   dcst: `
     <h2>DCST - Diploma in Computer Software</h2><br/>
@@ -70,7 +91,14 @@ const courseDetails = {
     <p>–> Computer Fundamentals</p>
     <p>–> Internet</p>
     <p>–> GUI based Operating System</p>
-    <a href="https://wa.me/+919068485233" target="_blank"><button class="seat"><i class="fa-brands fa-whatsapp"></i>Book a Seat Now!</button></a>
+    <div class="register-action">
+    <button class="outline-btn syllabus-btn" data-course="adca">
+     Download Syllabus
+  </button>
+    <button class="seat register-btn" data-course="adca">
+  Register Now
+</button>
+</div>
   `,
   cca: `
     <h2>CCA - Certificate in Computer Awareness</h2><br/>
@@ -83,7 +111,14 @@ const courseDetails = {
     <p>–> Notepad</p>
     <p>–> Paint</p>
     <p>–> Windows(8,10,11)</p>
-    <a href="https://wa.me/+919068485233" target="_blank"><button class="seat"><i class="fa-brands fa-whatsapp"></i>Book a Seat Now!</button></a>
+    <div class="register-action">
+    <button class="outline-btn syllabus-btn" data-course="adca">
+     Download Syllabus
+  </button>
+    <button class="seat register-btn" data-course="adca">
+  Register Now
+</button>
+</div>
   `,
   fullstack: `
     <h2>Full Stack Web Development</h2><br/>
@@ -100,7 +135,14 @@ const courseDetails = {
     <p>–> DBMS</p>
     <p>–> Angular.js</p>
     <p>–> Vue.js</p>
-    <a href="https://wa.me/+919068485233" target="_blank"><button class="seat"><i class="fa-brands fa-whatsapp"></i>Book a Seat Now!</button></a>
+    <div class="register-action">
+    <button class="outline-btn syllabus-btn" data-course="adca">
+     Download Syllabus
+  </button>
+    <button class="seat register-btn" data-course="adca">
+  Register Now
+</button>
+</div>
   `,
   aidevelopment: `
     <h2>AI Development- Artificial Intelligence Development</h2><br/>
@@ -112,7 +154,14 @@ const courseDetails = {
     <p>–> Python (with Numpy , SckitLearn)</p>
     <p>–> Building Basic Models</p>
     <p>–> Models Integration</p>
-    <a href="https://wa.me/+919068485233" target="_blank"><button class="seat"><i class="fa-brands fa-whatsapp"></i>Book a Seat Now!</button></a>
+   <div class="register-action">
+    <button class="outline-btn syllabus-btn" data-course="adca">
+     Download Syllabus
+  </button>
+    <button class="seat register-btn" data-course="adca">
+  Register Now
+</button>
+</div>
   `,
   olevel: `
     <h2>O Level - Ordinary Level</h2><br/>
@@ -130,7 +179,14 @@ Applications</p>
     <p>–> PR1-R5: Practical based on M1-R5, M2-
 R5 ,M3-R5 and M4-R5</p>
     <p>–> PJ1-R5: Project </p>
-    <a href="https://wa.me/+919068485233" target="_blank"><button class="seat"><i class="fa-brands fa-whatsapp"></i>Book a Seat Now!</button></a>
+    <div class="register-action">
+    <button class="outline-btn syllabus-btn" data-course="adca">
+     Download Syllabus
+  </button>
+    <button class="seat register-btn" data-course="adca">
+  Register Now
+</button>
+</div>
   `,
   webdesigning: `
     <h2>Web Designing (only frontend is included)</h2><br/>
@@ -144,7 +200,14 @@ R5 ,M3-R5 and M4-R5</p>
     <p>–> Web Fundamentals</p>
     <p>–> Figma</p>
     <p>–> Publishing </p>
-    <a href="https://wa.me/+919068485233" target="_blank"><button class="seat"><i class="fa-brands fa-whatsapp"></i>Book a Seat Now!</button></a>
+    <div class="register-action">
+    <button class="outline-btn syllabus-btn" data-course="adca">
+     Download Syllabus
+  </button>
+    <button class="seat register-btn" data-course="adca">
+  Register Now
+</button>
+</div>
   `,
   dcaadcst: `
     <h2>DCA + ADSCT - Diploma in Computer Application + Advance Diploma in Computer Software</h2><br/>
@@ -159,7 +222,14 @@ R5 ,M3-R5 and M4-R5</p>
     <p>–> CorelDraw</p>
     <p>–> Typing(Hindi + English)</p>
     <p>–> Busy</p>
-    <a href="https://wa.me/+919068485233" target="_blank"><button class="seat"><i class="fa-brands fa-whatsapp"></i>Book a Seat Now!</button></a>
+    <div class="register-action">
+    <button class="outline-btn syllabus-btn" data-course="adca">
+     Download Syllabus
+  </button>
+    <button class="seat register-btn" data-course="adca">
+  Register Now
+</button>
+</div>
   `,
   languages: `
     <h2>Languages - Advance Diploma in Computer Languages</h2><br/>
@@ -170,7 +240,14 @@ R5 ,M3-R5 and M4-R5</p>
     <p>–> C ++ (with OPP)</p>
     <p>–> Python (with Numpy)</p>
     <p>–> Java </p>
-    <a href="https://wa.me/+919068485233" target="_blank"><button class="seat"><i class="fa-brands fa-whatsapp"></i>Book a Seat Now!</button></a>
+    <div class="register-action">
+    <button class="outline-btn syllabus-btn" data-course="adca">
+     Download Syllabus
+  </button>
+    <button class="seat register-btn" data-course="adca">
+  Register Now
+</button>
+</div>
   `,
   dcstadcst: `
     <h2>DCST + ADCST - Diploma in Computer Software + Advance Diploma in Computer Software</h2><br/>
@@ -187,7 +264,14 @@ R5 ,M3-R5 and M4-R5</p>
     <p>–> Computer Fundamentals</p>
     <p>–> Internet</p>
     <p>–> GUI Based OS</p>
-    <a href="https://wa.me/+919068485233" target="_blank"><button class="seat"><i class="fa-brands fa-whatsapp"></i>Book a Seat Now!</button></a>
+   <div class="register-action">
+    <button class="outline-btn syllabus-btn" data-course="adca">
+     Download Syllabus
+  </button>
+    <button class="seat register-btn" data-course="adca">
+  Register Now
+</button>
+</div>
   `
 };
 
@@ -214,4 +298,15 @@ window.addEventListener("click", (e) => {
   if (e.target === modal) {
     modal.style.display = "none";
   }
+});
+
+
+document.addEventListener("click", function (e) {
+  const btn = e.target.closest(".register-btn");
+  if (!btn) return;
+
+  const course = btn.dataset.course;
+
+  // redirect to registration form with course prefilled
+  window.location.href = `registration.html?course=${course}`;
 });
