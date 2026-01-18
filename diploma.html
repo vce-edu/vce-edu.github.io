@@ -69,6 +69,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <script defer src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script defer src="diploma.js"></script>
   <script defer src="script.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
@@ -143,57 +144,59 @@
         </div>
       </div>
     </div>
-    <section class="diploma-card" aria-labelledby="diploma-heading">
-      <div class="card" role="region" aria-labelledby="diploma-heading">
-        <header class="card-head">
-          <h1 id="diploma-heading">Find Your Diploma</h1>
-          <p class="muted">Enter your roll number below to download your password-protected diploma. If your browser
-            doesn't auto-download, save the file and open it with the password format shown.</p>
-        </header>
+    <div class="fees-container">
+      <h1>Find Your Diploma</h1>
+      <p style="text-align:center; color:#555; margin-bottom:20px;">Enter your details to download your diploma</p>
+      <form id="diplomaForm">
+        <label>Branch</label>
+        <select id="branchInput" required>
+          <option value="">Select Branch</option>
+          <option value="main">Main – 9FJ9+7W, opp. RAMAYAN VATIKA</option>
+          <option value="second">Second – Greater Green Park</option>
+          <option value="third">Third – Umed Pur Puliya</option>
+        </select>
 
-        <div class="card-body" style="margin-top:6px;">
-          <label for="diploma-input" class="sr-only">Roll number</label>
-          <div class="input-row">
-            <input id="diploma-input" name="roll" inputmode="numeric" pattern="\d{3,6}"
-              placeholder="Your Roll Number (e.g. 1184)" autocomplete="off" aria-describedby="example-hint" />
-            <button id="diploma-button" class="primary" aria-live="polite">Find Diploma</button>
-          </div>
-          <div class="meta-row">
-            <small id="example-hint">Password example: <code>1184@Ashish</code></small>
-            <button id="copy-example" class="link-btn" type="button" title="Copy example password">Copy example</button>
-            <a href="mailto:support@vintecheducation.org" class="help-link" title="Contact support">Need help?</a>
-          </div>
-          <div id="message-box" class="message-box info" aria-live="polite" role="status"></div>
+        <label>Roll Number</label>
+        <input id="diploma-input" name="roll" inputmode="numeric" pattern="\d{3,6}"
+          placeholder="Enter Roll Number (e.g. 123)" autocomplete="off" required />
 
-          <div class="extra">
-            <button id="show-video" class="secondary" type="button" aria-expanded="false">How to download (Layout
-              changed, steps stay same.)</button>
-            <button id="show-tips" class="secondary" type="button" aria-expanded="false">Firefox tip</button>
-          </div>
+        <button type="submit" id="diploma-button" class="primary-btn">Find Diploma</button>
+      </form>
+
+      <div style="text-align:center; margin-top:20px;">
+        <button id="show-video" type="button" class="link-btn"
+          style="background:none; border:none; color:#6a17a5; cursor:pointer; text-decoration:underline;">How to
+          download</button>
+        <button id="show-tips" type="button" class="link-btn"
+          style="background:none; border:none; color:#6a17a5; cursor:pointer; text-decoration:underline; margin-left:10px;">Firefox
+          tip</button>
+      </div>
+
+      <div id="message-box" class="message-box" style="margin-top:15px;"></div>
+    </div>
+
+    <div id="video-container" class="video-wrap hidden"
+      style="text-align:center; margin-bottom: 30px; display:flex; justify-content:center;"></div>
+
+    <div id="tips-container" class="fees-container hidden" style="background:#f9f9f9; margin-top: 10px;">
+      <h3>Firefox download tip</h3>
+      <p>If Firefox opens the PDF in the viewer, click the download icon in the PDF toolbar or
+        right-click the viewer and choose "Save Page As". Then open with the password
+        <code>RollNumber@Firstname</code>.
+      </p>
+    </div>
+
+    <!-- Custom Confirm Box -->
+    <div id="confirm-box" class="confirm-box">
+      <div class="confirm-content">
+        <h2 id="confirm-title">Diploma Found</h2><br />
+        <p id="confirm-message"></p>
+        <div class="confirm-actions">
+          <button id="confirm-cancel">Cancel</button>
+          <button id="confirm-ok" class="primary">Download</button>
         </div>
       </div>
-      <div id="video-container" class="video-wrap hidden" aria-hidden="true"></div>
-      <div id="tips-container" class="card hidden" style="margin-top:14px; padding:14px;">
-        <h3>Firefox download tip</h3>
-        <p class="muted">If Firefox opens the PDF in the viewer, click the download icon in the PDF toolbar or
-          right-click the viewer and choose "Save Page As" to save the file. Then open with the password
-          <code>RollNumber@Firstname</code>.
-        </p>
-      </div>
-      </div>
-      <!-- Custom Confirm Box -->
-      <div id="confirm-box" class="confirm-box">
-        <div class="confirm-content">
-          <h2 id="confirm-title">Diploma Found</h2><br />
-          <p id="confirm-message"></p>
-          <div class="confirm-actions">
-            <button id="confirm-cancel">Cancel</button>
-            <button id="confirm-ok" class="primary">Download</button>
-          </div>
-        </div>
-      </div>
-
-    </section>
+    </div>
     <footer>
       <div class="footer-left">
         <p>&copy; 2025 Vintech Computer Education. All Rights Reserved.</p>

@@ -51,9 +51,10 @@ section {
   font-family: 'Times New Roman', Times, serif;
   font-size: 1.4em;
   color: rgb(120, 0, 120);
-  margin-left: 100px;
+  margin-left: 0;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 
@@ -62,7 +63,7 @@ section {
   font-size: 0.8rem;
   color: black;
   letter-spacing: 1px;
-  margin-left: -45px;
+  margin-left: 0;
 }
 
 .nav-bar {
@@ -210,7 +211,7 @@ section {
 .main-content div,
 .practice-container div {
   flex: 1 1 250px;
-  max-width: 300px;
+  max-width: 100%;
   color: black;
   background-color: #f8f5f5;
   height: 200px;
@@ -246,6 +247,10 @@ div img {
 }
 
 @media (max-width: 1024px) {
+  .logo {
+    margin-left: 15px;
+  }
+
   .home-page::before {
     content: "VINTECH";
     position: fixed;
@@ -292,7 +297,7 @@ div img {
   }
 
   .logo .name {
-    margin-left: -57px;
+    margin-left: 0;
   }
 }
 
@@ -389,7 +394,9 @@ div img {
 select {
   z-index: 1;
   height: 50px;
-  width: clamp(350px, 50vw, 600px);
+  width: 100%;
+  max-width: 600px;
+  min-width: 280px;
   padding: 10px 15px;
   border: none;
   border-radius: 8px;
@@ -672,7 +679,7 @@ button:hover {
 
 .courses {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
   padding: 20px;
 }
@@ -1378,7 +1385,7 @@ footer {
 
 .form {
   margin: 50px auto;
-  width: 70vw;
+  width: 90vw;
   max-width: 600px;
   background-color: rgb(247, 242, 242);
   padding: 20px;
