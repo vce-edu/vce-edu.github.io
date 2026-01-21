@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ELEMENTS
+  
   const btn = document.getElementById('diploma-button');
   const input = document.getElementById('diploma-input');
   const msg = document.getElementById('message-box');
@@ -32,8 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const SUPABASE_URL = "https://auygeiqcsygchfmitfxv.supabase.co";
   const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF1eWdlaXFjc3lnY2hmbWl0Znh2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjcxMDUzOTEsImV4cCI6MjA4MjY4MTM5MX0.WVpNirNUPa3v3VP5vusjAFezPvH1C8ZF16dWRPcKH-4';
 
-  // Initialize Supabase
-  // Access the global supabase object from the CDN
+  
+  
   let supabaseClient;
   try {
     if (window.supabase && window.supabase.createClient) {
@@ -45,8 +45,8 @@ document.addEventListener('DOMContentLoaded', () => {
     console.error("Supabase init error:", err);
   }
 
-  // FIND DIPLOMA FUNCTION
-  // FIND DIPLOMA FUNCTION
+  
+  
   async function finddiploma() {
     let diploma_input = document.getElementById("diploma-input").value.trim().toLowerCase().replace(/\s+/g, '_');
     const branch_input = document.getElementById("branchInput").value;
@@ -60,16 +60,16 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // Add prefix if missing and logic check
-    // If input doesn't start with a letter and underscore, prepend prefix.
+    
+    
     if (!/^[a-z]_/.test(diploma_input)) {
       const prefix = branch_input.charAt(0).toLowerCase();
-      // Check if user accidentally typed prefix without underscore e.g. m123, but we can't be sure.
-      // We assume standard roll is digits or prefix_digits.
+      
+      
       diploma_input = `${prefix}_${diploma_input}`;
     }
 
-    // 1. Try GitHub First
+    
     let githubLink = "https://raw.githubusercontent.com/vce-edu/diploma/main/" + diploma_input + ".pdf";
 
     showMessage("Checking GitHub...", "info");
@@ -82,18 +82,18 @@ document.addEventListener('DOMContentLoaded', () => {
         showConfirm("Roll number is verified. Do you want to download the diploma?", () => {
           window.open(githubLink, "_blank");
         });
-        return; // Exit if found on GitHub
+        return; 
       }
     } catch (error) {
       console.warn("GitHub fetch error:", error);
-      // Continue to Supabase fallback
+      
     }
 
-    // 2. Fallback to Supabase
+    
     showMessage("Checking Supabase...", "info");
 
     try {
-      // Append .pdf if not present
+      
       const fileName = diploma_input;
 
       const { data } = supabaseClient
@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // Verify if the file actually exists by making a HEAD request
+      
       const checkResponse = await fetch(data.publicUrl, { method: 'HEAD' });
 
       if (!checkResponse.ok) {
@@ -131,8 +131,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // BUTTON & ENTER KEY
-  // FORM SUBMIT & ENTER KEY
+  
+  
   const form = document.getElementById('diplomaForm');
   if (form) {
     form.addEventListener('submit', (e) => {
@@ -140,14 +140,14 @@ document.addEventListener('DOMContentLoaded', () => {
       finddiploma();
     });
   } else {
-    // Fallback if form not found (shouldn't happen)
+    
     if (btn) btn.addEventListener('click', finddiploma);
     if (input) input.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') finddiploma();
     });
   }
 
-  // SHOW MESSAGE FUNCTION
+  
   function showMessage(text, type = 'info') {
     if (!msg) return;
     msg.textContent = text;
@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   showMessage('Ready. Enter your roll number and click "Find Diploma".', 'info');
 
-  // COPY EXAMPLE
+  
   copyBtn?.addEventListener('click', () => {
     const example = '1184@Ashish';
     if (navigator.clipboard) {
@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // VIDEO TOGGLE
+  
   let videoLoaded = false;
   let iframe;
   showVideo?.addEventListener('click', () => {
@@ -200,14 +200,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // SHOW/HIDE TIPS
+  
   showTips?.addEventListener('click', () => {
     const isHidden = tipsContainer.classList.contains('hidden');
     tipsContainer.classList.toggle('hidden', !isHidden);
     showTips.setAttribute('aria-expanded', String(isHidden));
   });
 
-  // Accessibility
+  
   input.setAttribute('aria-label', 'Roll number');
 
 });

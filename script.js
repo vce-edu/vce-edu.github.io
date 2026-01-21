@@ -198,10 +198,10 @@ window.addEventListener("load", () => {
 
   if (!gallery) return;
 
-  // Hide loader once all images and resources are ready
+  
   loader.style.display = "none";
 
-  // Fade in effect for gallery images
+  
   gallery.querySelectorAll("img").forEach((img, i) => {
     setTimeout(() => {
       img.classList.add("fade-in");

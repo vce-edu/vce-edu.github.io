@@ -2,19 +2,19 @@
 <html lang="en">
 
 <head>
-  
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EMHX2RMVVC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-EMHX2RMVVC');
-</script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMHX2RMVVC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-EMHX2RMVVC');
+  </script>
 
 
-<script type="application/ld+json">
+  <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "EducationalOrganization",
@@ -44,17 +44,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Events at Vintech Computer Education</title>
   <script defer src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-  <meta name="description" content="Stay updated with workshops, competitions, and cultural programs at Vintech Computer Education. See upcoming and past events.">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://vintecheducation.org/events.html">
+  <meta name="description"
+    content="Stay updated with workshops, competitions, and cultural programs at Vintech Computer Education. See upcoming and past events.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://vintecheducation.org/events.html">
 
-<!-- Open Graph -->
-<meta property="og:title" content="Events at Vintech Computer Education">
-<meta property="og:description" content="Stay updated with workshops, competitions, and cultural programs at Vintech Computer Education.">
-<meta property="og:image" content="https://vintecheducation.org/images/events-hero.jpg">
-<meta property="og:url" content="https://vintecheducation.org/events.html">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Events at Vintech Computer Education">
+  <meta property="og:description"
+    content="Stay updated with workshops, competitions, and cultural programs at Vintech Computer Education.">
+  <meta property="og:image" content="https://vintecheducation.org/images/events-hero.jpg">
+  <meta property="og:url" content="https://vintecheducation.org/events.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="events.js"></script>
   <link rel="stylesheet" href="style.css" />
   <script defer src="script.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
@@ -92,7 +96,7 @@
       </div>
     </header>
     <div class="toggle-container">
-        <p class="Back"><a href="index.html">Back</a></p>
+      <p class="Back"><a href="index.html">Back</a></p>
       <div class="toggle" id="langToggle">
         <span class="notranslate">EN</span>
         <span class="notranslate">हिं</span>
@@ -100,91 +104,70 @@
       </div>
       <p class="EMI"><a href="https://shop.vintecheducation.org">Buy Laptop on EMI</a></p>
     </div>
-  <!-- Hero Section -->
-  <section class="events-hero">
-    <h1>Events At VCE</h1>
-    <p>Stay updated with Scholarship Exams, competitions, and cultural programs at VCE.</p>
-  </section>
-  <div class="events-wrapper">
+    <!-- Hero Section -->
+    <div class="events-hero">
+      <div class="hero-content">
+        <h1>Events @ <span class="highlight">VCE</span></h1>
+        <p>Stay updated with our latest workshops, competitions, and cultural celebrations.</p>
+      </div>
+    </div>
 
-  <!-- Upcoming Events -->
-  <div class="events-class">
-    <h2>Upcoming Events</h2>
-    <div class="event-card">
-      <div class="event-date">
-        <span class="day">22</span>
-        <span class="month">OCT</span>
-      </div>
-      <div class="event-info">
-        <h3>VCE Scholarship Exam</h3>
-        <p>Grab this exciting opportunity to win a Scholarship at Vintech Computer Education.</p>
-        <a href="scholarship.html" class="event-btn">Information</a>
-      </div>
-    </div>
-  </div>
-  
-  <!-- Previous Events -->
-  <div class="events-class">
-    <h2>Previous Events</h2>
-    <div class="event-card">
-      <div class="event-date past">
-        <span class="day">15</span>
-        <span class="month">SEP</span>
-      </div>
-      <div class="event-info">
-        <h3>VCE General Awareness Test (GAT)</h3>
-        <p>Over 100 of student joined us to show off their general knowledge.</p>
-        <a href="certificate.html" class="event-btn">Certificate</a>
-      </div>
-    </div>
-    <div class="event-card">
-      <div class="event-date past">
-        <span class="day">15</span>
-        <span class="month">AUG</span>
-      </div>
-      <div class="event-info">
-        <h3>Independence Day Celebration</h3>
-        <p>We celebrated Independence Day with laptop distribution and student activities.</p>
-        <a href="https://drive.google.com/drive/folders/1MKCijvwq-F-1_VNxyrQHKFurbd1O3bfG?usp=drive_link" 
-           class="event-btn" target="_blank">View Photos</a>
-      </div>
-    </div>
-  </div>
+    <div class="events-container">
 
-</div>
+      <div class="section-header">
+        <h2>Upcoming Events</h2>
+      </div>
+
+      <div class="events-grid" id="upcoming-events-grid">
+        <!-- Upcoming events will be loaded here dynamically -->
+        <p class="loading-msg">Loading upcoming events...</p>
+      </div>
+
+      <div class="section-header">
+        <h2>Previous Events</h2>
+      </div>
+
+      <div class="events-grid" id="previous-events-grid">
+        <!-- Previous events will be loaded here dynamically -->
+        <p class="loading-msg">Loading previous events...</p>
+      </div>
+
+    </div>
 
 
 
-  <!-- Footer -->
-  <footer>
-    <div class="footer-left">
-      <p>&copy; 2025 Vintech Computer Education. All Rights Reserved.</p>
-      <p>Created By <a href="https://mukundvishwa95.github.io/" target="_blank">Mukund Vishwakarma</a></p>
-    </div>
-    <div class="footer-center">
-      <h4>Classes Schedule</h4>
-      <p>Mon – Sat: 8:00 AM – 8:00 PM</p>
-      <p>Sunday: Closed</p>
-    </div>
-    <div class="footer-right">
-      <a href="privacypolicy.html">
-        <p>Privacy Policy</p>
-      </a>
-      <a href="faculty.html">
-        <p>Meet our Team</p>
-      </a>
-      <a href="t&c.html">
-        <p>Terms & Conditions</p>
-      </a>
-      <div class="footer-social">
-        <a href="https://g.page/r/CUA8zTtbBSNwEBM/review" target="_blank"><i class="fab fa-google"></i></a>
-        <a href="https://www.linkedin.com/company/vintech-computer-education" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="https://t.me/vc_edu" target="_blank"><i class="fab fa-telegram"></i></a>
-        <a href="mailto:support@vintecheducation.org" target="_blank"><i class="fa-solid fa-envelope"></i></a>
-        <a href="https://www.youtube.com/@VCE-w1e" target="_blank"><i class="fab fa-youtube"></i></a>
+    <!-- Footer -->
+    <footer>
+      <div class="footer-left">
+        <p>&copy; 2025 Vintech Computer Education. All Rights Reserved.</p>
+        <p>Created By <a href="https://mukundvishwa95.github.io/" target="_blank">Mukund Vishwakarma</a></p>
       </div>
-    </div>
-  </footer>
+      <div class="footer-center">
+        <h4>Classes Schedule</h4>
+        <p>Mon – Sat: 8:00 AM – 8:00 PM</p>
+        <p>Sunday: Closed</p>
+      </div>
+      <div class="footer-right">
+        <a href="privacypolicy.html">
+          <p>Privacy Policy</p>
+        </a>
+        <a href="faculty.html">
+          <p>Meet our Team</p>
+        </a>
+        <a href="t&c.html">
+          <p>Terms & Conditions</p>
+        </a>
+        <div class="footer-social">
+          <a href="https://g.page/r/CUA8zTtbBSNwEBM/review" target="_blank"><i class="fab fa-google"></i></a>
+          <a href="https://www.linkedin.com/company/vintech-computer-education" target="_blank"><i
+              class="fab fa-linkedin"></i></a>
+          <a href="https://t.me/vc_edu" target="_blank"><i class="fab fa-telegram"></i></a>
+          <a href="mailto:support@vintecheducation.org" target="_blank"><i class="fa-solid fa-envelope"></i></a>
+          <a href="https://www.youtube.com/@VCE-w1e" target="_blank"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </footer>
     <div id="google_translate_element" style="display:none;"></div>
 </body>
+
 </html>

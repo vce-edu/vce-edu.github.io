@@ -307,6 +307,6 @@ document.addEventListener("click", function (e) {
 
   const course = btn.dataset.course;
 
-  // redirect to registration form with course prefilled
+  
   window.location.href = `registration.html?course=${course}`;
 });
