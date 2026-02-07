@@ -96,7 +96,7 @@ const notesLinks = {
 
 };
 
-const englishOnly = ["shortcuts", "python", "c", "cpp", "java", "html", "css", "javascript", "w3css", "pl","pw"];
+const englishOnly = ["shortcuts", "python", "c", "cpp", "java", "html", "css", "javascript", "w3css", "iot","sql","pl","pw"];
 const hindiOnly = ["mangal", "krutidev"];
 
 document.querySelector(".hamburger").addEventListener("click", () => {
@@ -514,6 +514,7 @@ document.querySelectorAll('.grid-item').forEach(item => {
     window.location.href = page;
   });
 });
+
 
 
 
