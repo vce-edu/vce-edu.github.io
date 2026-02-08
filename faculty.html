@@ -21,79 +21,61 @@
       "@type": "WebPage",
       "@id": "https://vintecheducation.org/faculty.html",
       "url": "https://vintecheducation.org/faculty.html",
-      "name": "Faculty of Vintech Computer Education",
-      "description": "Meet the highly experienced faculty of Vintech Computer Education (VCE). Our instructors specialize in Computer Applications, IT, Accounting, Programming, and Digital Skills training.",
+      "name": "Expert Faculty at Vintech Computer Education, Bareilly",
+      "description": "Meet our team of experienced IT instructors at VCE Bareilly. Experts in Software Development, Accounting (Tally/GST), Graphic Design, and Digital Literacy.",
       "inLanguage": "en",
       "isPartOf": {
         "@id": "https://vintecheducation.org#website"
-      },
-      "mainEntity": {
-        "@id": "https://vintecheducation.org/faculty.html#faculty-list"
       }
     },
     {
       "@type": "ItemList",
       "@id": "https://vintecheducation.org/faculty.html#faculty-list",
-      "name": "Faculty of Vintech Computer Education",
-      "description": "List of faculty members at Vintech Computer Education.",
+      "name": "Faculty Members of VCE Bareilly",
+      "description": "Our dedicated teaching staff at Vintech Computer Education.",
       "url": "https://vintecheducation.org/faculty.html",
       "itemListOrder": "http://schema.org/ItemListOrderAscending",
       "numberOfItems": 5,
       "itemListElement": [
         {
           "@type": "Person",
-          "@id": "https://vintecheducation.org/faculty.html#manish-vishwakarma",
+          "position": 1,
           "name": "Mr. Manish Vishwakarma",
-          "image": "https://vintecheducation.org/images/center-director.jpg",
           "jobTitle": "Center Director & Senior IT Instructor",
-          "description": "Director of Vintech Computer Education with 25+ years of experience in Computer Science and IT training. Specializes in Microsoft Office, Tally, and programming with focus on practical learning.",
-          "worksFor": {
-            "@id": "https://vintecheducation.org#organization"
-          }
+          "image": "https://vintecheducation.org/images/center-director.jpg",
+          "description": "25+ years experience in CS & IT. Specialist in Microsoft Office, Tally, and Programming."
         },
         {
           "@type": "Person",
-          "@id": "https://vintecheducation.org/faculty.html#prem-pal-singh",
+          "position": 2,
           "name": "Mr. Prem Pal Singh",
-          "image": "https://vintecheducation.org/images/Prem-Pal-Singh.jpg",
           "jobTitle": "Computer Applications & Accounting Faculty",
-          "description": "Teaches Microsoft Office, Photoshop, CorelDraw, Tally, Busy, and Marg with focus on practical skills.",
-          "worksFor": {
-            "@id": "https://vintecheducation.org#organization"
-          }
+          "image": "https://vintecheducation.org/images/Prem-Pal-Singh.jpg",
+          "description": "Expert in MS Office, Tally, Busy, Marg, and Graphic Design (Photoshop/CorelDraw)."
         },
         {
           "@type": "Person",
-          "@id": "https://vintecheducation.org/faculty.html#mukund-vishwakarma",
+          "position": 3,
           "name": "Mr. Mukund Vishwakarma",
-          "image": "https://vintecheducation.org/images/Mukund-Vishwakarma.png",
           "jobTitle": "Computer Science & IT Faculty",
-          "description": "Specialist in C, C++, Java, Python, Rust, web development, NumPy, spaCy, and networking. Known for technical depth and storytelling-based teaching.",
-          "worksFor": {
-            "@id": "https://vintecheducation.org#organization"
-          }
+          "image": "https://vintecheducation.org/images/Mukund-Vishwakarma.png",
+          "description": "Full-stack Developer & Technical Specialist (Python, Java, C++, Web Technologies)."
         },
         {
           "@type": "Person",
-          "@id": "https://vintecheducation.org/faculty.html#esub",
+          "position": 4,
           "name": "Mr. Esub",
-          "image": "https://vintecheducation.org/images/Esub.jpg",
           "jobTitle": "Computer Applications Faculty",
-          "description": "Teaches MS Word, Excel, PowerPoint, Internet basics, and digital literacy skills.",
-          "worksFor": {
-            "@id": "https://vintecheducation.org#organization"
-          }
+          "image": "https://vintecheducation.org/images/Esub.jpg",
+          "description": "Focuses on Digital Literacy, MS Office, and Internet Essentials."
         },
         {
           "@type": "Person",
-          "@id": "https://vintecheducation.org/faculty.html#rahul-thakur",
+          "position": 5,
           "name": "Mr. Rahul Thakur",
-          "image": "https://vintecheducation.org/images/rahul-thakur.jpg",
           "jobTitle": "Senior Computer Applications Faculty",
-          "description": "Creates engaging classrooms with memorable lessons in computer applications. Known for lively teaching style.",
-          "worksFor": {
-            "@id": "https://vintecheducation.org#organization"
-          }
+          "image": "https://vintecheducation.org/images/rahul-thakur.jpg",
+          "description": "Engaging instructor specializing in foundational Computer Applications."
         }
       ]
     }
@@ -103,9 +85,9 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Faculty - Vintech Computer Education</title>
+  <title>Expert Faculty - Vintech Computer Education (VCE), Bareilly</title>
   <meta name="description"
-    content="Meet the official faculty of Vintech Computer Education. Experienced instructors in Computer Applications, IT, and more.">
+    content="Meet our expert faculty members at VCE Bareilly. Highly experienced instructors for Computer Applications, IT, Tally, and more. Join the best computer institute.">
   <link rel="canonical" href="https://vintecheducation.org/faculty.html">
 
   <!-- Open Graph -->
@@ -162,35 +144,80 @@
       <p class="EMI"><a href="https://shop.vintecheducation.org">Buy Laptop on EMI</a></p>
     </div>
 
-    <div class="faculty-page">
-      <div class="center-director-box">
-        <img src="images/center-director.jpg" alt="Mr. Manish Vishwakarma, Director of VCE">
-        <h2>Mr. Manish Vishwakarma</h2>
-        <p>Center Director</p>
-        <p>Masters in Computer Science | 25+ Years Experience</p>
-      </div>
+
+    <div class="faculty-container">
+      <header class="section-header">
+        <h2>Leadership</h2>
+      </header>
+
+      <article class="center-director-card" id="faculty-list">
+        <div class="card-image-wrapper">
+          <img src="images/center-director.jpg" alt="Mr. Manish Vishwakarma, Director of VCE Bareilly">
+        </div>
+        <div class="card-content">
+          <h3>Mr. Manish Vishwakarma</h3>
+          <p class="designation">Center Director</p>
+          <div class="qualifications">
+            <span><i class="fas fa-graduation-cap"></i> Masters in Computer Science</span>
+            <span><i class="fas fa-clock"></i> 25+ Years Experience</span>
+          </div>
+          <p class="description">Experienced IT professional dedicated to providing quality education in Microsoft
+            Office, Tally, and Core Programming.</p>
+        </div>
+      </article>
+
+      <header class="section-header">
+        <h2>Teaching Staff</h2>
+      </header>
 
       <div class="faculty-grid">
-        <div class="faculty-box">
-          <img src="images/prem-pal-singh.jpg" alt="Mr. Prem Pal Singh, Computer Applications & Accounting Faculty">
-          <h3>Mr. Prem Pal Singh</h3>
-          <p>Computer Applications & Accounting Faculty</p>
-        </div>
-        <div class="faculty-box">
-          <img src="images/mukund-vishwakarma.png" alt="Mr. Mukund Vishwakarma, Computer Science & IT Faculty">
-          <h3>Mr. Mukund Vishwakarma</h3>
-          <p>Computer Science & IT Faculty</p>
-        </div>
-        <div class="faculty-box">
-          <img src="images/esub.jpg" alt="Mr. Esub, Computer Applications Faculty">
-          <h3>Mr. Esub</h3>
-          <p>Computer Applications Faculty</p>
-        </div>
-        <div class="faculty-box">
-          <img src="images/rahul-thakur.jpg" alt="Mr. Rahul Thakur, Senior Computer Applications Faculty">
-          <h3>Mr. Rahul Thakur</h3>
-          <p>Senior Computer Applications Faculty</p>
-        </div>
+        <article class="faculty-card">
+          <div class="card-image-wrapper">
+            <img src="images/prem-pal-singh.jpg" alt="Mr. Prem Pal Singh, Computer Applications & Accounting Faculty">
+          </div>
+          <div class="card-content">
+            <h4>Mr. Prem Pal Singh</h4>
+            <p class="designation">Computer Applications & Accounting</p>
+            <p class="description">Expert in MS Office, Graphic Design (Photoshop, CorelDraw), and Advanced Accounting
+              (Tally, Busy, Marg).</p>
+          </div>
+        </article>
+
+        <article class="faculty-card">
+          <div class="card-image-wrapper">
+            <img src="images/mukund-vishwakarma.png" alt="Mr. Mukund Vishwakarma, Computer Science & IT Faculty">
+          </div>
+          <div class="card-content">
+            <h4>Mr. Mukund Vishwakarma</h4>
+            <p class="designation">Computer Science & IT</p>
+            <p class="description">Specialist in Full-stack Web Development, Programming Languages (C, C++, Java,
+              Python, Rust), and Networking.</p>
+          </div>
+        </article>
+
+        <article class="faculty-card">
+          <div class="card-image-wrapper">
+            <img src="images/esub.jpg" alt="Mr. Esub, Computer Applications Faculty">
+          </div>
+          <div class="card-content">
+            <h4>Mr. Esub</h4>
+            <p class="designation">Computer Applications</p>
+            <p class="description">Dedicated to teaching foundational computer skills, including MS Word, Excel,
+              PowerPoint, and Digital Literacy.</p>
+          </div>
+        </article>
+
+        <article class="faculty-card">
+          <div class="card-image-wrapper">
+            <img src="images/rahul-thakur.jpg" alt="Mr. Rahul Thakur, Senior Computer Applications Faculty">
+          </div>
+          <div class="card-content">
+            <h4>Mr. Rahul Thakur</h4>
+            <p class="designation">Senior Computer Applications</p>
+            <p class="description">Passionate instructor known for creating engaging learning environments in diverse
+              computer application domains.</p>
+          </div>
+        </article>
       </div>
     </div>
   </section>
