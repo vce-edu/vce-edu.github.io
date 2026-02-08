@@ -2,16 +2,16 @@
 <html lang="en">
 
 <head>
-  
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EMHX2RMVVC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-EMHX2RMVVC');
-</script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMHX2RMVVC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-EMHX2RMVVC');
+  </script>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,6 +26,100 @@
   <link rel="shortcut icon" href="favicon/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
   <link rel="manifest" href="favicon/site.webmanifest" />
+  <style>
+    .fee-breakdown {
+      background: #f9f4ff;
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid #eaddff;
+      margin-bottom: 20px;
+    }
+
+    .fee-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    .fee-row.total {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px dashed #d1b9f0;
+      color: #7a1cac;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .fee-row strong {
+      color: #333;
+    }
+
+    .fee-row.total strong {
+      color: #7a1cac;
+    }
+
+    .upi-btn {
+      background: #fff;
+      border: 1px solid #7a1cac;
+      color: #7a1cac;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .upi-btn:hover {
+      background: #7a1cac;
+      color: #fff;
+    }
+
+    .success-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      backdrop-filter: blur(4px);
+    }
+
+    .success-box {
+      background: #fff;
+      padding: 40px;
+      border-radius: 20px;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    }
+
+    #upiAction {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      margin: 20px auto;
+    }
+
+    .qr-wrapper {
+      background: #fff;
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      border: 1px solid #eee;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
 </head>
 
 <body>
@@ -39,9 +133,10 @@
       </a>
       <nav class="nav-bar">
         <a href="index.html">Home</a>
+        <a href="registration.html">Enroll Now</a>
         <a href="gallery.html">Gallery</a>
         <a href="events.html">Events</a>
-        <a href="scholarship.html">Scholarship Exam</a>
+        <a href="scholarship.html">Scholarship</a>
         <a href="about.html">About Us</a>
 
       </nav>
@@ -58,46 +153,133 @@
       </div>
       <p class="EMI"><a href="https://shop.vintecheducation.org">Buy Laptop on EMI</a></p>
     </div>
-    <main class="form">
-      <h2>Scholarship Exam Registration Form</h2><br />
-      <marquee>Deadline for Registration is <span class="deadline">3rd October</span></marquee>
-      <hr /><br />
+    <div class="multi-form-container">
+      <form id="multiStepForm" onsubmit="event.preventDefault(); registration();">
+        <div class="progress-bar">
+          <div class="progress"></div>
+        </div>
 
-      <form onsubmit="registration(); return false;">
-        <label for="name">Full Name</label><br />
-        <input type="text" id="name" name="name" 
-       pattern="[a-zA-Z\s]{3,}" 
-       title="Full Name must be at least 3 letters, only alphabets and spaces" 
-       required>
-<br><br>
+        <!-- Step 1: Personal Details -->
+        <div class="form-step active">
+          <h2>Personal Details</h2>
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" pattern="[a-zA-Z\s]{3,}"
+            title="Full Name must be at least 3 letters, only alphabets and spaces" required>
 
-        <label for="fathername">Father's Name</label><br />
-        <input type="text" id="fathername" name="fathername" 
-       pattern="[a-zA-Z\s]{3,}" 
-       title="Father's Name must be at least 3 letters, only alphabets and spaces" 
-       required><br><br>
+          <label for="fathername">Father's Name</label>
+          <input type="text" id="fathername" name="fathername" pattern="[a-zA-Z\s]{3,}"
+            title="Father's Name must be at least 3 letters, only alphabets and spaces" required>
 
-        <label for="phonenumber">Phone Number</label><br />
-        <input type="tel" id="phonenumber" name="phonenumber" pattern="[0-9]{10}" title="Phone number should of atleast 10 digits"  required><br><br>
-        
-        <label for="school">Shcool/College Name</label><br />
-        <input type="text" id="school" name="school" required><br><br>
+          <label for="gender">Gender</label>
+          <select id="gender" name="gender" required>
+            <option value="">--Select Gender--</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
 
+          <div class="buttons">
+            <button type="button" class="next-btn">Next</button>
+          </div>
+        </div>
 
-        <label for="gender">Gender</label><br />
-        <select id="gender" name="gender" required>
-          <option value="">--Select--</option>
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-          <option value="other">Other</option>
-        </select><br /><br />
+        <!-- Step 2: Educational Details -->
+        <div class="form-step">
+          <h2>Educational Details</h2>
+          <label for="school">School/College Name</label>
+          <input type="text" id="college" name="school" required>
 
-        <label for="address">Address</label><br />
-        <textarea id="address" name="address" rows="4" cols="50" required></textarea>
+          <label for="school">Qualification</label>
+          <input type="text" id="qualification" name="qualification" required>
 
-        <input type="submit" value="Submit">
+          <label for="school">Percentage/Grade</label>
+          <input type="text" id="percentage" name="percentage" required>
+
+          <div class="buttons">
+            <button type="button" class="prev-btn">Back</button>
+            <button type="button" class="next-btn">Next</button>
+          </div>
+        </div>
+
+        <!-- Step 3: Contact & Address -->
+        <div class="form-step">
+          <h2>Contact & Address</h2>
+          <div class="deadline-badge">
+          </div>
+
+          <label for="phonenumber">Phone Number</label>
+          <input type="tel" id="phonenumber" name="phonenumber" pattern="[0-9]{10}"
+            title="Phone number should be exactly 10 digits" required>
+
+          <label for="address">Full Address</label>
+          <textarea id="address" name="address" rows="3" required></textarea>
+
+          <div class="buttons">
+            <button type="button" class="prev-btn">Back</button>
+            <button type="button" class="next-btn">Next</button>
+          </div>
+        </div>
+
+        <!-- Step 4: Payment Summary -->
+        <div class="form-step">
+          <h2>Payment Summary</h2>
+          <div class="fee-breakdown">
+            <div class="fee-row">
+              <span>Scholarship Registration Fee</span>
+              <strong>₹50</strong>
+            </div>
+            <div class="fee-row">
+              <span>Platform Fees</span>
+              <strong>₹10</strong>
+            </div>
+            <hr />
+            <div class="fee-row total">
+              <span>Total Amount Payable</span>
+              <strong>₹60</strong>
+            </div>
+          </div>
+
+          <div class="pay-options" style="margin: 15px 0; display: flex; gap: 10px;">
+            <button type="button" class="upi-btn" data-upi="link" style="flex: 1; padding: 10px; font-size: 0.9rem;">Pay
+              via UPI Link</button>
+            <button type="button" class="upi-btn" data-upi="qr" style="flex: 1; padding: 10px; font-size: 0.9rem;">Pay
+              via QR Code</button>
+          </div>
+
+          <div id="upiAction" style="display: none; margin-top: 20px; text-align: center; width: 100%;"></div>
+
+          <p id="act-msg" style="color:red; margin-top:15px; text-align: center; font-size: 0.85rem; line-height: 1.4;">
+            ⚠️ Please take a screenshot after payment and keep it safe! Then submit the form.
+          </p>
+
+          <div class="buttons">
+            <button type="button" class="prev-btn">Back</button>
+            <input type="submit" value="Submit Registration" class="submit-btn" style="width: auto; flex: 1;">
+          </div>
+        </div>
       </form>
-    </main>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="success-overlay" style="display: none;">
+      <div class="success-box">
+        <div class="success-icon"
+          style="background: #4CAF50; color: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; margin: 0 auto 20px;">
+          ✓
+        </div>
+        <h2 style="color: #333; margin-bottom: 10px;">Registration Submitted!</h2>
+        <p style="color: #666; line-height: 1.6; margin-bottom: 20px;">
+          Your registration for the Scholarship Exam has been successfully submitted.<br />
+          Please keep your payment screenshot ready for verification at the exam center.
+        </p>
+        <button class="close-btn" onclick="location.href='index.html'"
+          style="background: #7a1cac; color: #fff; border: none; padding: 12px 30px; border-radius: 8px; cursor: pointer; font-weight: 600;">
+          Back to Home
+        </button>
+      </div>
+    </div>
+
+
   </section>
   <footer>
     <div class="footer-left">
@@ -129,7 +311,154 @@
       </div>
     </div>
   </footer>
+  <script>
+    const steps = document.querySelectorAll(".form-step");
+    const nextBtns = document.querySelectorAll(".next-btn");
+    const prevBtns = document.querySelectorAll(".prev-btn");
+    const progress = document.querySelector(".progress");
+    let currentStep = 0;
+
+    function updateStep() {
+      steps.forEach((step, i) => {
+        step.classList.toggle("active", i === currentStep);
+      });
+      progress.style.width = ((currentStep + 1) / steps.length) * 100 + "%";
+    }
+
+    nextBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const inputs = steps[currentStep].querySelectorAll("input, select, textarea");
+        let allValid = true;
+        for (let input of inputs) {
+          if (!input.checkValidity()) {
+            input.reportValidity();
+            allValid = false;
+            break;
+          }
+        }
+        if (allValid && currentStep < steps.length - 1) {
+          currentStep++;
+          updateStep();
+        }
+      });
+    });
+
+    prevBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        if (currentStep > 0) {
+          currentStep--;
+          updateStep();
+        }
+      });
+    });
+
+    updateStep();
+
+    // UPI Payment Logic
+    const upiButtons = document.querySelectorAll(".upi-btn");
+    const upiAction = document.getElementById("upiAction");
+
+    upiButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const type = btn.dataset.upi;
+        const studentName = document.getElementById("name").value;
+        const phone = document.getElementById("phonenumber").value;
+        const amount = "60";
+        const note = `Scholarship Exam: ${studentName} | Phone: ${phone}`;
+        const encodedNote = encodeURIComponent(note);
+
+        upiAction.style.display = "block";
+        if (type === "qr") {
+          const upiString = `upi://pay?pa=manishmont-1@okaxis&pn=VINTECH%20COMPUTER%20EDUCATION&am=${amount}&cu=INR&tn=${encodedNote}`;
+          const qrAPI = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(upiString)}`;
+          upiAction.innerHTML = `
+            <p style="font-weight:600; margin-bottom:12px; color:#333;">Scan to Pay ₹60</p>
+            <div class="qr-wrapper">
+              <img src="${qrAPI}" style="margin-top:0; display:block; max-width:180px; width:100%; height:auto;" />
+            </div>
+          `;
+        } else if (type === "link") {
+          const upiLink = `upi://pay?pa=manishmont-1@okaxis&pn=VINTECH%20COMPUTER%20EDUCATION&am=${amount}&cu=INR&tn=${encodedNote}`;
+          window.location.href = upiLink;
+        }
+      });
+    });
+
+    // Shadowing registration function to show modal instead of redirect
+  function registration() {
+    try {
+      const submitBtn = document.querySelector(".submit-btn");
+      submitBtn.disabled = true;
+      submitBtn.value = "Submitting...";
+
+      const data = {
+        full_name: document.getElementById("name").value.trim(),
+        father_name: document.getElementById("fathername").value.trim(),
+        phone_number: document.getElementById("phonenumber").value.trim(),
+        college_name: document.getElementById("college")?.value.trim() || "",
+        qualification: document.getElementById("qualification")?.value.trim() || "",
+        percentage: parseFloat(document.getElementById("percentage")?.value) || null,
+        gender: document.getElementById("gender").value,
+        address: document.getElementById("address").value.trim(),
+      };
+      console.log(data);
+
+      const popup = document.createElement("div");
+      popup.innerText = "📤 Sending data...";
+      Object.assign(popup.style, {
+        position: "fixed",
+        top: "20px",
+        right: "20px",
+        background: "#333",
+        color: "#fff",
+        padding: "15px 20px",
+        borderRadius: "10px",
+        zIndex: 9999,
+      });
+      document.body.appendChild(popup);
+
+      supaBase
+        .from("scholarship_application")
+        .insert([data])
+        .then(({ error }) => {
+          if (!error) {
+            popup.innerText = "☑️ Registered successfully!";
+            document.getElementById("successModal").style.display = "flex";
+            setTimeout(() => popup.remove(), 2000);
+          } else {
+            popup.innerText = "⚠️ " + error.message;
+            submitBtn.disabled = false;
+            submitBtn.value = "Submit Registration";
+          }
+        })
+        .catch(err => {
+          console.error(err);
+          popup.innerText = "⚠️ Network error!";
+          submitBtn.disabled = false;
+          submitBtn.value = "Submit Registration";
+        });
+    } catch (err) {
+      console.error("Registration crash:", err);
+      alert("Form error. Check console.");
+    }
+  }
+
+    document.querySelectorAll("input[type='text'], textarea").forEach(inp => {
+      inp.style.textTransform = "uppercase";
+      inp.addEventListener("input", () => {
+        inp.value = inp.value.toUpperCase();
+      });
+    });
+  </script>
+  <script src="https://unpkg.com/@supabase/supabase-js"></script>
+  <script>
+    const supaBase = supabase.createClient(
+      "https://auygeiqcsygchfmitfxv.supabase.co",
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF1eWdlaXFjc3lnY2hmbWl0Znh2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjcxMDUzOTEsImV4cCI6MjA4MjY4MTM5MX0.WVpNirNUPa3v3VP5vusjAFezPvH1C8ZF16dWRPcKH-4"
+    );
+  </script>
   <div id="google_translate_element" style="display:none;"></div>
 </body>
+
 
 </html>

@@ -3937,6 +3937,11 @@ textarea {
   color: #333;
 }
 
+.scholarship-container section {
+  min-height: auto;
+}
+
+
 .scholarship-hero {
   position: relative;
   min-height: 450px;
@@ -3949,11 +3954,12 @@ textarea {
   justify-content: center;
   text-align: center;
   color: white;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
   overflow: hidden;
   box-shadow: 0 25px 50px -12px rgba(122, 28, 172, 0.4);
   padding: 40px;
 }
+
 
 .hero-content {
   max-width: 800px;
@@ -4018,16 +4024,18 @@ textarea {
 
 /* Section Styling */
 .scholarship-section {
-  margin-bottom: 80px;
+  margin-bottom: 50px;
 }
+
 
 .section-title {
   text-align: center;
   font-size: 2.5rem;
   color: #410341;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   font-weight: 700;
 }
+
 
 .section-title::after {
   content: '';
@@ -4048,13 +4056,14 @@ textarea {
 
 .benefit-card {
   background: white;
-  padding: 40px 30px;
+  padding: 30px 20px;
   border-radius: 20px;
   text-align: center;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
   transition: all 0.3s ease;
   border: 1px solid rgba(0, 0, 0, 0.05);
 }
+
 
 .benefit-card:hover {
   transform: translateY(-8px);
@@ -4088,10 +4097,11 @@ textarea {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(122, 28, 172, 0.1);
-  padding: 50px;
+  padding: 40px;
   border-radius: 24px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
 }
+
 
 .info-card h2 {
   margin-bottom: 20px;
@@ -4184,11 +4194,12 @@ textarea {
 
 .detail-box {
   background: #fff;
-  padding: 40px;
+  padding: 30px;
   border-radius: 24px;
   border: 1px solid rgba(0, 0, 0, 0.04);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
 }
+
 
 .detail-box h3 {
   color: #7a1cac;
