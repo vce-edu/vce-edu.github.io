@@ -178,6 +178,18 @@
             <option value="Other">Other</option>
           </select>
 
+          <label for="regType">Registration Type</label>
+          <select id="regType" name="regType" onchange="toggleStaffId()" required>
+            <option value="Direct">Direct</option>
+            <option value="Team Member">By Team Member</option>
+          </select>
+
+          <div id="staffIdSection"
+            style="display: none; margin-top: 15px; border-left: 3px solid #7a1cac; padding-left: 15px;">
+            <label for="staffId">Staff ID of Team Member</label>
+            <input type="text" id="staffId" name="staffId" placeholder="Enter Staff ID">
+          </div>
+
           <div class="buttons">
             <button type="button" class="next-btn">Next</button>
           </div>
@@ -352,6 +364,21 @@
       });
     });
 
+    function toggleStaffId() {
+      const regType = document.getElementById("regType").value;
+      const staffIdSection = document.getElementById("staffIdSection");
+      const staffIdInput = document.getElementById("staffId");
+
+      if (regType === "Team Member") {
+        staffIdSection.style.display = "block";
+        staffIdInput.required = true;
+      } else {
+        staffIdSection.style.display = "none";
+        staffIdInput.required = false;
+        staffIdInput.value = "";
+      }
+    }
+
     updateStep();
 
     // UPI Payment Logic
@@ -385,63 +412,64 @@
     });
 
     // Shadowing registration function to show modal instead of redirect
-  function registration() {
-    try {
-      const submitBtn = document.querySelector(".submit-btn");
-      submitBtn.disabled = true;
-      submitBtn.value = "Submitting...";
+    function registration() {
+      try {
+        const submitBtn = document.querySelector(".submit-btn");
+        submitBtn.disabled = true;
+        submitBtn.value = "Submitting...";
 
-      const data = {
-        full_name: document.getElementById("name").value.trim(),
-        father_name: document.getElementById("fathername").value.trim(),
-        phone_number: document.getElementById("phonenumber").value.trim(),
-        college_name: document.getElementById("college")?.value.trim() || "",
-        qualification: document.getElementById("qualification")?.value.trim() || "",
-        percentage: parseFloat(document.getElementById("percentage")?.value) || null,
-        gender: document.getElementById("gender").value,
-        address: document.getElementById("address").value.trim(),
-      };
-      console.log(data);
+        const data = {
+          full_name: document.getElementById("name").value.trim(),
+          father_name: document.getElementById("fathername").value.trim(),
+          phone_number: document.getElementById("phonenumber").value.trim(),
+          college_name: document.getElementById("college")?.value.trim() || "",
+          qualification: document.getElementById("qualification")?.value.trim() || "",
+          percentage: parseFloat(document.getElementById("percentage")?.value) || null,
+          gender: document.getElementById("gender").value,
+          staff_id: document.getElementById("staffId").value.trim() || null,
+          address: document.getElementById("address").value.trim(),
+        };
+        console.log(data);
 
-      const popup = document.createElement("div");
-      popup.innerText = "📤 Sending data...";
-      Object.assign(popup.style, {
-        position: "fixed",
-        top: "20px",
-        right: "20px",
-        background: "#333",
-        color: "#fff",
-        padding: "15px 20px",
-        borderRadius: "10px",
-        zIndex: 9999,
-      });
-      document.body.appendChild(popup);
+        const popup = document.createElement("div");
+        popup.innerText = "📤 Sending data...";
+        Object.assign(popup.style, {
+          position: "fixed",
+          top: "20px",
+          right: "20px",
+          background: "#333",
+          color: "#fff",
+          padding: "15px 20px",
+          borderRadius: "10px",
+          zIndex: 9999,
+        });
+        document.body.appendChild(popup);
 
-      supaBase
-        .from("scholarship_application")
-        .insert([data])
-        .then(({ error }) => {
-          if (!error) {
-            popup.innerText = "☑️ Registered successfully!";
-            document.getElementById("successModal").style.display = "flex";
-            setTimeout(() => popup.remove(), 2000);
-          } else {
-            popup.innerText = "⚠️ " + error.message;
+        supaBase
+          .from("scholarship_application")
+          .insert([data])
+          .then(({ error }) => {
+            if (!error) {
+              popup.innerText = "☑️ Registered successfully!";
+              document.getElementById("successModal").style.display = "flex";
+              setTimeout(() => popup.remove(), 2000);
+            } else {
+              popup.innerText = "⚠️ " + error.message;
+              submitBtn.disabled = false;
+              submitBtn.value = "Submit Registration";
+            }
+          })
+          .catch(err => {
+            console.error(err);
+            popup.innerText = "⚠️ Network error!";
             submitBtn.disabled = false;
             submitBtn.value = "Submit Registration";
-          }
-        })
-        .catch(err => {
-          console.error(err);
-          popup.innerText = "⚠️ Network error!";
-          submitBtn.disabled = false;
-          submitBtn.value = "Submit Registration";
-        });
-    } catch (err) {
-      console.error("Registration crash:", err);
-      alert("Form error. Check console.");
+          });
+      } catch (err) {
+        console.error("Registration crash:", err);
+        alert("Form error. Check console.");
+      }
     }
-  }
 
     document.querySelectorAll("input[type='text'], textarea").forEach(inp => {
       inp.style.textTransform = "uppercase";
