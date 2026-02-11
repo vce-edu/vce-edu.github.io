@@ -225,6 +225,14 @@
 
           <label for="address">Full Address</label>
           <textarea id="address" name="address" rows="3" required></textarea>
+          
+          <label for="branch">Applying for </label>
+          <select id="branch" name="branch">
+            <option value="">Select Branch</option>
+                    <option value="main">Main : 9FJ9+7W, opp. RAMAYAN VATIKA</option>
+                    <option value="second">Second : Greater Green Park Colony</option>
+                    <option value="third">Third : Umed Pur Puliya, Bhuta</option>
+          </select>
 
           <div class="buttons">
             <button type="button" class="prev-btn">Back</button>
@@ -428,6 +436,7 @@
           gender: document.getElementById("gender").value,
           staff_id: document.getElementById("staffId").value.trim() || null,
           address: document.getElementById("address").value.trim(),
+          branch: document.getElementById("branch").value.trim(),
         };
         console.log(data);
 
