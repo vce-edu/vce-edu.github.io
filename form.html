@@ -195,24 +195,6 @@
           </div>
         </div>
 
-        <!-- Step 2: Educational Details -->
-        <div class="form-step">
-          <h2>Educational Details</h2>
-          <label for="school">School/College Name</label>
-          <input type="text" id="college" name="school" required>
-
-          <label for="school">Qualification</label>
-          <input type="text" id="qualification" name="qualification" required>
-
-          <label for="school">Percentage/Grade</label>
-          <input type="text" id="percentage" name="percentage" required>
-
-          <div class="buttons">
-            <button type="button" class="prev-btn">Back</button>
-            <button type="button" class="next-btn">Next</button>
-          </div>
-        </div>
-
         <!-- Step 3: Contact & Address -->
         <div class="form-step">
           <h2>Contact & Address</h2>
@@ -430,9 +412,6 @@
           full_name: document.getElementById("name").value.trim(),
           father_name: document.getElementById("fathername").value.trim(),
           phone_number: document.getElementById("phonenumber").value.trim(),
-          college_name: document.getElementById("college")?.value.trim() || "",
-          qualification: document.getElementById("qualification")?.value.trim() || "",
-          percentage: parseFloat(document.getElementById("percentage")?.value) || null,
           gender: document.getElementById("gender").value,
           staff_id: document.getElementById("staffId").value.trim() || null,
           address: document.getElementById("address").value.trim(),
