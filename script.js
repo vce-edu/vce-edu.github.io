@@ -40,7 +40,7 @@ const notesLinks = {
     hi: "https://drive.google.com/uc?export=download&id=18DOsEqzfjVe5973uzqGTw67G5KPEbXtu"
   },
   marg: {
-    hi: "https://drive.google.com/uc?export=download&id=1pyHiXCMlrmgCDXMCoM5Poit5rPY76618"
+    hi: "https://drive.google.com/uc?export=download&id=1forvAddyXfUMo6mrVHvdZhOZi2LFZ1m2"
   },
   krutidev: {
     hi: "https://drive.google.com/uc?export=download&id=1VpPOk_j0Cl3YFUPXx0ApQ75ayDj6240A"
@@ -81,23 +81,23 @@ const notesLinks = {
   w3css: {
     en: "https://drive.google.com/uc?export=download&id=1pn3LBkia0H5Z5fX-hTVYRCsJqnZF5lXP"
   },
-  pl:{
+  pl: {
     en: "https://drive.google.com/uc?export=download&id=1GmYmZVW5QEpMviBtcrLXHFGvM4I1uKgG"
   },
   pw: {
     en: "https://drive.google.com/uc?export=download&id=15WQk6twR9U_qrY7cFTJ5xpOD3s5LMbao"
   },
-  iot:{
+  iot: {
     en: "https://drive.google.com/uc?export=download&id=1VyfIwGg16u1va7cnFOJPO4Vw1rsMtEEG"
   },
-  sql:{
+  sql: {
     en: "https://drive.google.com/uc?export=download&id=1krseMS__nur48ijiez6QqgmUyfVsEZs9"
   }
 
 };
 
-const englishOnly = ["shortcuts", "python", "c", "cpp", "java", "html", "css", "javascript", "w3css", "iot","sql","pl","pw"];
-const hindiOnly = ["mangal", "krutidev","marg"];
+const englishOnly = ["shortcuts", "python", "c", "cpp", "java", "html", "css", "javascript", "w3css", "iot", "sql", "pl", "pw"];
+const hindiOnly = ["mangal", "krutidev"];
 
 document.querySelector(".hamburger").addEventListener("click", () => {
   document.querySelector(".nav-bar").classList.toggle("active");
@@ -115,7 +115,7 @@ if (courseInput) {
 
 function updateLanguage() {
   const button = document.getElementById("download");
-  button.disabled= false;
+  button.disabled = false;
   button.classList.remove("disabled")
   const course = document.getElementById("course").value.toLowerCase();
   const langSelect = document.getElementById("language");
@@ -142,12 +142,12 @@ function downloadNotes() {
   const button = document.getElementById("download");
 
   if (notesLinks[course] && notesLinks[course][lang]) {
-    
+
     button.disabled = true;
     button.classList.add("disabled");
     button.textContent = "Downloading...";
 
-    
+
     const a = document.createElement("a");
     a.href = notesLinks[course][lang];
     a.download = "";
@@ -155,7 +155,7 @@ function downloadNotes() {
     a.click();
     document.body.removeChild(a);
 
-    
+
     setTimeout(() => {
       button.disabled = false;
       button.classList.remove("disabled");
@@ -201,10 +201,10 @@ window.addEventListener("load", () => {
 
   if (!gallery) return;
 
-  
+
   loader.style.display = "none";
 
-  
+
   gallery.querySelectorAll("img").forEach((img, i) => {
     setTimeout(() => {
       img.classList.add("fade-in");
@@ -415,6 +415,8 @@ const header = document.querySelector("header");
 
 const toggleOffsetTop = toggleContainer.offsetTop;
 
+// Toggle docking disabled per user request
+/*
 window.addEventListener("scroll", () => {
   if (window.scrollY > toggleOffsetTop + header.offsetHeight) {
 
@@ -424,6 +426,7 @@ window.addEventListener("scroll", () => {
     toggleContainer.classList.remove("toggle-docked");
   }
 });
+*/
 
 const icon = document.querySelector(".icon");
 const menu = document.querySelector(".grid-menu-hide");
@@ -433,10 +436,10 @@ icon.addEventListener("click", () => {
 
   if (isVisible) {
     menu.classList.remove("grid-menu");
-    document.body.style.overflow = "auto"; 
+    document.body.style.overflow = "auto";
   } else {
     menu.classList.add("grid-menu");
-    document.body.style.overflow = "hidden"; 
+    document.body.style.overflow = "hidden";
   }
 });
 
@@ -448,9 +451,46 @@ document.querySelectorAll('.grid-item').forEach(item => {
 });
 
 
+// Premium Scroll Effects
+window.addEventListener("scroll", () => {
+  const header = document.querySelector(".header");
+  if (window.scrollY > 50) {
+    header.classList.add("scrolled");
+  } else {
+    header.classList.remove("scrolled");
+  }
+});
 
+// Hamburger Menu Toggle
+document.addEventListener("DOMContentLoaded", () => {
+  const hamburger = document.querySelector(".hamburger");
+  const navBar = document.querySelector(".nav-bar");
 
+  if (hamburger && navBar) {
+    hamburger.addEventListener("click", () => {
+      navBar.classList.toggle("active");
+    });
+  }
+});
 
+// Reveal Animation Observer
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("active");
+    }
+  });
+}, { threshold: 0.1 });
 
+document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
 
+// Language Toggle Sync Fixes
+document.addEventListener("DOMContentLoaded", () => {
+  syncToggle();
 
+  // Ensure glass effects are applied
+  const toggleContainer = document.querySelector(".toggle-container");
+  if (toggleContainer) toggleContainer.classList.add("glass");
+});
+
+// Original toggle logic remains compatible
