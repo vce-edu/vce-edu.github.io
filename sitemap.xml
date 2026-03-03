@@ -1,100 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
   <url>
-    <loc>https://vintecheducation.org/</loc>
-    <lastmod>2026-02-08</lastmod>
-    <priority>1.0</priority>
+    <loc>https://vintecheducation.org/index.html</loc>
+    <lastmod>2026-03-02</lastmod>
+    <priority>1.00</priority>
   </url>
-
-  <url>
-    <loc>https://vintecheducation.org/gallery.html</loc>
-    <lastmod>2026-02-08</lastmod>
-    <priority>1.0</priority>
-  </url>
-
   <url>
     <loc>https://vintecheducation.org/about.html</loc>
-    <lastmod>2026-02-08</lastmod>
-    <priority>0.9</priority>
+    <lastmod>2026-03-02</lastmod>
+    <priority>0.80</priority>
   </url>
-
-  <url>
-    <loc>https://vintecheducation.org/contact.html</loc>
-    <lastmod>2026-02-08</lastmod>
-    <priority>0.9</priority>
-  </url>
-
   <url>
     <loc>https://vintecheducation.org/courses.html</loc>
-    <lastmod>2026-02-08</lastmod>
-    <priority>0.9</priority>
+    <lastmod>2026-03-02</lastmod>
+    <priority>0.90</priority>
   </url>
-
   <url>
-    <loc>https://vintecheducation.org/faculty.html</loc>
-    <lastmod>2026-02-08</lastmod>
-    <priority>0.9</priority>
+    <loc>https://vintecheducation.org/contact.html</loc>
+    <lastmod>2026-03-02</lastmod>
+    <priority>0.80</priority>
   </url>
-
-  <url>
-    <loc>https://vintecheducation.org/diploma.html</loc>
-    <lastmod>2026-02-08</lastmod>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://vintecheducation.org/notes.html</loc>
-    <lastmod>2026-02-08</lastmod>
-    <priority>0.8</priority>
-  </url>
-
   <url>
     <loc>https://vintecheducation.org/events.html</loc>
-    <lastmod>2026-02-08</lastmod>
-    <priority>0.7</priority>
+    <lastmod>2026-03-02</lastmod>
+    <priority>0.70</priority>
   </url>
-
   <url>
-    <loc>https://vintecheducation.org/scholarship.html</loc>
-    <lastmod>2026-02-08</lastmod>
-    <priority>0.7</priority>
+    <loc>https://vintecheducation.org/notes.html</loc>
+    <lastmod>2026-03-02</lastmod>
+    <priority>0.70</priority>
   </url>
-
+  <url>
+    <loc>https://vintecheducation.org/diploma.html</loc>
+    <lastmod>2026-03-02</lastmod>
+    <priority>0.70</priority>
+  </url>
   <url>
     <loc>https://vintecheducation.org/registration.html</loc>
-    <lastmod>2026-02-08</lastmod>
-    <priority>0.7</priority>
+    <lastmod>2026-03-02</lastmod>
+    <priority>0.80</priority>
   </url>
-
   <url>
-    <loc>https://vintecheducation.org/t&amp;c.html</loc>
-    <lastmod>2026-02-08</lastmod>
-    <priority>0.6</priority>
+    <loc>https://vintecheducation.org/scholarship-registration.html</loc>
+    <lastmod>2026-03-02</lastmod>
+    <priority>0.80</priority>
   </url>
-
+  <url>
+    <loc>https://vintecheducation.org/pay-fees.html</loc>
+    <lastmod>2026-03-02</lastmod>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://vintecheducation.org/faculty.html</loc>
+    <lastmod>2026-03-02</lastmod>
+    <priority>0.60</priority>
+  </url>
   <url>
     <loc>https://vintecheducation.org/privacypolicy.html</loc>
-    <lastmod>2026-02-08</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-03-02</lastmod>
+    <priority>0.30</priority>
   </url>
-
   <url>
-    <loc>https://vintecheducation.org/fees.html</loc>
-    <lastmod>2026-02-08</lastmod>
-    <priority>0.6</priority>
+    <loc>https://vintecheducation.org/tour.html</loc>
+    <lastmod>2026-03-02</lastmod>
+    <priority>0.60</priority>
   </url>
-
-  <url>
-    <loc>https://vintecheducation.org/freelaptop.html</loc>
-    <lastmod>2026-02-08</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://vintecheducation.org/pratice.html</loc>
-    <lastmod>2026-02-08</lastmod>
-    <priority>0.6</priority>
-  </url>
-
 </urlset>

@@ -2,110 +2,149 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Page Not Found | VCE</title>
-  <meta name="robots" content="noindex, follow">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f5f3f3;
-      color: #333;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      text-align: center;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | Vintech Computer Education</title>
+    <meta name="description"
+        content="The page you are looking for doesn't exist. Return to Vintech Computer Education home.">
 
-    .error-container {
-      background: #fff;
-      padding: 40px;
-      border-radius: 15px;
-      border: 3px solid purple;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      max-width: 500px;
-    }
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assest/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="96x96" href="assest/favicon/favicon-96x96.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assest/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="assest/favicon/site.webmanifest">
 
-    .error-code {
-      font-size: 80px;
-      font-weight: bold;
-      color: purple;
-      margin: 0;
-    }
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-    .error-message {
-      font-size: 20px;
-      margin: 10px 0;
-      color: #555;
-    }
+    <style>
+        .error-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
 
-    .error-description {
-      font-size: 15px;
-      margin-bottom: 25px;
-      color: #777;
-    }
+        .error-content {
+            max-width: 800px;
+            z-index: 2;
+        }
 
-    .btn-home {
-      display: inline-block;
-      background-color: purple;
-      color: #fff;
-      text-decoration: none;
-      padding: 12px 25px;
-      border-radius: 8px;
-      transition: 0.3s;
-      font-weight: bold;
-    }
+        .error-code {
+            font-size: clamp(8rem, 20vw, 15rem);
+            font-weight: 900;
+            line-height: 0.8;
+            margin-bottom: 2rem;
+            opacity: 0.1;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            pointer-events: none;
+            color: var(--brand-primary);
+        }
 
-    .btn-home:hover {
-      background-color: #5a005a;
-    }
+        .error-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-    .icon {
-      font-size: 50px;
-      color: purple;
-      margin-bottom: 10px;
-    }
-  </style>
+        .error-text {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .error-btns {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .floating-objects {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .object {
+            position: absolute;
+            background: radial-gradient(circle, rgba(106, 0, 122, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            33% {
+                transform: translate(100px, 50px) rotate(120deg);
+            }
+
+            66% {
+                transform: translate(-50px, 100px) rotate(240deg);
+            }
+
+            100% {
+                transform: translate(0, 0) rotate(360deg);
+            }
+        }
+    </style>
 </head>
 
 <body>
-  <header class="header">
-    <a href="index.html" class="logo">
-      <h1 class="visually-hidden">Vintech Computer Education</h1>
-      <span class="short" translate="no">VCE</span>
-      <span class="name" translate="no">VINTECH COMPUTER EDUCATION</span>
-    </a>
-    <nav class="nav-bar">
-      <a href="index.html">Home</a>
-      <a href="registration.html">Enroll Now</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="events.html">Events</a>
-      <a href="scholarship.html">Scholarship</a>
-      <a href="about.html">About Us</a>
-    </nav>
-    <div class="header-right">
-      <div class="toggle-container glass">
-        <div class="toggle" id="langToggle">
-          <span class="notranslate">EN</span>
-          <span class="notranslate">हिं</span>
-          <div class="circle"></div>
-        </div>
-      </div>
-      <p class="EMI"><a href="https://shop.vintecheducation.org">Buy Laptop</a></p>
-    </div>
-    <div class="hamburger">☰</div>
-  </header>
+    <div class="cursor-glow"></div>
+    <div class="mesh-gradient"></div>
 
-  <div class="error-container" style="margin-top: 80px;">
-    <div class="icon">⚠️</div>
-    <h1 class="error-code">404</h1>
-    <p class="error-message">Oops! Page Not Found</p>
-    <p class="error-description">The page or content you are looking for might have been removed, had its name changed,
-      or is temporarily unavailable.</p>
-    <a href="/" class="btn-home">Go Back Home</a>
-  </div>
+    <main>
+        <section class="error-section">
+            <div class="floating-objects">
+                <div class="object" style="width: 300px; height: 300px; top: 10%; left: 5%;"></div>
+                <div class="object" style="width: 200px; height: 200px; bottom: 15%; right: 10%;"></div>
+                <div class="object" style="width: 150px; height: 150px; top: 40%; right: 5%;"></div>
+            </div>
+
+            <div class="container error-content">
+                <div class="error-code brand-shimmer">404</div>
+                <div class="reveal">
+                    <span class="badge">Error Page</span>
+                    <h1 class="error-title">Oops! You've drifted away.</h1>
+                    <p class="error-text">The page you're looking for was either moved, deleted, or never existed in the
+                        first place.</p>
+                    <div class="error-btns">
+                        <a href="index.html" class="btn-ripple">Return Home</a>
+                        <a href="courses.html" class="btn-outline">Explore Courses</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="animations.js"></script>
 </body>
 
 </html>

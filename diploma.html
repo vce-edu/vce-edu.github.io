@@ -2,18 +2,16 @@
 <html lang="en">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMHX2RMVVC"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-EMHX2RMVVC');
+    </script>
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMHX2RMVVC"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'G-EMHX2RMVVC');
-  </script>
-
-  <script type="application/ld+json">
+    <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
@@ -46,190 +44,457 @@
         "@id": "https://vintecheducation.org#organization"
       }
     }
+    {
+      "@type": "WebPage",
+      "@id": "https://vintecheducation.org/diploma.html#webpage",
+      "url": "https://vintecheducation.org/diploma.html",
+      "name": "Find Your Diploma | VCE Bareilly",
+      "description": "Online tool for students to verify and download their computer course diplomas.",
+      "isPartOf": { "@id": "https://vintecheducation.org/#website" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://vintecheducation.org/diploma.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@id": "https://vintecheducation.org/",
+            "name": "Home"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@id": "https://vintecheducation.org/diploma.html",
+            "name": "Find Diploma"
+          }
+        }
+      ]
+    }
   ]
 }
-</script>
+    </script>
 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Your Diploma | VCE Bareilly Online Certification</title>
+    <meta name="description"
+        content="Verify and download your Vintech Computer Education diploma online. Secure certificate access for students in Bareilly near Ramayan Vatika.">
+    <meta name="keywords"
+        content="VCE diploma download, verify computer certificate Bareilly, Vintech diploma finder, online computer certification Bareilly">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://vintecheducation.org/diploma.html">
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Find Your Diploma | Vintech Computer Education</title>
-  <meta name="description"
-    content="Students can find and download their diplomas issued by Vintech Computer Education. Enter your roll number to securely access your diploma.">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://vintecheducation.org/diploma.html">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Find Your Diploma | Vintech Computer Education">
+    <meta property="og:description"
+        content="Students can find and download their diplomas issued by Vintech Computer Education. Enter your roll number to securely access your diploma.">
+    <meta property="og:image" content="https://vintecheducation.org/images/diploma-overview.jpg">
+    <meta property="og:url" content="https://vintecheducation.org/diploma.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Find Your Diploma | Vintech Computer Education">
-  <meta property="og:description"
-    content="Students can find and download their diplomas issued by Vintech Computer Education. Enter your roll number to securely access your diploma.">
-  <meta property="og:image" content="https://vintecheducation.org/images/diploma-overview.jpg">
-  <meta property="og:url" content="https://vintecheducation.org/diploma.html">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">
-  <script defer src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script defer src="diploma.js"></script>
-  <script defer src="script.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@300;400;700&family=Martel:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-  <link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
-  <link rel="shortcut icon" href="favicon/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
-  <link rel="manifest" href="favicon/site.webmanifest" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script defer src="diploma.js"></script>
+    <script defer src="animations.js"></script>
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assest/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="96x96" href="assest/favicon/favicon-96x96.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assest/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="assest/favicon/site.webmanifest">
+
+    <style>
+        .hero .container {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero .reveal {
+            max-width: 800px;
+        }
+
+        .hero .badge {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .diploma-form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            padding: 3rem;
+            border-radius: 32px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 40px 80px rgba(106, 0, 122, 0.1);
+        }
+
+        .diploma-form-container h1 {
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .diploma-form-container p.subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+            color: var(--brand-primary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            height: 60px;
+            padding: 0 1.5rem;
+            border-radius: 16px;
+            border: 1px solid var(--glass-border);
+            background: rgba(255, 255, 255, 0.5);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: var(--transition-smooth);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--brand-primary);
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(106, 0, 122, 0.1);
+        }
+
+        .primary-btn {
+            width: 100%;
+            height: 64px;
+            background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+            color: white;
+            border: none;
+            border-radius: 16px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            box-shadow: 0 15px 35px rgba(106, 0, 122, 0.25);
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 45px rgba(106, 0, 122, 0.35);
+        }
+
+        .link-btn {
+            background: none;
+            border: none;
+            color: var(--brand-primary);
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: var(--transition-magnetic);
+            padding: 0.5rem 1rem;
+        }
+
+        .link-btn:hover {
+            text-decoration: underline;
+            opacity: 0.8;
+        }
+
+        .message-box {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-align: center;
+            display: none;
+        }
+
+        .message-box.info {
+            background: rgba(106, 0, 122, 0.05);
+            color: var(--brand-primary);
+        }
+
+        .message-box.success {
+            background: rgba(46, 204, 113, 0.1);
+            color: #27ae60;
+        }
+
+        .message-box.error {
+            background: rgba(231, 76, 60, 0.1);
+            color: #e74c3c;
+        }
+
+        #video-container iframe {
+            width: 100%;
+            max-width: 560px;
+            height: 315px;
+            border-radius: 20px;
+            border: none;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Confirm Box */
+        .confirm-box {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .confirm-content {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 24px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .confirm-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .confirm-actions button {
+            flex: 1;
+            height: 50px;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        #confirm-cancel {
+            background: var(--bg-accent);
+            border: 1px solid var(--glass-border);
+            color: var(--text-muted);
+        }
+
+        #confirm-ok {
+            background: var(--brand-primary);
+            border: none;
+            color: white;
+        }
+
+        /* Responsiveness Refinements */
+        @media (max-width: 768px) {
+            .hero {
+                padding-top: 120px !important;
+                padding-bottom: 40px !important;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem !important;
+            }
+
+            .diploma-form-container {
+                padding: 2rem;
+                border-radius: 24px;
+            }
+
+            .form-group input,
+            .form-group select {
+                height: 55px;
+                font-size: 0.95rem;
+            }
+
+            .primary-btn {
+                height: 58px;
+                font-size: 1rem;
+            }
+
+            .confirm-content {
+                padding: 1.5rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
-  <section class="other-page">
-    <header class="header">
-      <a href="index.html" class="logo">
-        <h1 class="visually-hidden">Vintech Computer Education</h1>
-        <span class="short" translate="no">VCE</span>
-        <span class="name" translate="no">VINTECH COMPUTER EDUCATION</span>
-      </a>
-      <nav class="nav-bar">
-        <a href="index.html">Home</a>
-        <a href="registration.html">Enroll Now</a>
-        <a href="gallery.html">Gallery</a>
-        <a href="events.html">Events</a>
-        <a href="scholarship.html">Scholarship</a>
-        <a href="about.html">About Us</a>
-      </nav>
-      <div class="header-right">
-        <div class="toggle-container glass">
-          <div class="toggle" id="langToggle">
-            <span class="notranslate">EN</span>
-            <span class="notranslate">हिं</span>
-            <div class="circle"></div>
-          </div>
+    <div class="cursor-glow"></div>
+    <div class="mesh-gradient"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-main">VCE</span>
+                <span class="logo-subtext">VINTECH COMPUTER EDUCATION</span>
+            </a>
+            <div class="nav-links">
+                <a href="courses.html">Courses</a>
+                <a href="events.html">Events</a>
+                <a href="contact.html">Contact Us</a>
+                <a href="about.html">About Us</a>
+                <a href="registration.html" class="btn-primary">Enroll Now</a>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
-        <p class="EMI"><a href="https://shop.vintecheducation.org">Buy Laptop</a></p>
-      </div>
-      <div class="hamburger">☰</div>
-    </header>
+    </nav>
 
-    <div class="explore-more">
-      <div class="icon">
-        <img src="images/grid.png" alt="Menu Grid Icon" />
-      </div>
-      <div class="grid-menu-hide">
-        <h2>Our Services</h2>
-        <div class="grid-item blog" data-page="https://blog.vintecheducation.org">
-          <img src="images/vintech-computer-education-blog.png" alt="Vintech Computer Education (VCE)'s official Blog"
-            loading="lazy" />
-          <p>Blog</p>
-        </div>
-        <div class="grid-item fees-submission" data-page="/fees.html">
-          <img src="images/vintech-computer-education-fees.png"
-            alt="Vintech Computer Education (VCE)'s fees submission portal" loading="lazy" />
-          <p>Pay Due Fees</p>
-        </div>
-        <div class="grid-item laptop-shop" data-page="https://shop.vintecheducation.org">
-          <img src="images/vintech-computer-education-shop.png"
-            alt="Vintech Computer Education (VCE)'s official shop for second hand laptops , easy emi available"
-            loading="lazy" />
-          <p>Laptop Shop</p>
-        </div>
-        <div class="grid-item pratice-zone" data-page="/pratice.html">
-          <img src="images/vintech-computer-education-practice.png"
-            alt="Vintech Computer Education (VCE)'s pratice zone" loading="lazy" />
-          <p>Practice Zone</p>
-        </div>
-      </div>
-    </div>
-    <div class="fees-container">
-      <h1>Find Your Diploma</h1>
-      <p style="text-align:center; color:#555; margin-bottom:20px;">Enter your details to download your diploma</p>
-      <form id="diplomaForm">
-        <label>Branch</label>
-        <select id="branchInput" required>
-          <option value="">Select Branch</option>
-          <option value="main">Main – 9FJ9+7W, opp. RAMAYAN VATIKA</option>
-          <option value="second">Second – Greater Green Park</option>
-          <option value="third">Third – Umed Pur Puliya</option>
-        </select>
+    <main>
+        <section class="hero" style="padding-top: 140px; padding-bottom: 60px;">
+            <div class="container">
+                <div class="reveal">
+                    <span class="badge">Resources</span>
+                    <h1>Diploma <span class="bg-gradient-text">Verification</span></h1>
+                    <p>Access and verify your official diplomas issued by Vintech Computer Education. Enter your details
+                        below to
+                        securely download your certificate.</p>
+                </div>
+            </div>
+        </section>
 
-        <label>Roll Number</label>
-        <input id="diploma-input" name="roll" inputmode="numeric" pattern="\d{3,6}"
-          placeholder="Enter Roll Number (e.g. 123)" autocomplete="off" required />
+        <section class="diploma-finder" style="padding-bottom: 100px;">
+            <div class="container">
+                <div class="diploma-form-container reveal">
+                    <form id="diplomaForm">
+                        <div class="form-group">
+                            <label for="branchInput">Select Branch</label>
+                            <select id="branchInput" required>
+                                <option value="">Select Branch</option>
+                                <option value="main">Main – 9FJ9+7W, opp. RAMAYAN VATIKA</option>
+                                <option value="second">Second – Greater Green Park</option>
+                                <option value="third">Third – Umed Pur Puliya</option>
+                            </select>
+                        </div>
 
-        <button type="submit" id="diploma-button" class="primary-btn">Find Diploma</button>
-      </form>
+                        <div class="form-group">
+                            <label for="diploma-input">Roll Number</label>
+                            <input id="diploma-input" name="roll" inputmode="numeric" pattern="\d{3,6}"
+                                placeholder="Enter Roll Number (e.g. 123)" autocomplete="off" required />
+                        </div>
 
-      <div style="text-align:center; margin-top:20px;">
-        <button id="show-video" type="button" class="link-btn"
-          style="background:none; border:none; color:#6a17a5; cursor:pointer; text-decoration:underline;">How to
-          download</button>
-        <button id="show-tips" type="button" class="link-btn"
-          style="background:none; border:none; color:#6a17a5; cursor:pointer; text-decoration:underline; margin-left:10px;">Firefox
-          tip</button>
-      </div>
+                        <button type="submit" id="diploma-button" class="primary-btn">Find Diploma</button>
+                    </form>
 
-      <div id="message-box" class="message-box" style="margin-top:15px;"></div>
-    </div>
+                    <div style="text-align:center; margin-top:20px; display: flex; justify-content: center; gap: 10px;">
+                        <button id="show-video" type="button" class="link-btn">How to download</button>
+                        <button id="show-tips" type="button" class="link-btn">Firefox tip</button>
+                    </div>
 
-    <div id="video-container" class="video-wrap hidden"
-      style="text-align:center; margin-bottom: 30px; display:flex; justify-content:center;"></div>
+                    <div id="message-box" class="message-box"></div>
+                </div>
 
-    <div id="tips-container" class="fees-container hidden" style="background:#f9f9f9; margin-top: 10px;">
-      <h3>Firefox download tip</h3>
-      <p>If Firefox opens the PDF in the viewer, click the download icon in the PDF toolbar or
-        right-click the viewer and choose "Save Page As". Then open with the password
-        <code>RollNumber@Firstname</code>.
-      </p>
-    </div>
+                <div id="video-container" class="video-wrap hidden"
+                    style="text-align:center; margin-top: 40px; display:flex; justify-content:center;"></div>
+
+                <div id="tips-container" class="diploma-form-container hidden" style="margin-top: 30px; padding: 2rem;">
+                    <h3 style="margin-bottom: 1rem;">Firefox Download Tip</h3>
+                    <p style="font-size: 0.95rem; color: var(--text-muted);">If Firefox opens the PDF in the viewer,
+                        click the
+                        download icon in the PDF toolbar or
+                        right-click the viewer and choose "Save Page As". Then open with the password
+                        <code>RollNumber@Firstname</code>.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- Custom Confirm Box -->
     <div id="confirm-box" class="confirm-box">
-      <div class="confirm-content">
-        <h2 id="confirm-title">Diploma Found</h2><br />
-        <p id="confirm-message"></p>
-        <div class="confirm-actions">
-          <button id="confirm-cancel">Cancel</button>
-          <button id="confirm-ok" class="primary">Download</button>
+        <div class="confirm-content">
+            <h2 id="confirm-title" style="margin-bottom: 1rem; color: var(--brand-primary);">Diploma Found</h2>
+            <p id="confirm-message" style="color: var(--text-muted); line-height: 1.6;"></p>
+            <div class="confirm-actions">
+                <button id="confirm-cancel">Cancel</button>
+                <button id="confirm-ok">Download</button>
+            </div>
         </div>
-      </div>
     </div>
-    <footer>
-      <div class="footer-left">
-        <p>&copy; 2025 Vintech Computer Education. All Rights Reserved.</p>
-        <p>Created By
-          <a href="https://mukundvishwa95.github.io/" target="_blank" rel="noopener noreferrer">
-            Mukund Vishwakarma
-          </a>
-        </p>
-      </div>
 
-      <div class="footer-center">
-        <h4>Classes Schedule</h4>
-        <p>Monday – Saturday: 8:00 AM – 8:00 PM</p>
-        <p>Sunday: Closed</p>
-      </div>
-
-      <div class="footer-right">
-        <a href="privacypolicy.html">
-          <p>Privacy Policy</p>
-        </a>
-        <a href="faculty.html">
-          <p>Meet our Team</p>
-        </a>
-        <a href="t&c.html">
-          <p>Terms & Conditions</p>
-        </a>
-        <div class="footer-social">
-          <a href="https://g.page/r/CUA8zTtbBSNwEBM/review" target="_blank"><i class="fab fa-google"></i></a>
-          <a href="https://www.linkedin.com/company/vintech-computer-education" target="_blank"><i
-              class="fab fa-linkedin"></i></a>
-          <a href="https://t.me/vc_edu" target="_blank"><i class="fab fa-telegram"></i></a>
-          <a href="mailto:support@vintecheducation.org" target="_blank"><i class="fa-solid fa-envelope"></i></i></a>
-          <a href="https://www.youtube.com/@VCE-w1e" target="_blank"><i class="fab fa-youtube"></i></a>
+    <footer class="footer reveal">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <a href="index.html" class="logo">
+                        <span class="logo-main">VCE</span>
+                        <span class="logo-subtext">VINTECH COMPUTER EDUCATION</span>
+                    </a>
+                    <p>Bareilly's leading computer coaching institute for the next generation of engineers. Located near
+                        Ramayan Vatika and Green Park.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Explore</h4>
+                    <a href="courses.html">Courses</a>
+                    <a href="events.html">Events</a>
+                    <a href="notes.html">Notes</a>
+                    <a href="about.html">About Us</a>
+                    <a href="contact.html">Contact Us</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Student Corner</h4>
+                    <a href="registration.html">Enroll Now</a>
+                    <a href="pay-fees.html">Pay Due Fees</a>
+                    <a href="diploma.html">Find Diploma</a>
+                    <a href="scholarship.html">Scholarship</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal and Team</h4>
+                    <a href="privacypolicy.html">Privacy Policy</a>
+                    <a href="t&c.html">Terms & Conditions</a>
+                    <a href="faculty.html">Meet our Team</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Connect</h4>
+                    <a href="#"><i class="fab fa-facebook-f"></i> Facebook</a>
+                    <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+                    <a href="https://wa.me/+919068485233" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Main Branch: Opp. Ramayan Vatika, Bareilly | +91 90684 85233</p>
+                <p>Second Branch: Green Park, Bareilly | +91 94564 89436</p>
+                <p>&copy; 2026 Vintech Computer Education. All Rights Reserved.</p>
+            </div>
         </div>
-      </div>
     </footer>
-    <div id="google_translate_element" style="display:none;"></div>
+
+    <script src="animations.js"></script>
 </body>
 
 </html>

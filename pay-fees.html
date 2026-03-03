@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pay Due Fees Online | VCE Bareilly Secure Payment Portal</title>
+    <meta name="description"
+        content="Securely pay your Vintech Computer Education course fees online using UPI, QR code, or payment links. Fast and easy fee submission for VCE Bareilly students.">
+    <meta name="keywords"
+        content="Pay VCE fees online, Vintech Computer Education fee payment, computer course fees Bareilly, online fee submission VCE">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://vintecheducation.org/pay-fees.html#webpage",
+          "url": "https://vintecheducation.org/pay-fees.html",
+          "name": "Pay Due Fees Online | VCE Bareilly",
+          "description": "Secure online fee payment portal for Vintech Computer Education students.",
+          "isPartOf": { "@id": "https://vintecheducation.org/#website" }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://vintecheducation.org/pay-fees.html#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "item": {
+                "@id": "https://vintecheducation.org/",
+                "name": "Home"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "item": {
+                "@id": "https://vintecheducation.org/pay-fees.html",
+                "name": "Pay Fees"
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@300;400;700&family=Martel:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assest/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="96x96" href="assest/favicon/favicon-96x96.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assest/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="assest/favicon/site.webmanifest">
+
+    <style>
+        /* Specific overrides for Fees page to match premium aesthetic */
+        .fees-hero {
+            padding: 180px 0 60px;
+            text-align: center;
+        }
+
+        .step-transition {
+            display: none;
+            animation: slideIn 0.5s ease forwards;
+        }
+
+        .step-transition.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .pay-box {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(106, 0, 122, 0.03);
+            border-radius: 24px;
+            margin-top: 1rem;
+        }
+
+        .qr-box {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 20px;
+            display: inline-block;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .qr-box img {
+            width: 220px;
+            height: 220px;
+            display: block;
+        }
+
+        .or-divider {
+            margin: 1.5rem 0;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--text-muted);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .or-divider::before,
+        .or-divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .or-divider:not(:empty)::before {
+            margin-right: 1rem;
+        }
+
+        .or-divider:not(:empty)::after {
+            margin-left: 1rem;
+        }
+
+        .payment-note {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--brand-primary);
+            font-weight: 600;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .modal-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 32px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            position: relative;
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            color: var(--brand-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-subtitle {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .link-btn {
+            background: none;
+            border: none;
+            color: var(--brand-primary);
+            font-weight: 700;
+            text-decoration: underline;
+            cursor: pointer;
+            padding: 0;
+            font-size: 0.9rem;
+            text-align: left;
+            margin-top: 0.5rem;
+        }
+
+        .read-only-input {
+            background: rgba(106, 0, 122, 0.02) !important;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cursor-glow"></div>
+    <div class="mesh-gradient"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-main">VCE</span>
+                <span class="logo-subtext">VINTECH COMPUTER EDUCATION</span>
+            </a>
+            <div class="nav-links">
+                <a href="courses.html">Courses</a>
+                <a href="events.html">Events</a>
+                <a href="contact.html">Contact Us</a>
+                <a href="about.html">About Us</a>
+                <a href="registration.html" class="btn-primary">Enroll Now</a>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="fees-hero">
+            <div class="container">
+                <div class="reveal">
+                    <span class="badge">Student Portal</span>
+                    <h1>Pay Due <span style="color: #6A007A;">Fees</span></h1>
+                    <p>Securely settle your course dues online via UPI.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="multi-form-container">
+            <div id="multiStepForm">
+                <div class="progress-bar">
+                    <div class="progress" id="feesProgress"></div>
+                </div>
+
+                <!-- STEP 1: Identification -->
+                <div class="form-step active step-transition" id="step1">
+                    <h2>Student Identification</h2>
+                    <form id="feesForm">
+                        <div class="form-grid">
+                            <div class="form-group col-span-2">
+                                <label>Roll Number</label>
+                                <input id="rollInput" type="text" placeholder="Enter Roll Number" required />
+                                <button type="button" class="link-btn" onclick="openRollHelp()">
+                                    Don’t know your roll number?
+                                </button>
+                            </div>
+
+                            <div class="form-group col-span-2">
+                                <label>Select Branch</label>
+                                <select id="branchInput" required>
+                                    <option value="">Select Center Location</option>
+                                    <option value="main">Main – 9FJ9+7W, opp. RAMAYAN VATIKA</option>
+                                    <option value="second">Second – Greater Green Park</option>
+                                    <option value="third">Third – Umed Pur Puliya</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-buttons">
+                            <button type="submit" class="next-btn">Continue</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- STEP 2: Confirmation -->
+                <div class="form-step step-transition" id="step2">
+                    <h2>Confirm Details</h2>
+                    <form id="confirmFeesForm">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Roll Number</label>
+                                <input id="cf_roll" class="read-only-input" readonly />
+                            </div>
+                            <div class="form-group">
+                                <label>Student Name</label>
+                                <input id="cf_student" class="read-only-input" readonly />
+                            </div>
+                            <div class="form-group">
+                                <label>Father's Name</label>
+                                <input id="cf_father" class="read-only-input" readonly />
+                            </div>
+                            <div class="form-group">
+                                <label>Course</label>
+                                <input id="cf_course" class="read-only-input" readonly />
+                            </div>
+                            <div class="form-group col-span-2">
+                                <label>Amount to Pay (Monthly)</label>
+                                <input id="cf_amount" type="number" required placeholder="Enter Amount" />
+                            </div>
+                        </div>
+                        <div class="form-buttons">
+                            <button type="button" class="prev-btn" onclick="goBack()">Back</button>
+                            <button type="submit" class="next-btn">Confirm & Pay</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- STEP 3: Payment -->
+                <div class="form-step step-transition" id="step3">
+                    <h2>Scan & Pay</h2>
+                    <div class="pay-box">
+                        <div class="fee-row total" style="border: none; padding: 0; margin-bottom: 0;">
+                            <span>Amount to Pay:</span>
+                            <strong>₹ <span id="pay_amount">0</span></strong>
+                        </div>
+
+                        <!-- QR -->
+                        <div class="qr-box">
+                            <img id="upiQR" alt="UPI QR Code" src="" />
+                            <p style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-muted); font-weight: 700;">
+                                Scan using any UPI app
+                            </p>
+                        </div>
+
+                        <div class="or-divider">OR</div>
+
+                        <!-- Direct Link -->
+                        <button type="button" class="upi-btn" id="upiLinkBtn" style="width: 100%;">
+                            <i class="fas fa-mobile-alt"></i> Pay Using UPI App
+                        </button>
+
+                        <p class="payment-note">
+                            ⚠️ After successful payment, click Submit below to record your transaction.
+                        </p>
+
+                        <div class="form-buttons">
+                            <button type="button" class="prev-btn" onclick="goBackToStep2()">Back</button>
+                            <button type="button" class="submit-btn" id="submitPaymentBtn">Finalize Submission</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer reveal">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <a href="index.html" class="logo">
+                        <span class="logo-main">VCE</span>
+                        <span class="logo-subtext">VINTECH COMPUTER EDUCATION</span>
+                    </a>
+                    <p>Bareilly's leading computer coaching institute for the next generation of engineers. Located near
+                        Ramayan Vatika and Green Park.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Explore</h4>
+                    <a href="courses.html">Courses</a>
+                    <a href="events.html">Events</a>
+                    <a href="notes.html">Notes</a>
+                    <a href="about.html">About Us</a>
+                    <a href="contact.html">Contact Us</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Student Corner</h4>
+                    <a href="registration.html">Enroll Now</a>
+                    <a href="pay-fees.html">Pay Due Fees</a>
+                    <a href="diploma.html">Find Diploma</a>
+                    <a href="scholarship.html">Scholarship</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal and Team</h4>
+                    <a href="privacypolicy.html">Privacy Policy</a>
+                    <a href="t&c.html">Terms & Conditions</a>
+                    <a href="faculty.html">Meet our Team</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Connect</h4>
+                    <a href="#"><i class="fab fa-facebook-f"></i> Facebook</a>
+                    <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+                    <a href="https://wa.me/+919068485233" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Main Branch: Opp. Ramayan Vatika, Bareilly | +91 90684 85233</p>
+                <p>Second Branch: Green Park, Bareilly | +91 94564 89436</p>
+                <p>&copy; 2026 Vintech Computer Education. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FIND ROLL NUMBER MODAL -->
+    <div class="modal-overlay" id="rollModal">
+        <div class="modal-card">
+            <h3 class="modal-title">Find Roll Number</h3>
+            <p class="modal-subtitle">Enter details used during admission</p>
+
+            <form id="findRollForm">
+                <div class="form-group">
+                    <label>Student Name</label>
+                    <input type="text" placeholder="Full Name" required />
+                </div>
+                <div class="form-group">
+                    <label>Father's Name</label>
+                    <input type="text" placeholder="Father's Name" required />
+                </div>
+                <div class="form-group">
+                    <label>Mother's Name</label>
+                    <input type="text" placeholder="Mother's Name" required />
+                </div>
+                <div class="form-group">
+                    <label>Branch</label>
+                    <select required>
+                        <option value="">Select Branch</option>
+                        <option value="main">Main – 9FJ9+7W, opp. RAMAYAN VATIKA</option>
+                        <option value="second">Second – Greater Green Park</option>
+                        <option value="third">Third – Umed Pur Puliya</option>
+                    </select>
+                </div>
+                <p id="rollResult" style="margin-top:1rem; font-weight:700; font-size: 0.95rem;"></p>
+                <div class="modal-actions">
+                    <button type="button" class="prev-btn" onclick="closeRollModal()" style="flex: 1;">Cancel</button>
+                    <button type="submit" class="next-btn" style="flex: 1;">Find Roll</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal-overlay" style="z-index: 3000;">
+        <div class="modal-card" style="text-align: center;">
+            <div
+                style="width: 72px; height: 72px; background: #27ae60; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 2rem;">
+                <i class="fas fa-check"></i>
+            </div>
+            <h2 style="margin-bottom: 1rem; color: var(--text-main);">Payment Reported!</h2>
+            <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 2rem;">
+                Your payment details have been submitted successfully. Please allow some time for verification. Continue
+                learning!
+            </p>
+            <button class="next-btn" style="width: 100%;" onclick="location.href='index.html'">Return to Home</button>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/@supabase/supabase-js"></script>
+    <script src="animations.js"></script>
+    <script>
+        // Supabase Clients
+        // const studentDB = supabase.createClient("https://pgvwjskubfonmirtaodo.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBndndqc2t1YmZvbm1pcnRhb2RvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk4MjY2OTUsImV4cCI6MjA3NTQwMjY5NX0.dTHvwiH_UZC7K8pxLYIt5VOstu-4Shy0DW3n3C8TJsg");
+        const studentDB = supabase.createClient(
+            "https://vce.jiobase.com",
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBndndqc2t1YmZvbm1pcnRhb2RvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk4MjY2OTUsImV4cCI6MjA3NTQwMjY5NX0.dTHvwiH_UZC7K8pxLYIt5VOstu-4Shy0DW3n3C8TJsg"
+        );
+        // const paymentDB = supabase.createClient("https://auygeiqcsygchfmitfxv.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF1eWdlaXFjc3lnY2hmbWl0Znh2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjcxMDUzOTEsImV4cCI6MjA4MjY4MTM5MX0.WVpNirNUPa3v3VP5vusjAFezPvH1C8ZF16dWRPcKH-4");
+        const paymentDB = supabase.createClient(
+            "https://sec-vce.jiobase.com",
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF1eWdlaXFjc3lnY2hmbWl0Znh2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjcxMDUzOTEsImV4cCI6MjA4MjY4MTM5MX0.WVpNirNUPa3v3VP5vusjAFezPvH1C8ZF16dWRPcKH-4"
+        );
+
+        // UI State
+        let currentStep = 1;
+        const totalSteps = 3;
+
+        function updateUI() {
+            document.querySelectorAll('.form-step').forEach(step => step.classList.remove('active'));
+            document.getElementById(`step${currentStep}`).classList.add('active');
+            document.getElementById('feesProgress').style.width = `${(currentStep / totalSteps) * 100}%`;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function goBack() { currentStep = 1; updateUI(); }
+        function goBackToStep2() { currentStep = 2; updateUI(); }
+
+        // Step 1: Lookup
+        document.getElementById("feesForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const rollInput = document.getElementById("rollInput");
+            const branchInput = document.getElementById("branchInput");
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+
+            let roll = rollInput.value.trim();
+            const branch = branchInput.value;
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Verifying...";
+
+            // Normalize roll number if needed
+            if (!/^[a-zA-Z]_/.test(roll.toLowerCase())) {
+                const prefix = branch.charAt(0).toLowerCase();
+                roll = `${prefix}_${roll}`;
+            }
+
+            try {
+                const { data, error } = await studentDB
+                    .from("students")
+                    .select("roll_number, student_name, father_name, course, fee_month")
+                    .eq("roll_number", roll)
+                    .eq("branch", branch)
+                    .single();
+
+                if (error || !data) {
+                    alert("Student record not found. Please check roll number and branch.");
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = "Continue";
+                    return;
+                }
+
+                document.getElementById("cf_roll").value = data.roll_number;
+                document.getElementById("cf_student").value = data.student_name;
+                document.getElementById("cf_father").value = data.father_name;
+                document.getElementById("cf_course").value = data.course;
+                document.getElementById("cf_amount").value = data.fee_month ?? "";
+
+                currentStep = 2;
+                updateUI();
+            } catch (err) {
+                console.error(err);
+                alert("Technical error. Please try again.");
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = "Continue";
+            }
+        });
+
+        // Step 2: Confirm
+        document.getElementById("confirmFeesForm").addEventListener("submit", (e) => {
+            e.preventDefault();
+            const amount = document.getElementById("cf_amount").value;
+            const roll = document.getElementById("cf_roll").value;
+
+            if (!amount || Number(amount) <= 0) {
+                alert("Please enter a valid amount.");
+                return;
+            }
+
+            document.getElementById("pay_amount").textContent = amount;
+            const note = encodeURIComponent(`Roll:${roll} Fees`);
+            const upiString = `upi://pay?pa=manishmont-1@okaxis&pn=VINTECH%20COMPUTER%20EDUCATION&am=${amount}&cu=INR&tn=${note}`;
+
+            // QR Generation
+            document.getElementById("upiQR").src = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(upiString)}`;
+
+            // Link Button
+            document.getElementById("upiLinkBtn").onclick = () => {
+                window.location.href = upiString;
+            };
+
+            currentStep = 3;
+            updateUI();
+        });
+
+        // Step 3: Record Payment
+        document.getElementById("submitPaymentBtn").addEventListener("click", async () => {
+            const roll = document.getElementById("cf_roll").value;
+            const amount = document.getElementById("cf_amount").value;
+            const btn = document.getElementById("submitPaymentBtn");
+
+            if (!roll || !amount) {
+                alert("Missing payment data.");
+                return;
+            }
+
+            btn.disabled = true;
+            btn.textContent = "Submitting...";
+
+            const paidOn = new Date().toISOString().split("T")[0];
+
+            try {
+                const { error } = await paymentDB
+                    .from("payments")
+                    .insert([{
+                        roll_number: roll,
+                        amount_paid: amount,
+                        paid_on: paidOn
+                    }]);
+
+                if (error) throw error;
+
+                document.getElementById("successModal").style.display = "flex";
+            } catch (err) {
+                console.error(err);
+                alert("Payment reporting failed. Please take a screenshot of your success and contact the office.");
+                btn.disabled = false;
+                btn.textContent = "Finalize Submission";
+            }
+        });
+
+        // Modal Logic
+        function openRollHelp() { document.getElementById("rollModal").style.display = "flex"; }
+        function closeRollModal() { document.getElementById("rollModal").style.display = "none"; }
+
+        document.getElementById("findRollForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const inputs = e.target.querySelectorAll("input, select");
+            const [student, father, mother, branch] = [...inputs].map(i => i.value.trim().toUpperCase());
+            const resultBox = document.getElementById("rollResult");
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+
+            resultBox.textContent = "Searching...";
+            resultBox.style.color = "var(--text-muted)";
+            submitBtn.disabled = true;
+
+            try {
+                const { data, error } = await studentDB
+                    .from("students")
+                    .select("roll_number")
+                    .ilike("student_name", student)
+                    .ilike("father_name", father)
+                    .ilike("mother_name", mother)
+                    .eq("branch", branch === "MAIN" ? "main" : (branch === "SECOND" ? "second" : "third")); // Map back to actual values
+
+                if (error) throw error;
+
+                if (!data || data.length === 0) {
+                    resultBox.textContent = "No matching record found.";
+                    resultBox.style.color = "#e74c3c";
+                } else if (data.length > 1) {
+                    resultBox.textContent = "Multiple records found. Contact office.";
+                    resultBox.style.color = "#f39c12";
+                } else {
+                    const roll = data[0].roll_number;
+                    resultBox.innerHTML = `Your Roll Number: <span style="color: #27ae60">${roll}</span>`;
+                    document.getElementById("rollInput").value = roll;
+                }
+            } catch (err) {
+                resultBox.textContent = "Error searching. Try again.";
+            } finally {
+                submitBtn.disabled = false;
+            }
+        });
+
+        // Auto-Uppercase
+        document.querySelectorAll("input[type='text']").forEach(inp => {
+            inp.style.textTransform = "uppercase";
+            inp.addEventListener("input", () => inp.value = inp.value.toUpperCase());
+        });
+    </script>
+</body>
+
+</html>

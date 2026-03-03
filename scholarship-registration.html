@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scholarship Exam Registration | VCE Bareilly (VCESE 2026)</title>
+    <meta name="description"
+        content="Apply for VCESE 2026 - the Vintech Computer Education Scholarship Examination. Get up to 100% scholarship for computer courses in Bareilly near Ramayan Vatika.">
+    <meta name="keywords"
+        content="Scholarship computer courses Bareilly, VCESE 2026, Vintech scholarship exam, computer education scholarship, VCE Bareilly scholarship">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assest/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="96x96" href="assest/favicon/favicon-96x96.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assest/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="assest/favicon/site.webmanifest">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://vintecheducation.org/scholarship-registration.html">
+    <meta property="og:title" content="Scholarship Exam Registration | VCE Bareilly">
+    <meta property="og:description"
+        content="Register now for the Vintech Computer Education Scholarship Exam and win 100% fee waivers.">
+    <meta property="og:image" content="https://vintecheducation.org/assest/vintech-logo.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://vintecheducation.org/scholarship-registration.html#webpage",
+          "url": "https://vintecheducation.org/scholarship-registration.html",
+          "name": "Scholarship Exam Registration | VCE Bareilly",
+          "description": "Registration for the Vintech Computer Education Scholarship Exam (VCESE 2026).",
+          "isPartOf": { "@id": "https://vintecheducation.org/#website" }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://vintecheducation.org/scholarship-registration.html#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "item": {
+                "@id": "https://vintecheducation.org/",
+                "name": "Home"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "item": {
+                "@id": "https://vintecheducation.org/scholarship-registration.html",
+                "name": "Scholarship"
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@300;400;700&family=Martel:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+<body>
+    <div class="cursor-glow"></div>
+    <div class="mesh-gradient"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-main">VCE</span>
+                <span class="logo-subtext">VINTECH COMPUTER EDUCATION</span>
+            </a>
+            <div class="nav-links">
+                <a href="courses.html">Courses</a>
+                <a href="events.html">Events</a>
+                <a href="contact.html">Contact Us</a>
+                <a href="about.html">About Us</a>
+                <a href="registration.html" class="btn-primary">Enroll Now</a>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="registration-hero">
+            <div class="container">
+                <div class="reveal">
+                    <span class="badge">VCESE : Scholarship 2026</span>
+                    <h1>Apply for <span style="color: #6A007A;">Scholarship</span></h1>
+                    <p>Register for the Vintech Computer Education Scholarship Examination (VCESE) and unlock up to 100%
+                        fee waivers.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="multi-form-container">
+            <form id="multiStepForm">
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+
+                <!-- STEP 1: Personal Details -->
+                <div class="form-step active">
+                    <h2>Personal Details</h2>
+                    <div class="form-grid">
+                        <div class="form-group col-span-2">
+                            <label>Full Name</label>
+                            <input type="text" id="name" placeholder="Full Name" pattern="[a-zA-Z\s]{3,}"
+                                title="Full Name must be at least 3 letters, only alphabets and spaces" required />
+                        </div>
+                        <div class="form-group">
+                            <label>Father's Name</label>
+                            <input type="text" id="fathername" placeholder="Father's Name" pattern="[a-zA-Z\s]{3,}"
+                                title="Father's Name must be at least 3 letters, only alphabets and spaces" required />
+                        </div>
+                        <div class="form-group">
+                            <label>Gender</label>
+                            <select id="gender" required>
+                                <option value="">Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Registration Type</label>
+                            <select id="regType" required>
+                                <option value="Direct">Direct</option>
+                                <option value="Team Member">By Team Member</option>
+                            </select>
+                        </div>
+                        <div class="form-group" id="staffIdGroup" style="display: none;">
+                            <label>Staff ID of Team Member</label>
+                            <input type="text" id="staffId" placeholder="Enter Staff ID" />
+                        </div>
+                    </div>
+                    <div class="form-buttons">
+                        <button type="button" class="next-btn">Continue</button>
+                    </div>
+                </div>
+
+                <!-- STEP 2: Contact & Location -->
+                <div class="form-step">
+                    <h2>Contact & Location</h2>
+                    <div class="form-grid">
+                        <div class="form-group col-span-2">
+                            <label>Phone Number</label>
+                            <input type="tel" id="phonenumber" placeholder="10 Digit Mobile No" pattern="[0-9]{10}"
+                                title="Phone number should be exactly 10 digits" required />
+                        </div>
+                        <div class="form-group col-span-2">
+                            <label>Full Address</label>
+                            <textarea id="address" placeholder="Residential Address" rows="3" required></textarea>
+                        </div>
+                        <div class="form-group col-span-2">
+                            <label>Applying for Branch</label>
+                            <select id="branch" required>
+                                <option value="">Select Branch</option>
+                                <option value="main">Main : 9FJ9+7W, opp. RAMAYAN VATIKA</option>
+                                <option value="second">Second : Greater Green Park Colony</option>
+                                <option value="third">Third : Umed Pur Puliya, Bhuta</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-buttons">
+                        <button type="button" class="prev-btn">Back</button>
+                        <button type="button" class="next-btn">Continue</button>
+                    </div>
+                </div>
+
+                <!-- STEP 3: Payment Summary -->
+                <div class="form-step">
+                    <h2>Registration Fee Summary</h2>
+                    <div class="fee-breakdown">
+                        <div class="fee-row">
+                            <span>Scholarship Registration Fee</span>
+                            <strong>₹ 50</strong>
+                        </div>
+                        <div class="fee-row">
+                            <span>Platform Processing Fee</span>
+                            <strong>₹ 10</strong>
+                        </div>
+                        <hr />
+                        <div class="fee-row total">
+                            <span>Total Amount Payable</span>
+                            <strong>₹ 60</strong>
+                        </div>
+                    </div>
+
+                    <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">Secure checkout using
+                        UPI</p>
+
+                    <div class="pay-options">
+                        <button type="button" class="upi-btn" data-upi="link"><i class="fas fa-link"></i> Pay Via
+                            App</button>
+                        <button type="button" class="upi-btn" data-upi="qr"><i class="fas fa-qrcode"></i> Scan QR
+                            Code</button>
+                    </div>
+
+                    <div id="upiAction" style="display:none; margin-top:20px; text-align: center;"></div>
+
+                    <div
+                        style="background: rgba(106, 0, 122, 0.05); padding: 1.5rem; border-radius: 16px; margin-top: 2rem;">
+                        <p style="text-align: center; color: var(--brand-primary); font-weight: 700;">
+                            ⚠️ CRITICAL: Capture a screenshot of the payment confirmation and keep it safe before
+                            clicking submit.
+                        </p>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="button" class="prev-btn">Back</button>
+                        <button type="submit" class="submit-btn" style="flex: 1;">Finalize & Submit</button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Success Modal -->
+            <div id="successModal" class="success-overlay">
+                <div class="success-box">
+                    <div class="success-icon">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <h2 style="margin-bottom: 1rem;">Registration Submitted!</h2>
+                    <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 2rem;">
+                        Your registration for the Scholarship Exam has been successfully received. Please visit your
+                        selected branch for final confirmation and the exam schedule.
+                    </p>
+                    <button class="btn-ripple" style="width: 100%;" onclick="location.href='index.html'">Return to
+                        Home</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer reveal">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <a href="index.html" class="logo">
+                        <span class="logo-main">VCE</span>
+                        <span class="logo-subtext">VINTECH COMPUTER EDUCATION</span>
+                    </a>
+                    <p>Bareilly's leading computer coaching institute for the next generation of engineers. Located near
+                        Ramayan Vatika and Green Park.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Explore</h4>
+                    <a href="courses.html">Courses</a>
+                    <a href="events.html">Events</a>
+                    <a href="notes.html">Notes</a>
+                    <a href="about.html">About Us</a>
+                    <a href="contact.html">Contact Us</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Student Corner</h4>
+                    <a href="registration.html">Enroll Now</a>
+                    <a href="pay-fees.html">Pay Due Fees</a>
+                    <a href="diploma.html">Find Diploma</a>
+                    <a href="scholarship.html">Scholarship</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal and Team</h4>
+                    <a href="privacypolicy.html">Privacy Policy</a>
+                    <a href="t&c.html">Terms & Conditions</a>
+                    <a href="faculty.html">Meet our Team</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Connect</h4>
+                    <a href="#"><i class="fab fa-facebook-f"></i> Facebook</a>
+                    <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+                    <a href="https://wa.me/+919068485233" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Main Branch: Opp. Ramayan Vatika, Bareilly | +91 90684 85233</p>
+                <p>Second Branch: Green Park, Bareilly | +91 94564 89436</p>
+                <p>&copy; 2026 Vintech Computer Education. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/@supabase/supabase-js"></script>
+    <script src="animations.js"></script>
+</body>
+
+</html>
