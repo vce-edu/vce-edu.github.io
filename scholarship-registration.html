@@ -240,8 +240,13 @@
                         Your registration for the Scholarship Exam has been successfully received. Please visit your
                         selected branch for final confirmation and the exam schedule.
                     </p>
-                    <button class="btn-ripple" style="width: 100%;" onclick="location.href='index.html'">Return to
-                        Home</button>
+                    <div class="modal-buttons" style="display: flex; flex-direction: column; gap: 1rem; width: 100%;">
+                        <button class="btn-ripple" style="width: 100%;" onclick="location.href='index.html'">Return to
+                            Home</button>
+                        <button id="addAnotherBtn" class="btn-ripple"
+                            style="width: 100%; background: var(--glass-bg); color: var(--brand-primary); border: 1px solid var(--brand-primary); display: none;"
+                            onclick="resetForm()">Add Another Application</button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -299,6 +304,140 @@
 
     <script src="https://unpkg.com/@supabase/supabase-js"></script>
     <script src="animations.js"></script>
+    <script>
+        // Supabase Initialization
+        const supaBase = supabase.createClient("https://auygeiqcsygchfmitfxv.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF1eWdlaXFjc3lnY2hmbWl0Znh2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjcxMDUzOTEsImV4cCI6MjA4MjY4MTM5MX0.WVpNirNUPa3v3VP5vusjAFezPvH1C8ZF16dWRPcKH-4");
+
+        // Auto uppercase inputs
+        document.querySelectorAll("input[type='text'], textarea").forEach(inp => {
+            inp.style.textTransform = "uppercase";
+            inp.addEventListener("input", () => inp.value = inp.value.toUpperCase());
+        });
+
+        /* Multi Step Logic */
+        const steps = document.querySelectorAll(".form-step");
+        const nextBtns = document.querySelectorAll(".next-btn");
+        const prevBtns = document.querySelectorAll(".prev-btn");
+        const progress = document.querySelector(".progress");
+        let currentStep = 0;
+
+        function updateStep() {
+            steps.forEach((step, i) => step.classList.toggle("active", i === currentStep));
+            progress.style.width = ((currentStep + 1) / steps.length) * 100 + "%";
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        nextBtns.forEach(btn => {
+            btn.addEventListener("click", () => {
+                const inputs = steps[currentStep].querySelectorAll("input, select, textarea");
+                for (let input of inputs) {
+                    if (input.offsetParent === null) continue;
+                    if (!input.checkValidity()) {
+                        input.reportValidity();
+                        return;
+                    }
+                }
+
+                if (currentStep < steps.length - 1) {
+                    currentStep++;
+                    updateStep();
+                }
+            });
+        });
+
+        prevBtns.forEach(btn => {
+            btn.addEventListener("click", () => {
+                if (currentStep > 0) {
+                    currentStep--;
+                    updateStep();
+                }
+            });
+        });
+
+        /* Registration Type Logic */
+        const regType = document.getElementById("regType");
+        const staffIdGroup = document.getElementById("staffIdGroup");
+        const staffIdInput = document.getElementById("staffId");
+
+        regType.addEventListener("change", () => {
+            staffIdGroup.style.display = regType.value === "Team Member" ? "block" : "none";
+            staffIdInput.required = regType.value === "Team Member";
+        });
+
+        /* Payment Integration */
+        document.querySelectorAll(".upi-btn").forEach(btn => {
+            btn.addEventListener("click", () => {
+                const amount = "60";
+                const student = document.getElementById("name").value;
+                const note = `ScholarshipReg:${student}`;
+
+                const upiUrl = `upi://pay?pa=manishmont-1@okaxis&pn=VINTECH%20COMPUTER%20EDUCATION&am=${amount}&cu=INR&tn=${encodeURIComponent(note)}`;
+
+                if (btn.dataset.upi === "link") {
+                    window.location.href = upiUrl;
+                } else {
+                    const qrAction = document.getElementById("upiAction");
+                    qrAction.style.display = "block";
+                    qrAction.innerHTML = `
+                        <p style="margin-bottom: 1rem; font-weight: 700;">Scan to Pay ₹60</p>
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(upiUrl)}" style="border: 1px solid var(--glass-border); padding: 10px; border-radius: 16px;">
+                    `;
+                }
+            });
+        });
+
+        /* Form Final Submission */
+        document.getElementById("multiStepForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const submitBtn = e.target.querySelector(".submit-btn");
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Processing Submission...";
+
+            try {
+                const staffIdValue = document.getElementById("staffId").value.trim();
+                const formData = {
+                    full_name: document.getElementById("name").value,
+                    father_name: document.getElementById("fathername").value,
+                    gender: document.getElementById("gender").value,
+                    phone_number: document.getElementById("phonenumber").value,
+                    address: document.getElementById("address").value,
+                    staff_id: staffIdValue ? parseInt(staffIdValue) : null,
+                    branch: document.getElementById("branch").value
+                };
+
+                const { error: dbError } = await supaBase.from("scholarship_application").insert([formData]);
+                if (dbError) throw new Error("Form submission failed: " + dbError.message);
+
+                if (document.getElementById("regType").value === "Team Member") {
+                    document.getElementById("addAnotherBtn").style.display = "block";
+                }
+                document.getElementById("successModal").style.display = "flex";
+            } catch (err) {
+                alert(err.message);
+                submitBtn.disabled = false;
+                submitBtn.textContent = "Finalize & Submit";
+            }
+        });
+
+        function resetForm() {
+            // Reset Form and UI state
+            document.getElementById("multiStepForm").reset();
+            currentStep = 0;
+            updateStep();
+
+            // Clear hidden/dynamic elements
+            document.getElementById("successModal").style.display = "none";
+            document.getElementById("upiAction").style.display = "none";
+            document.getElementById("upiAction").innerHTML = "";
+            document.getElementById("addAnotherBtn").style.display = "none";
+            document.getElementById("staffIdGroup").style.display = "none";
+
+            // Reset submit button
+            const submitBtn = document.querySelector(".submit-btn");
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Finalize & Submit";
+        }
+    </script>
 </body>
 
 </html>
