@@ -60,6 +60,56 @@
             text-align: center;
             background: linear-gradient(135deg, rgba(106, 0, 122, 0.05), rgba(74, 0, 85, 0.05));
         }
+
+        .how-to-apply {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .step-card {
+            position: relative;
+            padding: 3rem 2rem;
+            background: var(--bg-accent);
+            border-radius: 32px;
+            border: 1px solid var(--glass-border);
+            transition: var(--transition-smooth);
+        }
+
+        .step-card:hover {
+            transform: translateY(-10px);
+            background: white;
+            box-shadow: 0 20px 40px rgba(106, 0, 122, 0.08);
+            border-color: var(--brand-primary);
+        }
+
+        .step-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: rgba(106, 0, 122, 0.1);
+            position: absolute;
+            top: 1rem;
+            right: 2rem;
+            line-height: 1;
+        }
+
+        .step-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--brand-primary);
+        }
+
+        .step-card p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
     </style>
 </head>
 
@@ -97,6 +147,10 @@
                     <h1>Your Path to <span style="color: #6A007A;">100% Scholarship</span></h1>
                     <p>The Vintech Computer Education Scholarship Examination (VCESE) is Bareilly's premier talent
                         search program for future IT professionals.</p>
+                    <div class="hero-btns" style="margin-top: 3rem; justify-content: center;">
+                        <a href="scholarship-registration.html" class="btn-ripple">Apply Now</a>
+                        <a href="scholarship-results.html" class="btn-outline">Check Results</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -113,20 +167,19 @@
                     <div class="detail-card reveal">
                         <div class="detail-icon"><i class="fas fa-edit"></i></div>
                         <h3>Exam Format</h3>
-                        <p>The exam consists of multiple-choice questions (MCQs) covering basic computer awareness,
+                        <p>The exam consists of multiple-choice questions (MCQs) covering
                             logical reasoning, and general aptitude.</p>
                     </div>
                     <div class="detail-card reveal">
                         <div class="detail-icon"><i class="fas fa-trophy"></i></div>
                         <h3>Rewards</h3>
-                        <p>Top performers can win up to 100% fee waivers on any professional diploma or certificate
-                            course at VCE Bareilly.</p>
+                        <p>Top performers can win up to 100% fee waivers on applicable courses at Vintech Computer
+                            Education.</p>
                     </div>
                     <div class="detail-card reveal">
                         <div class="detail-icon"><i class="fas fa-user-graduate"></i></div>
                         <h3>Eligibility</h3>
-                        <p>VCESE is open to all students—from school-goers to college graduates—who are passionate about
-                            building a career in IT.</p>
+                        <p>VCESE is open to all students—from school-goers (6th standard) to college graduates.</p>
                     </div>
                 </div>
             </div>
@@ -158,17 +211,41 @@
             </div>
         </section>
 
-        <!-- CTA Section -->
-        <section class="cta-section">
+        <!-- How to Apply Section -->
+        <section class="how-to-apply">
             <div class="container">
-                <div class="reveal">
-                    <h2>Ready to <span style="color: #6A007A;">Start?</span></h2>
-                    <p style="margin-bottom: 2.5rem; color: var(--text-muted); font-size: 1.1rem;">Registration for the
-                        next batch of VCESE is now open. Don't miss this chance.</p>
-                    <a href="scholarship-registration.html" class="btn-ripple">Register for VCESE 2026</a>
+                <div class="section-header reveal">
+                    <h2>How to <span style="color: #6A007A;">Apply</span></h2>
+                    <p>Follow these simple steps to secure your scholarship opportunity.</p>
+                </div>
+
+                <div class="steps-grid">
+                    <div class="step-card reveal">
+                        <div class="step-number">01</div>
+                        <h3>Online Registration</h3>
+                        <p>Fill out the application form on our website with your correct academic and personal details.
+                        </p>
+                    </div>
+                    <div class="step-card reveal">
+                        <div class="step-number">02</div>
+                        <h3>Pay Registration Fee</h3>
+                        <p>Complete the payment of ₹60 as the examination registration fee.</p>
+                    </div>
+                    <div class="step-card reveal">
+                        <div class="step-number">03</div>
+                        <h3>Collect Your Admit Card</h3>
+                        <p>After successful payment, visit our center physically to collect your admit card.</p>
+                    </div>
+                    <div class="step-card reveal">
+                        <div class="step-number">04</div>
+                        <h3>Appear for Exam</h3>
+                        <p>Visit the designated exam center on the scheduled date with a printed copy of your admit card
+                            and ID proof.</p>
+                    </div>
                 </div>
             </div>
         </section>
+
     </main>
 
     <footer class="footer reveal">

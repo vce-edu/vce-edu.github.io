@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Scholarship Results | VCESE 2026</title>
+    <meta name="description"
+        content="Check your Vintech Computer Education Scholarship Examination (VCESE 2026) results and download your scorecard.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assest/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="96x96" href="assest/favicon/favicon-96x96.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assest/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="assest/favicon/site.webmanifest">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@300;400;700&family=Martel:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <style>
+        .results-hero {
+            padding: 180px 0 80px;
+            text-align: center;
+            background: radial-gradient(circle at 100% 0%, rgba(106, 0, 122, 0.04) 0%, transparent 40%);
+        }
+
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .search-box {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 32px;
+            box-shadow: 0 25px 50px -12px rgba(106, 0, 122, 0.15);
+            border: 1px solid var(--glass-border);
+            text-align: left;
+        }
+
+        .search-box h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--brand-primary);
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 1.2rem 1.5rem;
+            padding-left: 3.5rem;
+            border-radius: 16px;
+            border: 2px solid #eee;
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            transition: var(--transition-smooth);
+        }
+
+        .input-group input:focus {
+            border-color: var(--brand-primary);
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(106, 0, 122, 0.05);
+        }
+
+        .input-group i {
+            position: absolute;
+            left: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 1.2rem;
+        }
+
+        .result-card {
+            display: none;
+            margin-top: 3rem;
+            background: white;
+            border-radius: 4px;
+            box-shadow: 0 50px 100px -20px rgba(106, 0, 122, 0.15);
+            text-align: left;
+            animation: scorecardEntry 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            overflow: hidden;
+            max-width: 850px;
+            margin: 3rem auto;
+            position: relative;
+            border: 1px solid #e0e0e0;
+        }
+
+        @keyframes scorecardEntry {
+            from {
+                opacity: 0;
+                transform: scale(0.95) translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        /* Certificate Aesthetic */
+        .card-inner-border {
+            margin: 15px;
+            border: 2px solid var(--brand-primary);
+            padding: 2rem;
+            position: relative;
+        }
+
+        .card-inner-border::after {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            right: 5px;
+            bottom: 5px;
+            border: 1px solid var(--brand-secondary);
+            pointer-events: none;
+        }
+
+        .card-header-professional {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px double #eee;
+        }
+
+        .card-header-professional h2 {
+            font-family: 'Martel', serif;
+            font-size: 2.6rem;
+            color: var(--brand-primary);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .report-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--brand-secondary);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .branch-mini-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        .branch-mini-grid strong {
+            color: var(--text-main);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .student-particulars-section {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .section-tag {
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: var(--brand-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            border-bottom: 1px solid var(--brand-primary);
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            padding-bottom: 2px;
+        }
+
+        .particulars-table {
+            width: 100%;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+
+        .particulars-table tr td {
+            padding: 0.8rem 0;
+            vertical-align: top;
+        }
+
+        .particulars-table .lbl {
+            width: 35%;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            text-align: left;
+        }
+
+        .particulars-table .val {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-main);
+            text-align: right;
+        }
+
+        /* Performance Appraisal Area */
+        .performance-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .result-box-academic {
+            border: 1px solid #eee;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            background: #fcfaff;
+        }
+
+        .result-box-academic label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .result-box-academic .big-val {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--brand-primary);
+            font-family: 'Martel', serif;
+        }
+
+        .scholarship-badge-official {
+            background: linear-gradient(135deg, white, #f8f0ff);
+            border: 3px double var(--brand-primary);
+            padding: 2rem;
+            border-radius: 50% / 10%;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(106, 0, 122, 0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 180px;
+        }
+
+        .scholarship-badge-official p {
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: var(--brand-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .scholarship-badge-official .amount {
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: var(--brand-primary);
+            line-height: 1;
+        }
+
+        .footer-auth {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+        }
+
+        .auth-item {
+            text-align: center;
+        }
+
+        .signature-line {
+            width: 150px;
+            height: 1px;
+            background: #333;
+            margin: 0 auto 0.5rem;
+        }
+
+        .auth-item p {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .official-seal {
+            width: 80px;
+            height: 80px;
+            opacity: 0.1;
+            filter: grayscale(1);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Watermark */
+        .card-watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 8rem;
+            font-weight: 900;
+            color: rgba(106, 0, 122, 0.03);
+            pointer-events: none;
+            white-space: nowrap;
+            letter-spacing: 0.5em;
+        }
+
+        @media print {
+            @page {
+                size: A4;
+                margin: 0.2cm;
+            }
+
+            .navbar,
+            .footer,
+            .btn-ripple,
+            .no-print,
+            .results-hero h1,
+            .search-container .search-box,
+            .badge,
+            .mesh-gradient,
+            .cursor-glow {
+                display: none !important;
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                box-sizing: border-box !important;
+            }
+
+            body {
+                background: white !important;
+                margin: 0;
+                padding: 0;
+                font-size: 8.5pt !important;
+                line-height: 1.1 !important;
+            }
+
+            .results-hero {
+                padding: 0 !important;
+            }
+
+            .result-card {
+                box-shadow: none !important;
+                margin: 0 !important;
+                border: none !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                animation: none !important;
+            }
+
+            .card-inner-border {
+                margin: 0;
+                padding: 0.3rem !important;
+                border-width: 1px !important;
+            }
+
+            .card-header-professional {
+                margin-bottom: 0.3rem !important;
+                padding-bottom: 0.3rem !important;
+            }
+
+            .card-header-professional h2 {
+                font-size: 1.5rem !important;
+                margin-bottom: 0 !important;
+            }
+
+            .report-title {
+                font-size: 0.9rem !important;
+                margin-bottom: 0.3rem !important;
+                letter-spacing: 0.1em !important;
+            }
+
+            .branch-mini-grid {
+                display: flex !important;
+                justify-content: space-between !important;
+                gap: 0.2rem !important;
+                font-size: 6pt !important;
+            }
+
+            .student-particulars-section {
+                margin-bottom: 0.5rem !important;
+            }
+
+            .section-tag {
+                margin-bottom: 0.3rem !important;
+                font-size: 0.7rem !important;
+            }
+
+            .particulars-table tr td {
+                padding: 0.15rem 0 !important;
+            }
+
+            .particulars-table .lbl {
+                font-size: 7.5pt !important;
+            }
+
+            .particulars-table .val {
+                font-size: 8.5pt !important;
+            }
+
+            .performance-grid {
+                margin-bottom: 0.5rem !important;
+                gap: 0.3rem !important;
+                display: flex !important;
+            }
+
+            .performance-grid>div {
+                flex: 1 !important;
+            }
+
+            .result-box-academic,
+            .scholarship-badge-official {
+                padding: 0.3rem !important;
+                min-height: auto !important;
+            }
+
+            .result-box-academic .big-val {
+                font-size: 2.2rem !important;
+            }
+
+            .scholarship-badge-official .amount {
+                font-size: 1.8rem !important;
+            }
+
+            .footer-auth {
+                margin-top: 0.4rem !important;
+                padding-top: 0.3rem !important;
+                display: flex !important;
+                justify-content: space-between !important;
+                align-items: flex-end !important;
+            }
+
+            .official-seal {
+                width: 40px !important;
+                height: 40px !important;
+                margin: 0 !important;
+            }
+
+            .card-watermark {
+                font-size: 2.5rem !important;
+                opacity: 0.01 !important;
+            }
+
+            .signature-line {
+                width: 120px !important;
+                margin-bottom: 0.2rem !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .results-hero {
+                padding: 120px 0 60px;
+            }
+
+            .search-container {
+                max-width: 100%;
+                width: 100%;
+                padding: 0;
+            }
+
+            .search-box {
+                padding: 1.5rem;
+                border-radius: 0;
+                border-left: none;
+                border-right: none;
+            }
+
+            .result-card {
+                margin: 1.5rem 0;
+                width: 100%;
+                max-width: 100%;
+                border-radius: 0;
+                border-left: none;
+                border-right: none;
+            }
+
+            .card-inner-border {
+                margin: 5px;
+                padding: 1.5rem 0.5rem;
+            }
+
+            .card-header-professional h2 {
+                font-size: 1.6rem;
+            }
+
+            .report-title {
+                font-size: 0.9rem;
+                letter-spacing: 0.1em;
+            }
+
+            .branch-mini-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 1.2rem;
+            }
+
+            .particulars-table tr {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 1rem;
+            }
+
+            .particulars-table .lbl {
+                width: 100%;
+                font-size: 0.75rem;
+                margin-bottom: 0.2rem;
+                text-align: center;
+            }
+
+            .particulars-table .val {
+                width: 100%;
+                font-size: 1rem;
+                text-align: center;
+                padding-bottom: 0.5rem;
+                border-bottom: 1px dashed #eee;
+            }
+
+            .performance-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .result-box-academic {
+                padding: 1.2rem;
+            }
+
+            .result-box-academic label {
+                font-size: 0.75rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .result-box-academic .big-val {
+                font-size: clamp(2.2rem, 10vw, 2.8rem);
+            }
+
+            .scholarship-badge-official {
+                min-height: 140px;
+                padding: 1.2rem;
+                border-radius: 16px;
+                /* Simpler shape for mobile */
+            }
+
+            .scholarship-badge-official p {
+                font-size: 0.75rem;
+                margin-bottom: 0.2rem;
+            }
+
+            .scholarship-badge-official .amount {
+                font-size: clamp(1.8rem, 8vw, 2.2rem);
+            }
+
+            .footer-auth {
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .auth-item {
+                width: 100%;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                padding: 0 1.5rem 2rem !important;
+            }
+
+            .action-buttons button,
+            .action-buttons a {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cursor-glow"></div>
+    <div class="mesh-gradient"></div>
+
+    <!-- Floating Scholarship Advertisement -->
+    <div class="scholarship-float" id="scholarshipFloat">
+        <button class="scholarship-close" id="scholarshipClose" aria-label="Close scholarship banner">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+        </button>
+        <div class="scholarship-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 14l9-5-9-5-9 5 9 5z" stroke="white" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                <path
+                    d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+                    stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </div>
+        <div class="scholarship-content">
+            <h4>🎓 Scholarship Available!</h4>
+            <p>Apply now for our merit-based scholarship program</p>
+            <a href="scholarship.html" class="scholarship-btn">Learn More →</a>
+        </div>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-main">VCE</span>
+                <span class="logo-subtext">VINTECH COMPUTER EDUCATION</span>
+            </a>
+            <div class="nav-links">
+                <a href="courses.html">Courses</a>
+                <a href="events.html">Events</a>
+                <a href="contact.html">Contact Us</a>
+                <a href="about.html">About Us</a>
+                <a href="registration.html" class="btn-primary">Enroll Now</a>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="results-hero">
+            <div class="container reveal">
+                <span class="badge">VCESE Results</span>
+                <h1 style="font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1.2; margin-bottom: 2rem;">Celebrate Your
+                    <span class="bg-gradient-text">Success</span>
+                </h1>
+
+                <div class="search-container">
+                    <div class="search-box">
+                        <h2>Check Your Merit</h2>
+                        <div class="input-group">
+                            <i class="fas fa-id-card"></i>
+                            <input type="text" id="rollNumber" placeholder="Enter Roll Number (e.g. VCE2026001)">
+                        </div>
+                        <button class="btn-ripple" style="width: 100%; border: none;" onclick="checkResult()">View
+                            Scholarship Status</button>
+                    </div>
+
+                    <div id="noResult" class="no-result">
+                        <i class="fas fa-exclamation-circle"></i> Roll number not found for 2026 examination. Please
+                        check and try again.
+                    </div>
+
+                    <div id="resultOutput" class="result-card">
+                        <div class="card-watermark">VCE ORIGINAL</div>
+                        <div class="card-inner-border">
+                            <div class="card-header-professional">
+                                <h2>Vintech Computer Education</h2>
+                                <div class="report-title">VCESE - Report Card</div>
+                                <div class="branch-mini-grid">
+                                    <div class="branch">
+                                        <strong>Main Branch</strong>
+                                        Opp. Ramayan Vatika, Bareilly<br>
+                                        Ph: +91 90684 85233
+                                    </div>
+                                    <div class="branch">
+                                        <strong>Second Branch</strong>
+                                        Greater Green Park, Bareilly<br>
+                                        Ph: +91 94564 89436
+                                    </div>
+                                    <div class="branch">
+                                        <strong>Village Branch</strong>
+                                        Umedpur Bhuta, Bareilly<br>
+                                        Ph: +91 90684 85233
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="student-particulars-section">
+                                <div class="section-tag">Student Particulars</div>
+                                <table class="particulars-table">
+                                    <tr>
+                                        <td class="lbl">Enrollment No / Roll No</td>
+                                        <td class="val" id="displayRoll">VCE2026001</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="lbl">Candidate's Name</td>
+                                        <td class="val" id="studentName">John Doe</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="lbl">Father's / Guardian's Name</td>
+                                        <td class="val" id="fatherName">Richard Doe</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="lbl">Gender</td>
+                                        <td class="val" id="studentGender">Male</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="lbl">Contact Information</td>
+                                        <td class="val" id="studentPhone">+91 XXXXX XXXXX</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="lbl">Residential Address</td>
+                                        <td class="val" id="studentAddress">Bareilly, Uttar Pradesh</td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class="section-tag">Performance Appraisal</div>
+                            <div class="performance-grid">
+                                <div class="result-box-academic">
+                                    <label>Total Marks Secured</label>
+                                    <div class="big-val" id="studentScore">85/100</div>
+                                </div>
+                                <div class="scholarship-badge-official">
+                                    <p>Tuition Fee Waiver Awarded</p>
+                                    <div class="amount" id="scholarshipAmount">50% OFF</div>
+                                </div>
+                            </div>
+
+                            <div class="footer-auth">
+                                <div class="auth-item">
+                                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=VCE-VALIDATED"
+                                        class="official-seal" alt="Seal" id="verificationQr">
+                                    <p>Scan to Verify</p>
+                                </div>
+                                <div class="auth-item">
+                                    <div class="signature-line"></div>
+                                    <p style="font-weight: 800; color: var(--brand-primary); margin-bottom: 2px;">Manish
+                                        Vishwakarma</p>
+                                    <p>Center Director</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="padding: 0 3rem 3rem; display: flex; gap: 1rem; justify-content: center;"
+                            class="no-print action-buttons">
+                            <button onclick="window.print()" class="btn-ripple"
+                                style="padding: 1rem 2.5rem; border: none; font-size: 0.95rem;">
+                                <i class="fas fa-print" style="margin-right: 0.5rem;"></i> Download / Print Report Card
+                            </button>
+                            <a href="registration.html" class="btn-outline"
+                                style="padding: 1rem 2.5rem; text-decoration: none; border-radius: 12px; font-weight: 700;">Claim
+                                Scholarship</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer reveal">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <a href="index.html" class="logo">
+                        <span class="logo-main">VCE</span>
+                        <span class="logo-subtext">VINTECH COMPUTER EDUCATION</span>
+                    </a>
+                    <p>Bareilly's leading computer coaching institute for the next generation of engineers.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Explore</h4>
+                    <a href="courses.html">Courses</a>
+                    <a href="events.html">Events</a>
+                    <a href="notes.html">Notes</a>
+                    <a href="about.html">About Us</a>
+                    <a href="contact.html">Contact Us</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Student Corner</h4>
+                    <a href="registration.html">Enroll Now</a>
+                    <a href="pay-fees.html">Pay Due Fees</a>
+                    <a href="diploma.html">Find Diploma</a>
+                    <a href="scholarship.html">Scholarship</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal and Team</h4>
+                    <a href="privacypolicy.html">Privacy Policy</a>
+                    <a href="t&c.html">Terms & Conditions</a>
+                    <a href="faculty.html">Meet our Team</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Connect</h4>
+                    <a href="https://t.me/vc_edu" target="_blank"><i class="fab fa-telegram"></i> Telegram</a>
+                    <a href="https://www.instagram.com/vintech_computer_education?igsh=MTN3OXVsNXA0MTE2bg=="
+                        target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+                    <a href="https://www.linkedin.com/company/vintech-computer-education/" target="_blank"><i
+                            class="fab fa-linkedin-in"></i> LinkedIn</a>
+                    <a href="https://wa.me/+919068485233" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Main Branch: Opp. Ramayan Vatika, Bareilly | +91 90684 85233</p>
+                <p>Second Branch: Green Park, Bareilly | +91 94564 89436</p>
+                <p>&copy; 2026 Vintech Computer Education. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/@supabase/supabase-js"></script>
+    <script src="animations.js"></script>
+    <script>
+        // Supabase Initialization
+        const supaBase = supabase.createClient("https://pgvwjskubfonmirtaodo.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBndndqc2t1YmZvbm1pcnRhb2RvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk4MjY2OTUsImV4cCI6MjA3NTQwMjY5NX0.dTHvwiH_UZC7K8pxLYIt5VOstu-4Shy0DW3n3C8TJsg");
+
+        async function checkResult() {
+            const rollNumber = document.getElementById('rollNumber').value.trim().toUpperCase();
+            const resultBox = document.getElementById('resultOutput');
+            const noResult = document.getElementById('noResult');
+            const btn = document.querySelector('.search-box button');
+
+            if (!rollNumber) {
+                alert("Please enter a roll number.");
+                return;
+            }
+
+            btn.disabled = true;
+            btn.innerText = "Searching...";
+            noResult.style.display = 'none';
+            resultBox.style.display = 'none';
+
+            try {
+                const { data, error } = await supaBase
+                    .from('scholarship_students')
+                    .select('*')
+                    .eq('roll_number', rollNumber)
+                    .single();
+
+                if (error || !data) {
+                    noResult.style.display = 'block';
+                } else {
+                    // Update UI with real data
+                    document.getElementById('studentName').innerText = data.student_name;
+                    document.getElementById('displayRoll').innerText = data.roll_number;
+                    document.getElementById('fatherName').innerText = data.father_name || "N/A";
+                    document.getElementById('studentGender').innerText = data.gender || "N/A";
+                    document.getElementById('studentPhone').innerText = data.phone_number || "N/A";
+                    document.getElementById('studentAddress').innerText = data.address || "N/A";
+                    document.getElementById('studentScore').innerText = data.score !== null ? `${data.score}/100` : "N/A";
+
+                    // Calculate scholarship percent based on score if marks are available
+                    let scholarshipText = "Processing";
+                    if (data.score !== null) {
+                        const marks = data.score;
+                        if (marks >= 81) scholarshipText = "100% OFF";
+                        else if (marks >= 71) scholarshipText = "75% OFF";
+                        else if (marks >= 61) scholarshipText = "70% OFF";
+                        else if (marks >= 41) scholarshipText = "65% OFF";
+                        else if (marks >= 21) scholarshipText = "60% OFF";
+                        else if (marks >= 1) scholarshipText = "50% OFF";
+                        else scholarshipText = "Qualifying";
+                    }
+                    document.getElementById('scholarshipAmount').innerText = scholarshipText;
+
+                    // Update Verification QR to link to the results page
+                    document.getElementById('verificationQr').src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://vintecheducation.org/scholarship-results.html`;
+
+                    resultBox.style.display = 'block';
+                }
+            } catch (err) {
+                console.error("Search error:", err);
+                alert("An error occurred while fetching the result. Please try again.");
+            } finally {
+                btn.disabled = false;
+                btn.innerText = "View Scholarship Status";
+            }
+        }
+    </script>
+</body>
+
+</html>
