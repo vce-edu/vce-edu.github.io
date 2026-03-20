@@ -463,6 +463,7 @@
     <script>
         // Supabase Initialization
         const supaBase = supabase.createClient("https://auygeiqcsygchfmitfxv.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF1eWdlaXFjc3lnY2hmbWl0Znh2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjcxMDUzOTEsImV4cCI6MjA4MjY4MTM5MX0.WVpNirNUPa3v3VP5vusjAFezPvH1C8ZF16dWRPcKH-4");
+        const scholarshipSupa = supabase.createClient("https://pgvwjskubfonmirtaodo.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBndndqc2t1YmZvbm1pcnRhb2RvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk4MjY2OTUsImV4cCI6MjA3NTQwMjY5NX0.dTHvwiH_UZC7K8pxLYIt5VOstu-4Shy0DW3n3C8TJsg");
 
         let compressedPhotoBlob = null;
         let compressedThumbBlob = null;
@@ -713,14 +714,38 @@
             rollStatus.style.color = "var(--text-muted)";
 
             try {
-                const response = await fetch(`https://script.google.com/macros/s/AKfycbySLVD5LXVK1PyUo3X6dybmqiohAN4X8PPcdpH2YvXLMRsHA-aLIzGnkczqBm52ydUFmw/exec?roll=${roll}`);
-                const data = await response.json();
+                const { data, error } = await scholarshipSupa
+                    .from('scholarship_students')
+                    .select('*')
+                    .eq('roll_number', roll)
+                    .single();
 
-                if (data.exists) {
+                if (data && !error) {
                     rollValid = true;
                     rollStatus.textContent = "Valid Scholarship Roll Number Verified ✔";
                     rollStatus.style.color = "#27ae60";
-                    scholarshipPercent = calculateDiscount(data.marks);
+                    scholarshipPercent = calculateDiscount(data.score);
+
+                    // Auto-fill student details
+                    document.querySelector("input[placeholder='Full Name']").value = data.student_name || "";
+                    document.querySelector("input[placeholder=\"Father's Name\"]").value = data.father_name || "";
+                    gender.value = data.gender || "";
+                    document.querySelector("input[type=tel]").value = data.phone_number || "";
+                    document.querySelector("textarea").value = data.address || "";
+
+                    // Auto-select branch if it matches
+                    if (data.branch) {
+                        const branchSelect = document.getElementById("branchSelect");
+                        const options = Array.from(branchSelect.options);
+                        const match = options.find(opt => opt.text.toLowerCase().includes(data.branch.toLowerCase()));
+                        if (match) branchSelect.value = match.value;
+                    }
+
+                    // Trigger input normalization for auto-filled fields
+                    document.querySelectorAll("input[type='text'], textarea").forEach(inp => {
+                        if (inp.id !== "email") inp.value = inp.value.toUpperCase();
+                    });
+
                 } else {
                     rollValid = false;
                     rollStatus.textContent = "Invalid or Expired Roll Number";
