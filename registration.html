@@ -145,7 +145,7 @@
                         </div>
                         <div class="form-group">
                             <label>Email Address</label>
-                            <input type="email" placeholder="example@email.com" id="email" required />
+                            <input type="email" placeholder="example@email.com" id="email" />
                         </div>
                         <div class="form-group">
                             <label>Phone Number</label>
@@ -228,22 +228,45 @@
                 <div class="form-step">
                     <h2>Identity Verification</h2>
                     <div class="form-grid">
-                        <div class="form-group col-span-2">
+                        <div class="form-group">
                             <label>Aadhar Number</label>
                             <input type="text" placeholder="12 Digit Aadhar Number" id="aadhar" inputmode="numeric"
                                 maxlength="12" required />
                         </div>
-                        <div class="form-group col-span-2">
+                        <div class="form-group">
+                            <label>ABC ID (Academic Bank of Credits)</label>
+                            <input type="text" placeholder="12 Digit ABC ID" id="abcId" inputmode="numeric"
+                                maxlength="12" />
+                        </div>
+                        <div class="form-group">
                             <label>Passport Size Photo</label>
                             <label class="file-upload">
-                                <i class="fas fa-cloud-upload-alt"
+                                <i class="fas fa-user"
                                     style="font-size: 2rem; color: var(--brand-primary); margin-bottom: 1rem;"></i>
-                                <span>Click to Upload Photo</span>
+                                <span>Upload Photo</span>
                                 <input type="file" id="photoUpload" accept="image/png,image/jpeg" required />
-                                <small>JPG/PNG only • Max 2MB • Will be compressed automatically</small>
-                                <p id="fileError"
-                                    style="color:#e74c3c; display:none; margin-top: 10px; font-weight: 600;"></p>
                             </label>
+                        </div>
+                        <div class="form-group">
+                            <label>Left Thumb Impression</label>
+                            <label class="file-upload">
+                                <i class="fas fa-fingerprint"
+                                    style="font-size: 2rem; color: var(--brand-primary); margin-bottom: 1rem;"></i>
+                                <span>Upload Thumb</span>
+                                <input type="file" id="thumbUpload" accept="image/png,image/jpeg" required />
+                            </label>
+                        </div>
+                        <div class="form-group col-span-2">
+                            <label>Candidate Signature</label>
+                            <label class="file-upload">
+                                <i class="fas fa-pen-fancy"
+                                    style="font-size: 2rem; color: var(--brand-primary); margin-bottom: 1rem;"></i>
+                                <span>Upload Signature</span>
+                                <input type="file" id="sigUpload" accept="image/png,image/jpeg" required />
+                            </label>
+                            <p id="fileError"
+                                style="color:#e74c3c; display:none; margin-top: 10px; font-weight: 600; text-align: center;">
+                            </p>
                         </div>
                     </div>
                     <div class="form-buttons">
@@ -442,6 +465,8 @@
         const supaBase = supabase.createClient("https://auygeiqcsygchfmitfxv.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF1eWdlaXFjc3lnY2hmbWl0Znh2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjcxMDUzOTEsImV4cCI6MjA4MjY4MTM5MX0.WVpNirNUPa3v3VP5vusjAFezPvH1C8ZF16dWRPcKH-4");
 
         let compressedPhotoBlob = null;
+        let compressedThumbBlob = null;
+        let compressedSigBlob = null;
         let scholarshipPercent = 0;
         let rollValid = false;
 
@@ -534,36 +559,46 @@
         employmentStatus.addEventListener("change", toggleStatusFields);
 
         /* Image Compression */
-        const photoInput = document.getElementById("photoUpload");
+        /* Image Compression and Handling */
         const fileError = document.getElementById("fileError");
-
-        photoInput.addEventListener("change", async () => {
-            const file = photoInput.files[0];
+        async function handleFileUpload(input, label, blobSetter) {
+            const file = input.files[0];
             fileError.style.display = "none";
             if (!file) return;
 
             if (!["image/jpeg", "image/png"].includes(file.type)) {
-                fileError.textContent = "Only JPG/PNG formats are supported.";
+                fileError.textContent = `Only JPG/PNG formats are supported for ${label}.`;
                 fileError.style.display = "block";
-                photoInput.value = "";
+                input.value = "";
                 return;
             }
 
             if (file.size > 2 * 1024 * 1024) {
-                fileError.textContent = "File is too large! Maximum limit is 2MB.";
+                fileError.textContent = `${label} is too large! Maximum limit is 2MB.`;
                 fileError.style.display = "block";
-                photoInput.value = "";
+                input.value = "";
                 return;
             }
 
             fileError.style.display = "block";
-            fileError.style.color = "#f39c12"; // Warning color
-            fileError.textContent = "Processing and compressing image...";
+            fileError.style.color = "#f39c12"; // Warning
+            fileError.textContent = `Processing ${label}...`;
 
-            compressedPhotoBlob = await compressImage(file);
-            fileError.style.color = "#27ae60"; // Success color
-            fileError.textContent = "Photo ready for upload!";
-        });
+            const blob = await compressImage(file);
+            blobSetter(blob);
+            fileError.style.color = "#27ae60"; // Success
+            fileError.textContent = `${label} ready for upload!`;
+        }
+
+        document.getElementById("photoUpload").addEventListener("change", (e) =>
+            handleFileUpload(e.target, "Passport Photo", (b) => compressedPhotoBlob = b)
+        );
+        document.getElementById("thumbUpload").addEventListener("change", (e) =>
+            handleFileUpload(e.target, "Thumb Impression", (b) => compressedThumbBlob = b)
+        );
+        document.getElementById("sigUpload").addEventListener("change", (e) =>
+            handleFileUpload(e.target, "Signature", (b) => compressedSigBlob = b)
+        );
 
         function compressImage(file) {
             return new Promise((resolve) => {
@@ -775,19 +810,36 @@
             submitBtn.disabled = true;
             submitBtn.textContent = "Processing Submission...";
 
+            let uploadedPaths = [];
+
             try {
-                if (!compressedPhotoBlob) throw new Error("Please select and upload a photo.");
+                if (!compressedPhotoBlob || !compressedThumbBlob || !compressedSigBlob) {
+                    throw new Error("Please upload all three required items: Photo, Thumb Impression, and Signature.");
+                }
 
-                // 1. Storage Upload
+                // 1. Storage Uploads
                 const studentName = document.querySelector("input[placeholder='Full Name']").value;
-                const safeName = studentName.toLowerCase().replace(/[^a-z0-9]/g, '_');
-                const fileName = `photos/${safeName}_${Date.now()}.jpg`;
+                const fatherName = document.querySelector("input[placeholder=\"Father's Name\"]").value;
+                const courseName = courseSelect.value;
 
-                const { data: uploadData, error: uploadError } = await supaBase.storage
-                    .from("student-photos")
-                    .upload(fileName, compressedPhotoBlob);
+                const safeStudent = studentName.toLowerCase().replace(/[^a-z0-9]/g, '_');
+                const safeFather = fatherName.toLowerCase().replace(/[^a-z0-9]/g, '_');
+                const safeCourse = courseName.toLowerCase().replace(/[^a-z0-9]/g, '_');
 
-                if (uploadError) throw new Error("Photo upload failed: " + uploadError.message);
+                const uploadAsset = async (blob, type) => {
+                    // Convention: [student_name]_[course]_[father_name]_[phto/signature/thumb]
+                    const path = `registrations/${safeStudent}_${safeCourse}_${safeFather}_${type}.jpg`;
+                    const { data, error } = await supaBase.storage.from("student-photos").upload(path, blob, {
+                        upsert: true // Allow overwriting if same details submitted
+                    });
+                    if (error) throw error;
+                    uploadedPaths.push(path);
+                    return path;
+                }
+
+                const photoPath = await uploadAsset(compressedPhotoBlob, 'photo');
+                const thumbPath = await uploadAsset(compressedThumbBlob, 'thumb');
+                const sigPath = await uploadAsset(compressedSigBlob, 'signature');
 
                 // 2. Database Insert
                 const formData = {
@@ -810,7 +862,10 @@
                     candidate_occupation: document.getElementById("candidateOccupation").value,
                     parent_occupation: document.getElementById("parentOccupation").value,
                     aadhar: document.getElementById("aadhar").value,
-                    photo_path: uploadData.path,
+                    abc_id: document.getElementById("abcId").value,
+                    photo_path: photoPath,
+                    thumb_path: thumbPath,
+                    signature_path: sigPath,
                     course_name: courseSelect.value,
                     branch: document.getElementById("branchSelect").value,
                     admission_type: admissionType.value,
@@ -820,14 +875,15 @@
                 };
 
                 const { error: dbError } = await supaBase.from("student_admissions").insert([formData]);
-                if (dbError) {
-                    await supaBase.storage.from("student-photos").remove([uploadData.path]);
-                    throw new Error("Form submission failed: " + dbError.message);
-                }
+                if (dbError) throw dbError;
 
                 document.getElementById("successModal").style.display = "flex";
             } catch (err) {
-                alert(err.message);
+                // Rollback uploads if DB fails
+                if (uploadedPaths.length > 0) {
+                    await supaBase.storage.from("student-photos").remove(uploadedPaths);
+                }
+                alert("Submission failed: " + (err.message || err.details || "Unknown error"));
                 submitBtn.disabled = false;
                 submitBtn.textContent = "Finalize & Submit";
             }
