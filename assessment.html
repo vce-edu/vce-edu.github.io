@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Assessment | VCE Bareilly Online Portal</title>
+    <meta name="description"
+        content="Check your student assessment and performance details online at Vintech Computer Education Bareilly. Enter your roll number to access your results.">
+    <meta name="keywords"
+        content="VCE assessment check, computer student performance Bareilly, Vintech assessment portal, student results VCE Bareilly">
+    <meta name="robots" content="index, follow">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assest/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="96x96" href="assest/favicon/favicon-96x96.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assest/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="assest/favicon/site.webmanifest">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@300;400;700&family=Martel:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <style>
+        .hero .container {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero .reveal {
+            max-width: 800px;
+        }
+
+        .hero .badge {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .assessment-form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            padding: 3rem;
+            border-radius: 32px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 40px 80px rgba(106, 0, 122, 0.1);
+        }
+
+        .assessment-form-container h1 {
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .assessment-form-container p.subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+            color: var(--brand-primary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            height: 60px;
+            padding: 0 1.5rem;
+            border-radius: 16px;
+            border: 1px solid var(--glass-border);
+            background: rgba(255, 255, 255, 0.5);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: var(--transition-smooth);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--brand-primary);
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(106, 0, 122, 0.1);
+        }
+
+        .primary-btn {
+            width: 100%;
+            height: 64px;
+            background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+            color: white;
+            border: none;
+            border-radius: 16px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            box-shadow: 0 15px 35px rgba(106, 0, 122, 0.25);
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 45px rgba(106, 0, 122, 0.35);
+        }
+
+        .message-box {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-align: center;
+            display: none;
+        }
+
+        .message-box.info {
+            background: rgba(106, 0, 122, 0.05);
+            color: var(--brand-primary);
+        }
+
+        .message-box.error {
+            background: rgba(231, 76, 60, 0.1);
+            color: #e74c3c;
+        }
+
+        /* Result Cards */
+        .result-wrapper {
+            margin-top: 2rem;
+            display: none;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .result-header {
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-header h2 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--brand-primary);
+            margin-bottom: 0.2rem;
+            text-transform: uppercase;
+        }
+
+        .result-header p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, rgba(106, 0, 122, 0.06), rgba(180, 0, 200, 0.04));
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 1.4rem 1.6rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            transition: var(--transition-smooth);
+            margin-bottom: 10px;
+        }
+
+        .result-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(106, 0, 122, 0.1);
+        }
+
+        .result-card-info {
+            flex: 1;
+        }
+
+        .result-card-info .exam-id {
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--brand-primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .result-card-info .exam-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .result-card-score {
+            text-align: center;
+            min-width: 80px;
+        }
+
+        .result-card-score .score-num {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+        }
+
+        .result-card-score .score-denom {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .score-badge {
+            display: inline-block;
+            margin-top: 0.4rem;
+            padding: 0.15rem 0.6rem;
+            border-radius: 100px;
+            font-size: 0.72rem;
+            font-weight: 700;
+        }
+
+        .score-badge.excellent {
+            background: rgba(39, 174, 96, 0.12);
+            color: #27ae60;
+        }
+
+        .score-badge.good {
+            background: rgba(41, 128, 185, 0.12);
+            color: #2980b9;
+        }
+
+        .score-badge.average {
+            background: rgba(243, 156, 18, 0.12);
+            color: #e67e22;
+        }
+
+        .score-badge.poor {
+            background: rgba(231, 76, 60, 0.12);
+            color: #e74c3c;
+        }
+
+        .primary-btn.loading {
+            opacity: 0.75;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding-top: 120px !important;
+                padding-bottom: 40px !important;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem !important;
+            }
+
+            .assessment-form-container {
+                padding: 2rem;
+                border-radius: 24px;
+            }
+
+            .result-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .result-card-score {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cursor-glow"></div>
+    <div class="mesh-gradient"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-main">VCE</span>
+                <span class="logo-subtext">VINTECH COMPUTER EDUCATION</span>
+            </a>
+            <div class="nav-links">
+                <a href="courses.html">Courses</a>
+                <a href="events.html">Events</a>
+                <a href="assessment.html" class="active">Assessment</a>
+                <a href="contact.html">Contact Us</a>
+                <a href="about.html">About Us</a>
+                <a href="registration.html" class="btn-primary">Enroll Now</a>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero" style="padding-top: 140px; padding-bottom: 60px;">
+            <div class="container">
+                <div class="reveal">
+                    <span class="badge">Student Portal</span>
+                    <h1>View Your Assessment</h1>
+                    <p>View and analyze all your exam performances at Vintech Computer Education place.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="assessment-section" style="padding-bottom: 100px;">
+            <div class="container">
+                <div class="assessment-form-container reveal">
+                    <form id="assessmentForm">
+                        <div class="form-group">
+                            <label for="branchInput">Select Branch</label>
+                            <select id="branchInput" required>
+                                <option value="">Select Branch</option>
+                                <option value="main">Main – 9FJ9+7W, opp. RAMAYAN VATIKA</option>
+                                <option value="second">Second – Greater Green Park</option>
+                                <option value="third">Third – Umed Pur Puliya</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="rollInput">Roll Number</label>
+                            <input id="rollInput" name="roll" inputmode="numeric" placeholder="Enter Roll Number"
+                                autocomplete="off" required />
+                        </div>
+
+                        <button type="submit" class="primary-btn">Check Assessment</button>
+                    </form>
+
+                    <div id="message-box" class="message-box"></div>
+
+                    <!-- Result Cards -->
+                    <div id="result-wrapper" class="result-wrapper">
+                        <div class="result-header">
+                            <h2 id="student-name-heading"></h2>
+                            <p id="student-roll-heading"></p>
+                        </div>
+                        <div id="result-cards"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer reveal">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <a href="index.html" class="logo">
+                        <span class="logo-main">VCE</span>
+                        <span class="logo-subtext">VINTECH COMPUTER EDUCATION</span>
+                    </a>
+                    <p>Bareilly's leading computer coaching institute for the next generation of engineers. Located near
+                        Ramayan Vatika and Green Park.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Explore</h4>
+                    <a href="courses.html">Courses</a>
+                    <a href="events.html">Events</a>
+                    <a href="notes.html">Notes</a>
+                    <a href="about.html">About Us</a>
+                    <a href="contact.html">Contact Us</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Student Corner</h4>
+                    <a href="registration.html">Enroll Now</a>
+                    <a href="assessment.html">Assessment</a>
+                    <a href="pay-fees.html">Pay Due Fees</a>
+                    <a href="diploma.html">Find Diploma</a>
+                    <a href="scholarship.html">Scholarship</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal and Team</h4>
+                    <a href="privacypolicy.html">Privacy Policy</a>
+                    <a href="t&c.html">Terms & Conditions</a>
+                    <a href="faculty.html">Meet our Team</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Connect</h4>
+                    <a href="https://t.me/vc_edu" target="_blank"><i class="fab fa-telegram"></i> Telegram</a>
+                    <a href="https://www.instagram.com/vintech_computer_education?igsh=MTN3OXVsNXA0MTE2bg=="
+                        target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+                    <a href="https://www.linkedin.com/company/vintech-computer-education/" target="_blank"><i
+                            class="fab fa-linkedin-in"></i> LinkedIn</a>
+                    <a href="https://wa.me/+919068485233" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Main Branch: Opp. Ramayan Vatika, Bareilly | +91 90684 85233</p>
+                <p>Second Branch: Green Park, Bareilly | +91 94564 89436</p>
+                <p>&copy; 2026 Vintech Computer Education. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="animations.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        const ASSESSMENT_DB = supabase.createClient(
+            "https://pgvwjskubfonmirtaodo.supabase.co",
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBndndqc2t1YmZvbm1pcnRhb2RvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk4MjY2OTUsImV4cCI6MjA3NTQwMjY5NX0.dTHvwiH_UZC7K8pxLYIt5VOstu-4Shy0DW3n3C8TJsg"
+        );
+
+        function showMsg(text, type) {
+            const box = document.getElementById('message-box');
+            box.textContent = text;
+            box.className = 'message-box ' + type;
+            box.style.display = 'block';
+        }
+
+        function hideMsg() {
+            const box = document.getElementById('message-box');
+            box.style.display = 'none';
+        }
+
+        function getScoreBadge(score, outOf) {
+            const pct = (score / outOf) * 100;
+            if (pct >= 80) return '<span class="score-badge excellent">Excellent</span>';
+            if (pct >= 60) return '<span class="score-badge good">Good</span>';
+            if (pct >= 40) return '<span class="score-badge average">Average</span>';
+            return '<span class="score-badge poor">Needs Improvement</span>';
+        }
+
+        document.getElementById('assessmentForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const branch = document.getElementById('branchInput').value.trim();
+            const rawRoll = document.getElementById('rollInput').value.trim();
+            const btn = this.querySelector('button[type="submit"]');
+
+            if (!branch || !rawRoll) {
+                showMsg('Please select a branch and enter your roll number.', 'error');
+                return;
+            }
+
+            // Build formatted roll number: first letter of branch + "_" + roll number
+            const branchInitial = branch.charAt(0).toLowerCase();
+            const formattedRoll = branchInitial + '_' + rawRoll;
+
+            // UI: loading state
+            btn.textContent = 'Fetching Results…';
+            btn.classList.add('loading');
+            hideMsg();
+            document.getElementById('result-wrapper').style.display = 'none';
+            document.getElementById('result-cards').innerHTML = '';
+
+            try {
+                const { data, error } = await ASSESSMENT_DB
+                    .from('exam_result')
+                    .select('*')
+                    .eq('roll_number', formattedRoll);
+
+                if (error) throw error;
+
+                if (!data || data.length === 0) {
+                    showMsg(`No results found for roll number "${formattedRoll}". Please check your details and try again.`, 'error');
+                } else {
+                    const student = data[0];
+                    document.getElementById('student-name-heading').textContent = student.student_name;
+                    document.getElementById('student-roll-heading').textContent =
+                        `Roll No: ${formattedRoll}  ·  Father: ${student.father_name}`;
+
+                    const cardsHTML = data.map(row => {
+                        const badge = getScoreBadge(row.score, row.out_of);
+                        return `
+                        <div class="result-card">
+                            <div class="result-card-info">
+                                <div class="exam-id">Exam ID: ${row.exam_id}</div>
+                                <div class="exam-title">Assessment Result</div>
+                            </div>
+                            <div class="result-card-score">
+                                <div class="score-num">${row.score}</div>
+                                <div class="score-denom">out of ${row.out_of}</div>
+                                ${badge}
+                            </div>
+                        </div>`;
+                    }).join('');
+
+                    document.getElementById('result-cards').innerHTML = cardsHTML;
+                    document.getElementById('result-wrapper').style.display = 'flex';
+                }
+            } catch (err) {
+                console.error('Assessment fetch error:', err);
+                showMsg('Something went wrong while fetching results. Please try again.', 'error');
+            } finally {
+                btn.textContent = 'Check Assessment';
+                btn.classList.remove('loading');
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1248,11 +1248,9 @@ section {
     .hero-grid {
         gap: 3rem;
     }
-}
 
-@media (max-width: 992px) {
-    section {
-        padding: var(--section-padding-tablet) 0;
+    .menu-toggle {
+        display: flex;
     }
 
     .nav-links {
@@ -1294,8 +1292,11 @@ section {
         letter-spacing: 0.15em;
     }
 
-    .menu-toggle {
-        display: flex;
+}
+
+@media (max-width: 992px) {
+    section {
+        padding: var(--section-padding-tablet) 0;
     }
 
     .hero-grid,
