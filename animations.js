@@ -1,22 +1,46 @@
+const throttle = (func, limit) => {
+    let lastFunc;
+    let lastRan;
+    return function() {
+        const context = this;
+        const args = arguments;
+        if (!lastRan) {
+            func.apply(context, args);
+            lastRan = Date.now();
+        } else {
+            clearTimeout(lastFunc);
+            lastFunc = setTimeout(function() {
+                if ((Date.now() - lastRan) >= limit) {
+                    func.apply(context, args);
+                    lastRan = Date.now();
+                }
+            }, limit - (Date.now() - lastRan));
+        }
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const cursor = document.querySelector('.cursor-glow');
     const interactiveElements = document.querySelectorAll('a, button, .track-card, input');
 
     // Restore default cursor and make glow a background effect
-    document.addEventListener('mousemove', (e) => {
-        if (cursor) {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
+    const handleMouseMove = (e) => {
+        requestAnimationFrame(() => {
+            if (cursor) {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
 
-            // Background Parallax based on mouse (only if exists)
-            const mesh = document.querySelector('.mesh-gradient');
-            if (mesh) {
-                const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
-                const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
-                mesh.style.transform = `translate(${moveX}px, ${moveY}px)`;
+                // Background Parallax based on mouse (only if exists)
+                const mesh = document.querySelector('.mesh-gradient');
+                if (mesh) {
+                    const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
+                    const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
+                    mesh.style.transform = `translate(${moveX}px, ${moveY}px)`;
+                }
             }
-        }
-    });
+        });
+    };
+    document.addEventListener('mousemove', throttle(handleMouseMove, 16));
 
     // Mobile Menu Toggle
     const menuToggle = document.querySelector('.menu-toggle');
@@ -59,42 +83,45 @@ document.addEventListener('DOMContentLoaded', () => {
     const navbar = document.querySelector('.navbar');
     let lastScrollTop = 0;
 
-    window.addEventListener('scroll', () => {
-        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const handleScroll = () => {
+        requestAnimationFrame(() => {
+            const scrollTop = window.scrollY || document.documentElement.scrollTop;
 
-        // Progress
-        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrolled = (winScroll / height) * 100;
-        if (progressBar) progressBar.style.width = scrolled + "%";
+            // Progress
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            if (progressBar) progressBar.style.width = scrolled + "%";
 
-        // Navbar scrolled state & Mobile transform
-        // Navbar scrolled state & Mobile transform
-        if (navbar) {
-            // Background & Padding state
-            if (scrollTop > 10) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-
-            // Mobile specific scroll transformation (Improved for premium feel)
-            if (window.innerWidth <= 768) {
-                if (scrollTop > lastScrollTop && scrollTop > 100) {
-                    // Scrolling Down - Hide Header
-                    navbar.style.transform = 'translateY(-100%)';
+            // Navbar scrolled state & Mobile transform
+            if (navbar) {
+                // Background & Padding state
+                if (scrollTop > 10) {
+                    navbar.classList.add('scrolled');
                 } else {
-                    // Scrolling Up - Show Header
+                    navbar.classList.remove('scrolled');
+                }
+
+                // Mobile specific scroll transformation (Improved for premium feel)
+                if (window.innerWidth <= 768) {
+                    if (scrollTop > lastScrollTop && scrollTop > 100) {
+                        // Scrolling Down - Hide Header
+                        navbar.style.transform = 'translateY(-100%)';
+                    } else {
+                        // Scrolling Up - Show Header
+                        navbar.style.transform = 'translateY(0)';
+                    }
+                } else {
+                    // Reset transform for desktop
                     navbar.style.transform = 'translateY(0)';
                 }
-            } else {
-                // Reset transform for desktop
-                navbar.style.transform = 'translateY(0)';
             }
-        }
 
-        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-    });
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        });
+    };
+
+    window.addEventListener('scroll', throttle(handleScroll, 50));
 
     // Reveal Animations
     const observer = new IntersectionObserver((entries) => {
