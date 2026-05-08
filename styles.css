@@ -59,7 +59,8 @@ body::before {
 
 @media (max-width: 768px) {
     body::before {
-        display: none; /* Disable noise on mobile for performance */
+        display: none;
+        /* Disable noise on mobile for performance */
     }
 }
 
@@ -160,7 +161,8 @@ h3 {
 
 @media (max-width: 768px) {
     .navbar.scrolled {
-        backdrop-filter: none; /* Disable heavy blur on mobile */
+        backdrop-filter: none;
+        /* Disable heavy blur on mobile */
         background: #fff;
         border-bottom: 1px solid var(--glass-border);
     }
@@ -1617,9 +1619,9 @@ section {
 
 @media (max-width: 768px) {
 
+    .container,
     .nav-container {
         padding: 0 1.5rem;
-        /* Reverting to 1.5rem but ensuring width handling */
         width: 100%;
         max-width: 100vw;
     }
@@ -1729,9 +1731,9 @@ section {
 
 @media (max-width: 480px) {
     .hero h1 {
-        font-size: clamp(2.4rem, 10vw, 3rem);
+        font-size: clamp(2.8rem, 10vw, 3.5rem);
         line-height: 1.1;
-        letter-spacing: -0.03em;
+        letter-spacing: -0.04em;
     }
 
     .hero-btns {
@@ -1770,31 +1772,84 @@ section {
 
     /* Courses page responsive */
     .courses-hero {
-        padding: 140px 0 60px;
-    }
-
-    .courses-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
+        padding: 120px 0 40px;
     }
 
     .category-filter {
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding: 0.5rem 1.5rem 1.5rem;
+        margin: 0 -1.5rem 2.5rem;
+        /* Negative margin to bleed to edges */
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
         gap: 0.8rem;
-        margin-bottom: 3rem;
+    }
+
+    .category-filter::-webkit-scrollbar {
+        display: none;
     }
 
     .filter-btn {
+        white-space: nowrap;
         padding: 0.7rem 1.5rem;
         font-size: 0.85rem;
     }
 
+    .courses-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
     .course-card {
-        padding: 2.5rem 2rem;
+        padding: 2rem 1.5rem;
+        border-radius: 24px;
+    }
+
+    .course-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 1.5rem;
+        border-radius: 16px;
+    }
+
+    .course-icon svg {
+        width: 30px;
+        height: 30px;
+    }
+
+    .course-card h3 {
+        font-size: 1.5rem;
+    }
+
+    .course-description {
+        font-size: 0.95rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .course-badge {
+        position: relative;
+        top: 0;
+        right: 0;
+        margin-bottom: 1.2rem;
+        display: inline-block;
+        padding: 0.4rem 1rem;
+        font-size: 0.7rem;
+    }
+
+    .course-actions {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .course-actions .course-btn {
+        width: 100%;
     }
 
     .benefits-grid {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 1.5rem;
     }
 }
 
@@ -2160,7 +2215,6 @@ section {
     height: 100%;
     background: rgba(10, 5, 15, 0.4);
     backdrop-filter: blur(10px);
-    opacity: 0;
     transition: opacity 0.4s ease;
 }
 
