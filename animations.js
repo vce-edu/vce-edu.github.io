@@ -39,6 +39,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 navLinks.classList.remove('active');
             });
         });
+        // Set active link in navbar
+        const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+        document.querySelectorAll('.navbar a').forEach(link => {
+            const linkPath = link.getAttribute('href');
+            if (linkPath === currentPath) {
+                link.classList.add('active');
+                // If it's in a dropdown, also highlight the parent
+                if (link.closest('.dropdown-content')) {
+                    const parent = link.closest('.nav-dropdown').querySelector('.dropdown-toggle');
+                    if (parent) parent.classList.add('active');
+                }
+            }
+        });
     }
 
     // Scroll Progress
