@@ -29,7 +29,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Close menu on link click
         navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
+            link.addEventListener('click', (e) => {
+                if (link.classList.contains('dropdown-toggle')) {
+                    e.preventDefault();
+                    link.parentElement.classList.toggle('active');
+                    return;
+                }
                 menuToggle.classList.remove('active');
                 navLinks.classList.remove('active');
             });
@@ -51,6 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (progressBar) progressBar.style.width = scrolled + "%";
 
         // Navbar scrolled state & Mobile transform
+        // Navbar scrolled state & Mobile transform
         if (navbar) {
             // Background & Padding state
             if (scrollTop > 10) {
@@ -59,18 +65,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 navbar.classList.remove('scrolled');
             }
 
-            // Mobile specific scroll transformation (ONLY ON HOME PAGE)
-            const isHomePage = document.querySelector('.hero');
-            if (isHomePage && window.innerWidth <= 768) {
-                if (scrollTop > lastScrollTop && scrollTop > 50) {
-                    // Scrolling Down
-                    navbar.style.transform = 'translateY(20px)';
+            // Mobile specific scroll transformation (Improved for premium feel)
+            if (window.innerWidth <= 768) {
+                if (scrollTop > lastScrollTop && scrollTop > 100) {
+                    // Scrolling Down - Hide Header
+                    navbar.style.transform = 'translateY(-100%)';
                 } else {
-                    // Scrolling Up
+                    // Scrolling Up - Show Header
                     navbar.style.transform = 'translateY(0)';
                 }
             } else {
-                // Reset transform for desktop or other pages
+                // Reset transform for desktop
                 navbar.style.transform = 'translateY(0)';
             }
         }
