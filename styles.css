@@ -173,6 +173,7 @@ h3 {
     font-weight: 800;
     letter-spacing: 0.15em;
     color: var(--brand-primary);
+    align-self: center;
 }
 
 @supports (-webkit-background-clip: text) or (background-clip: text) {
