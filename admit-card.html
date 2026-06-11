@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMHX2RMVVC"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-EMHX2RMVVC');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admit Card | VCE Bareilly – Vintech Computer Education</title>
+    <meta name="description"
+        content="Download your admit card from Vintech Computer Education (VCE) Bareilly. Enter your roll number and name to access your official admit card.">
+    <meta name="keywords"
+        content="VCE admit card, Vintech Computer Education admit card, VCE Bareilly exam card, student admit card Bareilly">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="https://vintecheducation.org/admit-card.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Admit Card | Vintech Computer Education">
+    <meta property="og:description"
+        content="Access your official admit card issued by Vintech Computer Education. Enter your roll number to retrieve your exam details.">
+    <meta property="og:url" content="https://vintecheducation.org/admit-card.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon/favicon-96x96.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="assets/favicon/site.webmanifest">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style"
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@300;400;700&family=Martel:wght@400;700&display=swap">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@300;400;700&family=Martel:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    </noscript>
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <style>
+        .hero .container {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero .reveal {
+            max-width: 800px;
+        }
+
+        .hero .badge {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ── Form Container ── */
+        .admit-form-container {
+            max-width: 580px;
+            margin: 0 auto;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            padding: 3rem;
+            border-radius: 32px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 40px 80px rgba(106, 0, 122, 0.12);
+        }
+
+        .admit-form-container h2 {
+            margin-bottom: 0.4rem;
+            text-align: center;
+            font-size: 1.6rem;
+            color: var(--text-primary);
+        }
+
+        .admit-form-container p.subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            font-size: 0.95rem;
+        }
+
+        /* ── Form Groups ── */
+        .form-group {
+            margin-bottom: 1.8rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.7rem;
+            font-weight: 700;
+            color: var(--brand-primary);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .form-group input {
+            width: 100%;
+            height: 58px;
+            padding: 0 1.5rem;
+            border-radius: 16px;
+            border: 1px solid var(--glass-border);
+            background: rgba(255, 255, 255, 0.5);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--text-primary);
+            transition: var(--transition-smooth);
+            box-sizing: border-box;
+        }
+
+        .form-group input::placeholder {
+            color: #b0b0c0;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--brand-primary);
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(106, 0, 122, 0.1);
+        }
+
+        /* ── Primary Button ── */
+        .primary-btn {
+            width: 100%;
+            height: 62px;
+            background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+            color: white;
+            border: none;
+            border-radius: 16px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            box-shadow: 0 15px 35px rgba(106, 0, 122, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            font-family: var(--font-body);
+            letter-spacing: 0.02em;
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 45px rgba(106, 0, 122, 0.38);
+        }
+
+        .primary-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .primary-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Spinner inside button */
+        .btn-spinner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+            display: none;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .primary-btn.loading .btn-text {
+            display: none;
+        }
+
+        .primary-btn.loading .btn-spinner {
+            display: block;
+        }
+
+        /* ── Message Box ── */
+        .message-box {
+            margin-top: 1.5rem;
+            padding: 1rem 1.2rem;
+            border-radius: 14px;
+            font-weight: 600;
+            font-size: 0.92rem;
+            text-align: center;
+            display: none;
+            line-height: 1.5;
+        }
+
+        .message-box.info {
+            background: rgba(106, 0, 122, 0.06);
+            color: var(--brand-primary);
+            border: 1px solid rgba(106, 0, 122, 0.15);
+        }
+
+        .message-box.success {
+            background: rgba(46, 204, 113, 0.1);
+            color: #1e7e42;
+            border: 1px solid rgba(46, 204, 113, 0.25);
+        }
+
+        .message-box.error {
+            background: rgba(231, 76, 60, 0.09);
+            color: #c0392b;
+            border: 1px solid rgba(231, 76, 60, 0.2);
+        }
+
+        /* ── Icon decoration above form ── */
+        .admit-icon-wrap {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 12px 30px rgba(106, 0, 122, 0.25);
+        }
+
+        .admit-icon-wrap i {
+            font-size: 1.8rem;
+            color: #fff;
+        }
+
+        /* ── Divider ── */
+        .form-divider {
+            height: 1px;
+            background: var(--glass-border);
+            margin: 2rem 0;
+        }
+
+        /* ── Responsiveness ── */
+        @media (max-width: 768px) {
+            .hero {
+                padding-top: 120px !important;
+                padding-bottom: 40px !important;
+            }
+
+            .hero h1 {
+                font-size: 2.4rem !important;
+            }
+
+            .admit-form-container {
+                padding: 2rem 1.5rem;
+                border-radius: 24px;
+            }
+
+            .form-group input {
+                height: 54px;
+                font-size: 0.95rem;
+            }
+
+            .primary-btn {
+                height: 56px;
+                font-size: 1rem;
+            }
+
+            .admit-icon-wrap {
+                width: 60px;
+                height: 60px;
+            }
+
+            .admit-icon-wrap i {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cursor-glow"></div>
+    <div class="mesh-gradient"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-main">VCE</span>
+                <span class="logo-subtext">VINTECH COMPUTER EDUCATION</span>
+            </a>
+            <div class="nav-links">
+                <div class="nav-dropdown">
+                    <a href="javascript:void(0)" class="dropdown-toggle">More <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="events.html">Events</a>
+                        <a href="assessment.html">Assessment</a>
+                        <a href="pay-fees.html">Pay Due Fees</a>
+                        <a href="faculty.html">Faculty</a>
+                    </div>
+                </div>
+                <a href="courses.html">Courses</a>
+                <a href="contact.html">Contact Us</a>
+                <a href="about.html">About Us</a>
+                <a href="registration.html" class="btn-primary">Enroll Now</a>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero -->
+        <section class="hero" style="padding-top: 140px; padding-bottom: 60px;">
+            <div class="container">
+                <div class="reveal">
+                    <span class="badge">Student Resources</span>
+                    <h1>Admit <span class="bg-gradient-text">Card</span></h1>
+                    <p>Access your official admit card issued by Vintech Computer Education. Enter your roll number and
+                        full name below to retrieve your exam details.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Admit Card Fetch Section -->
+        <section class="diploma-finder" style="padding-bottom: 100px;">
+            <div class="container">
+                <div class="admit-form-container reveal">
+
+                    <div class="admit-icon-wrap">
+                        <i class="fas fa-id-card"></i>
+                    </div>
+
+                    <h2>Fetch Your Admit Card</h2>
+                    <p class="subtitle">Enter your details exactly as registered at VCE</p>
+
+                    <form id="admitCardForm" autocomplete="off">
+                        <div class="form-group">
+                            <label for="rollInput">Roll Number</label>
+                            <input id="rollInput" type="text" inputmode="numeric" pattern="\d{1,10}"
+                                placeholder="Enter your Roll Number (e.g. 1042)" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nameInput">Full Name</label>
+                            <input id="nameInput" type="text" placeholder="Enter your Full Name" required />
+                        </div>
+
+                        <button type="submit" id="fetchBtn" class="primary-btn">
+                            <span class="btn-text"><i class="fas fa-search"></i>&nbsp;&nbsp;Fetch Admit Card</span>
+                            <span class="btn-spinner"></span>
+                        </button>
+                    </form>
+
+                    <div id="messageBox" class="message-box"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer reveal">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <a href="index.html" class="logo">
+                        <span class="logo-main">VCE</span>
+                        <span class="logo-subtext">VINTECH COMPUTER EDUCATION</span>
+                    </a>
+                    <p>Bareilly's leading computer coaching institute for the next generation of engineers.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Explore</h4>
+                    <a href="courses.html">Courses</a>
+                    <a href="events.html">Events</a>
+                    <a href="notes.html">Notes</a>
+                    <a href="about.html">About Us</a>
+                    <a href="contact.html">Contact Us</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Student Corner</h4>
+                    <a href="registration.html">Enroll Now</a>
+                    <a href="assessment.html">Assessment</a>
+                    <a href="pay-fees.html">Pay Due Fees</a>
+                    <a href="diploma.html">Find Diploma</a>
+                    <a href="scholarship.html">Scholarship</a>
+                    <a href="admit-card.html">Admit Card</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal and Team</h4>
+                    <a href="privacypolicy.html">Privacy Policy</a>
+                    <a href="t&c.html">Terms &amp; Conditions</a>
+                    <a href="faculty.html">Meet our Team</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Connect</h4>
+                    <a href="https://t.me/vc_edu" target="_blank"><i class="fab fa-telegram"></i> Telegram</a>
+                    <a href="https://www.instagram.com/vintech_computer_education?igsh=MTN3OXVsNXA0MTE2bg=="
+                        target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+                    <a href="https://www.linkedin.com/company/vintech-computer-education/" target="_blank"><i
+                            class="fab fa-linkedin-in"></i> LinkedIn</a>
+                    <a href="https://wa.me/+919068485233" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Main Branch: Opp. Ramayan Vatika, Bareilly | +91 90684 85233</p>
+                <p>Second Branch: Green Park, Bareilly | +91 94564 89436</p>
+                <p>&copy; 2026 Vintech Computer Education. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="animations.js"></script>
+
+    <!-- jsPDF for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <script>
+        // ── Supabase Clients ──────────────────────────────────────────────────
+
+        // 1. Photos bucket (student-photos)
+        const PHOTOS_URL = "https://auygeiqcsygchfmitfxv.supabase.co";
+        const PHOTOS_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF1eWdlaXFjc3lnY2hmbWl0Znh2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjcxMDUzOTEsImV4cCI6MjA4MjY4MTM5MX0.WVpNirNUPa3v3VP5vusjAFezPvH1C8ZF16dWRPcKH-4';
+        const photosClient = supabase.createClient(PHOTOS_URL, PHOTOS_ANON_KEY);
+
+        // 2. Scholarship table
+        const SCHOLARSHIP_URL = "https://pgvwjskubfonmirtaodo.supabase.co";
+        const SCHOLARSHIP_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBndndqc2t1YmZvbm1pcnRhb2RvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk4MjY2OTUsImV4cCI6MjA3NTQwMjY5NX0.dTHvwiH_UZC7K8pxLYIt5VOstu-4Shy0DW3n3C8TJsg';
+        const scholarshipClient = supabase.createClient(SCHOLARSHIP_URL, SCHOLARSHIP_ANON_KEY);
+
+        // ── UI Helpers ────────────────────────────────────────────────────────
+
+        const form = document.getElementById('admitCardForm');
+        const fetchBtn = document.getElementById('fetchBtn');
+        const msgBox = document.getElementById('messageBox');
+
+        function showMessage(text, type /* 'info' | 'success' | 'error' */) {
+            msgBox.textContent = text;
+            msgBox.className = `message-box ${type}`;
+            msgBox.style.display = 'block';
+        }
+
+        function hideMessage() {
+            msgBox.style.display = 'none';
+        }
+
+        function setLoading(state) {
+            fetchBtn.disabled = state;
+            fetchBtn.classList.toggle('loading', state);
+        }
+
+        // ── Form Submit ───────────────────────────────────────────────────────
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            hideMessage();
+
+            const rollNumber = document.getElementById('rollInput').value.trim();
+            const fullName = document.getElementById('nameInput').value.trim();
+
+            if (!rollNumber || !fullName) {
+                showMessage('Please fill in both fields.', 'error');
+                return;
+            }
+
+            setLoading(true);
+
+            try {
+                // Query scholarship table by roll number
+                const { data, error } = await scholarshipClient
+                    .from('scholarship_students')
+                    .select('*')
+                    .eq('roll_number', rollNumber);
+
+                if (error) {
+                    console.error('Supabase error:', error);
+                    showMessage('Something went wrong. Please try again later.', 'error');
+                    return;
+                }
+
+                if (!data || data.length === 0) {
+                    showMessage('Invalid Roll Number. No record found for this roll number.', 'error');
+                    return;
+                }
+
+                // Record(s) found — generate PDF admit card
+                const student = data[0];
+                await generateAdmitCardPDF(student);
+
+                showMessage(
+                    `✅ Admit Card for Roll No. ${rollNumber} has been downloaded!`,
+                    'success'
+                );
+
+            } catch (err) {
+                console.error('Unexpected error:', err);
+                showMessage('An unexpected error occurred. Please try again.', 'error');
+            } finally {
+                setLoading(false);
+            }
+        });
+
+        // ── PDF Generation ────────────────────────────────────────────────────
+
+        async function generateAdmitCardPDF(student) {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF({ unit: 'mm', format: 'a4' });
+
+            const W = 210; // A4 width mm
+            const margin = 18;
+            const contentW = W - margin * 2;
+
+            // ── Colour Palette ──
+            const purple = [106, 0, 122];
+            const purpleLight = [240, 220, 245];
+            const darkText = [30, 30, 50];
+            const mutedText = [100, 100, 120];
+            const white = [255, 255, 255];
+            const borderGrey = [210, 210, 225];
+
+            // ── Helper: rounded rect ──
+            function filledRect(x, y, w, h, r, fillColor, strokeColor) {
+                doc.setFillColor(...fillColor);
+                if (strokeColor) doc.setDrawColor(...strokeColor);
+                doc.roundedRect(x, y, w, h, r, r, strokeColor ? 'FD' : 'F');
+            }
+
+            // ── PAGE BORDER ──
+            doc.setDrawColor(...purple);
+            doc.setLineWidth(1.2);
+            doc.roundedRect(8, 8, W - 16, 281, 4, 4);
+            doc.setLineWidth(0.3);
+            doc.setDrawColor(...purpleLight);
+            doc.roundedRect(10, 10, W - 20, 277, 3, 3);
+
+            // ── HEADER BANNER ──
+            filledRect(8, 8, W - 16, 32, 4, purple);
+
+            // Institute name
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(15);
+            doc.setTextColor(...white);
+            doc.text('VINTECH COMPUTER EDUCATION', W / 2, 21, { align: 'center' });
+
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(8.5);
+            doc.setTextColor(220, 190, 230);
+            doc.text('Opp. Ramayan Vatika, Bareilly  |  vintecheducation.org  |  +91 90684 85233', W / 2, 27.5, { align: 'center' });
+
+            // ADMIT CARD title pill
+            filledRect(W / 2 - 28, 31, 56, 10, 3, white);
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(9);
+            doc.setTextColor(...purple);
+            doc.text('ADMIT CARD', W / 2, 37.5, { align: 'center' });
+
+            // ── STUDENT PHOTO AREA (right side) ──
+            const photoX = W - margin - 36;
+            const photoY = 50;
+            const photoW = 34;
+            const photoH = 40;
+
+            // Try to fetch student photo from storage (private bucket — signed URL)
+            let photoDataURL = null;
+            try {
+                const photoPath = `${student.roll_number + "_" + student.student_name || student.id}.png`;
+                const { data: urlData, error: signedErr } = await photosClient.storage
+                    .from('student-photos')
+                    .createSignedUrl(photoPath, 60 * 60); // expires in 1 hour
+
+                if (!signedErr && urlData?.signedUrl) {
+                    photoDataURL = await fetchImageAsDataURL(urlData.signedUrl);
+                }
+            } catch (_) { /* no photo — skip */ }
+
+            // Photo box
+            filledRect(photoX - 1, photoY - 1, photoW + 2, photoH + 2, 3, purpleLight);
+            if (photoDataURL) {
+                doc.addImage(photoDataURL, 'JPEG', photoX, photoY, photoW, photoH);
+            } else {
+                // Placeholder
+                filledRect(photoX, photoY, photoW, photoH, 2, [230, 215, 240]);
+                doc.setFont('helvetica', 'normal');
+                doc.setFontSize(7.5);
+                doc.setTextColor(...mutedText);
+                doc.text('Photo', photoX + photoW / 2, photoY + photoH / 2 - 2, { align: 'center' });
+                doc.text('Not Available', photoX + photoW / 2, photoY + photoH / 2 + 4, { align: 'center' });
+            }
+
+            // Photo label
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(6.5);
+            doc.setTextColor(...purple);
+            doc.text('STUDENT PHOTO', photoX + photoW / 2, photoY + photoH + 5, { align: 'center' });
+
+            // ── STUDENT DETAILS SECTION ──
+            const detailsX = margin;
+            let curY = 50;
+
+            // Section title
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(9);
+            doc.setTextColor(...purple);
+            doc.text('STUDENT DETAILS', detailsX, curY);
+
+            // Underline
+            doc.setDrawColor(...purple);
+            doc.setLineWidth(0.4);
+            doc.line(detailsX, curY + 1.5, detailsX + 50, curY + 1.5);
+
+            curY += 7;
+
+            // Details rows
+            const fields = [
+                ['Roll Number', student.roll_number || student.id || '—'],
+                ['Student Name', student.name || student.student_name || student.full_name || '—'],
+                ['Branch', student.branch || student.branch_name || '—'],
+                ["Father's Name", student.father_name || student.fathers_name || '—'],
+                ['Mobile', student.phone_number || student.mobile || '—'],
+            ];
+
+            const labelW = 42;
+            const valueW = contentW - photoW - 10 - labelW;
+            const rowH = 9;
+
+            fields.forEach(([label, value], i) => {
+                const rowY = curY + i * rowH;
+                const bg = i % 2 === 0 ? [248, 243, 252] : white;
+
+                filledRect(detailsX, rowY, labelW + valueW, rowH - 0.5, 1.5, bg, borderGrey);
+
+                // Label
+                doc.setFont('helvetica', 'bold');
+                doc.setFontSize(8);
+                doc.setTextColor(...mutedText);
+                doc.text(label, detailsX + 3, rowY + 6);
+
+                // Separator
+                doc.setDrawColor(...borderGrey);
+                doc.setLineWidth(0.2);
+                doc.line(detailsX + labelW, rowY, detailsX + labelW, rowY + rowH - 0.5);
+
+                // Value
+                doc.setFont('helvetica', 'normal');
+                doc.setFontSize(8.5);
+                doc.setTextColor(...darkText);
+                const valStr = String(value).toUpperCase();
+                doc.text(valStr, detailsX + labelW + 3, rowY + 6);
+            });
+
+            curY += fields.length * rowH + 10;
+
+            // ── EXAM / SCHOLARSHIP INFO ──
+            filledRect(margin, curY, contentW, 8, 2, purple);
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(9);
+            doc.setTextColor(...white);
+            doc.text('EXAM / SCHOLARSHIP INFORMATION', W / 2, curY + 5.5, { align: 'center' });
+            curY += 12;
+
+            // Branch → Exam Centre address mapping
+            const branchVal = (student.branch || '').toLowerCase();
+            let examCenterAddress = '—';
+            if (branchVal.includes('main') || branchVal.includes('first') || branchVal === '1') {
+                examCenterAddress = 'Opp. Ramayan Vatika, Chandpur Bichpuri, Bareilly';
+            } else if (branchVal.includes('second') || branchVal.includes('green') || branchVal === '2') {
+                examCenterAddress = 'Greater Green Park Colony, Bareilly';
+            } else if (branchVal.includes('third') || branchVal.includes('umed') || branchVal === '3') {
+                examCenterAddress = 'Umedpur Bhuta, Bareilly';
+            } else if (student.branch) {
+                examCenterAddress = student.branch;
+            }
+
+            // Format YYYY-MM-DD → "16 June 2026"
+            function formatDate(raw) {
+                if (!raw) return '—';
+                // Append T00:00:00 to avoid UTC offset shifting the day
+                const d = new Date(raw.includes('T') ? raw : raw + 'T00:00:00');
+                if (isNaN(d)) return raw; // fallback: show as-is
+                return d.toLocaleDateString('en-IN', { day: '2-digit', month: 'long', year: 'numeric' });
+            }
+
+            const examFields = [
+                ['Exam Date', formatDate(student.date || student.exam_date)],
+                ['Exam Centre', examCenterAddress],
+                ['Issued On', formatDate(student.issued_date) !== '—'
+                    ? formatDate(student.issued_date)
+                    : formatDate(new Date().toISOString())],
+            ];
+
+            const halfW = contentW / 2 - 3;
+            examFields.forEach(([label, value], i) => {
+                const col = i % 2;
+                const row = Math.floor(i / 2);
+                const cellX = margin + col * (halfW + 6);
+                const cellY = curY + row * 10;
+                const bg = row % 2 === 0 ? [248, 243, 252] : white;
+
+                filledRect(cellX, cellY, halfW, 9, 1.5, bg, borderGrey);
+
+                doc.setFont('helvetica', 'bold');
+                doc.setFontSize(7.5);
+                doc.setTextColor(...mutedText);
+                doc.text(label, cellX + 3, cellY + 3.5);
+
+                doc.setFont('helvetica', 'normal');
+                doc.setFontSize(8.5);
+                doc.setTextColor(...darkText);
+                doc.text(String(value), cellX + 3, cellY + 7.5);
+            });
+
+            curY += Math.ceil(examFields.length / 2) * 10 + 10;
+
+            // ── INSTRUCTIONS BOX ──
+            filledRect(margin, curY, contentW, 42, 3, [253, 248, 255], purpleLight);
+
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(8.5);
+            doc.setTextColor(...purple);
+            doc.text('INSTRUCTIONS TO CANDIDATE', margin + 4, curY + 7);
+
+            const instructions = [
+                '1. This admit card must be presented at the examination / scholarship centre.',
+                '2. Carry a valid government-issued photo ID along with this admit card.',
+                '3. Mobile phones and electronic devices are NOT allowed in the exam hall.',
+                '4. Any attempt at unfair means will lead to immediate disqualification.',
+            ];
+
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(7.8);
+            doc.setTextColor(...darkText);
+            instructions.forEach((line, idx) => {
+                doc.text(line, margin + 4, curY + 14 + idx * 6);
+            });
+
+            curY += 48;
+
+            // ── SIGNATURE AREA ──
+            const sigBoxW = 55;
+            filledRect(margin, curY, sigBoxW, 18, 2, [250, 245, 255], borderGrey);
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(7);
+            doc.setTextColor(...purple);
+            doc.text('STUDENT SIGNATURE', margin + sigBoxW / 2, curY + 14, { align: 'center' });
+
+            filledRect(W - margin - sigBoxW, curY, sigBoxW, 18, 2, [250, 245, 255], borderGrey);
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(7);
+            doc.setTextColor(...purple);
+            doc.text('EXAMINER SIGNATURE', W - margin - sigBoxW / 2, curY + 14, { align: 'center' });
+
+            // VCE seal text (centre)
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(8);
+            doc.setTextColor(...purple);
+            doc.text('VCE', W / 2, curY + 8, { align: 'center' });
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(6);
+            doc.setTextColor(...mutedText);
+            doc.text('Official Seal', W / 2, curY + 13, { align: 'center' });
+
+            // ── FOOTER STRIP ──
+            const footerY = 282;
+            filledRect(8, footerY, W - 16, 7, 0, purple);
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(6.5);
+            doc.setTextColor(...white);
+            doc.text(
+                'This is a computer-generated admit card. For queries contact: info@vintecheducation.org | +91 90684 85233',
+                W / 2, footerY + 4.5, { align: 'center' }
+            );
+
+            // ── SAVE ──
+            const filename = `AdmitCard_${student.roll_number || student.id || 'VCE'}.pdf`;
+            doc.save(filename);
+        }
+
+        // Helper: fetch a remote image and convert to base64 data URL
+        async function fetchImageAsDataURL(url) {
+            const response = await fetch(url);
+            if (!response.ok) throw new Error('Image fetch failed');
+            const blob = await response.blob();
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = reject;
+                reader.readAsDataURL(blob);
+            });
+        }
+    </script>
+</body>
+
+</html>
