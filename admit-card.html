@@ -692,8 +692,23 @@
                 return d.toLocaleDateString('en-IN', { day: '2-digit', month: 'long', year: 'numeric' });
             }
 
+            // Format HH:MM:SS → "09:00 AM"
+            function formatTime(raw) {
+                if (!raw) return '—';
+                const parts = raw.split(':');
+                if (parts.length < 2) return raw;
+                let hours = parseInt(parts[0], 10);
+                const minutes = parts[1];
+                const ampm = hours >= 12 ? 'PM' : 'AM';
+                hours = hours % 12;
+                hours = hours ? hours : 12; // the hour '0' should be '12'
+                const hoursStr = hours < 10 ? '0' + hours : hours;
+                return `${hoursStr}:${minutes} ${ampm}`;
+            }
+
             const examFields = [
                 ['Exam Date', formatDate(student.date || student.exam_date)],
+                ['Exam Time', formatTime(student.time)],
                 ['Exam Centre', examCenterAddress],
                 ['Issued On', formatDate(student.issued_date) !== '—'
                     ? formatDate(student.issued_date)
