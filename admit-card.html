@@ -575,7 +575,59 @@
             // Try to fetch student photo from storage (private bucket — signed URL)
             let photoDataURL = null;
             try {
-                const photoPath = `${student.roll_number + "_" + student.student_name || student.id}.png`;
+                // List files in the bucket matching the roll number prefix to check for compatible extension
+                const searchPrefix = String(student.roll_number);
+                const { data: files, error: listErr } = await photosClient.storage
+                    .from('student-photos')
+                    .list('', {
+                        search: searchPrefix
+                    });
+
+                let photoPath = null;
+                if (!listErr && files && files.length > 0) {
+                    const rollStr = String(student.roll_number);
+                    const nameStr = String(student.student_name || '').toLowerCase();
+                    const combinedName = (rollStr + "_" + nameStr).toLowerCase();
+
+                    // Filter files that have compatible image extensions
+                    const imageFiles = files.filter(f => {
+                        const parts = f.name.split('.');
+                        if (parts.length < 2) return false;
+                        const ext = parts.pop().toLowerCase();
+                        return ['png', 'jpg', 'jpeg', 'webp', 'bmp', 'gif'].includes(ext);
+                    });
+
+                    // Try to find exact match of roll_number_name.<ext>
+                    let matchedFile = imageFiles.find(f => {
+                        const nameWithoutExt = f.name.substring(0, f.name.lastIndexOf('.')).toLowerCase();
+                        return nameWithoutExt === combinedName;
+                    });
+
+                    // Try to find exact match of roll_number.<ext>
+                    if (!matchedFile) {
+                        matchedFile = imageFiles.find(f => {
+                            const nameWithoutExt = f.name.substring(0, f.name.lastIndexOf('.')).toLowerCase();
+                            return nameWithoutExt === rollStr;
+                        });
+                    }
+
+                    // Try to find a file starting with roll_number
+                    if (!matchedFile) {
+                        matchedFile = imageFiles.find(f => {
+                            return f.name.toLowerCase().startsWith(rollStr);
+                        });
+                    }
+
+                    if (matchedFile) {
+                        photoPath = matchedFile.name;
+                    }
+                }
+
+                // If not found in listed files, construct default fallback
+                if (!photoPath) {
+                    photoPath = `${student.roll_number + "_" + student.student_name || student.id}.png`;
+                }
+
                 const { data: urlData, error: signedErr } = await photosClient.storage
                     .from('student-photos')
                     .createSignedUrl(photoPath, 60 * 60); // expires in 1 hour
@@ -583,7 +635,9 @@
                 if (!signedErr && urlData?.signedUrl) {
                     photoDataURL = await fetchImageAsDataURL(urlData.signedUrl);
                 }
-            } catch (_) { /* no photo — skip */ }
+            } catch (err) {
+                console.error("Error fetching student photo:", err);
+            }
 
             // Photo box
             filledRect(photoX - 1, photoY - 1, photoW + 2, photoH + 2, 3, purpleLight);
@@ -802,17 +856,40 @@
             doc.save(filename);
         }
 
-        // Helper: fetch a remote image and convert to base64 data URL
+        // Helper: fetch a remote image and convert to base64 JPEG data URL using Canvas
         async function fetchImageAsDataURL(url) {
-            const response = await fetch(url);
-            if (!response.ok) throw new Error('Image fetch failed');
-            const blob = await response.blob();
-            return new Promise((resolve, reject) => {
-                const reader = new FileReader();
-                reader.onload = () => resolve(reader.result);
-                reader.onerror = reject;
-                reader.readAsDataURL(blob);
-            });
+            try {
+                return await new Promise((resolve, reject) => {
+                    const img = new Image();
+                    img.crossOrigin = 'anonymous';
+                    img.onload = () => {
+                        try {
+                            const canvas = document.createElement('canvas');
+                            canvas.width = img.naturalWidth || img.width;
+                            canvas.height = img.naturalHeight || img.height;
+                            const ctx = canvas.getContext('2d');
+                            ctx.drawImage(img, 0, 0);
+                            resolve(canvas.toDataURL('image/jpeg', 0.9));
+                        } catch (err) {
+                            reject(err);
+                        }
+                    };
+                    img.onerror = () => reject(new Error('Image load failed'));
+                    img.src = url;
+                });
+            } catch (canvasErr) {
+                console.warn('Canvas conversion failed, falling back to FileReader:', canvasErr);
+                // Fallback to simple blob fetch
+                const response = await fetch(url);
+                if (!response.ok) throw new Error('Image fetch failed');
+                const blob = await response.blob();
+                return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onload = () => resolve(reader.result);
+                    reader.onerror = reject;
+                    reader.readAsDataURL(blob);
+                });
+            }
         }
     </script>
 </body>
