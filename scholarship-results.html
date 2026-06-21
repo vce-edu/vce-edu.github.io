@@ -325,8 +325,8 @@
 
         @media print {
             @page {
-                size: A4;
-                margin: 0.2cm;
+                size: A4 portrait;
+                margin: 1cm;
             }
 
             .navbar,
@@ -349,14 +349,28 @@
 
             body {
                 background: white !important;
-                margin: 0;
-                padding: 0;
-                font-size: 8.5pt !important;
-                line-height: 1.1 !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                font-size: 11pt !important;
+                line-height: 1.4 !important;
+                color: #1a1a1a !important;
             }
 
-            .results-hero {
+            main,
+            .results-hero,
+            .container,
+            .reveal,
+            .search-container {
+                width: 100% !important;
+                max-width: 100% !important;
                 padding: 0 !important;
+                margin: 0 !important;
+                background: none !important;
+                box-shadow: none !important;
+                opacity: 1 !important;
+                transform: none !important;
+                transition: none !important;
+                animation: none !important;
             }
 
             .result-card {
@@ -365,109 +379,198 @@
                 border: none !important;
                 width: 100% !important;
                 max-width: 100% !important;
+                height: 25.5cm !important;
                 animation: none !important;
+                background: white !important;
+                display: block !important;
+                page-break-inside: avoid !important;
             }
 
             .card-inner-border {
-                margin: 0;
-                padding: 0.3rem !important;
-                border-width: 1px !important;
+                margin: 10px !important;
+                padding: 2.2rem !important;
+                border: 2px solid var(--brand-primary) !important;
+                height: calc(100% - 20px) !important;
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: space-between !important;
+                box-sizing: border-box !important;
+                page-break-inside: avoid !important;
+            }
+
+            .card-inner-border::after {
+                content: '';
+                position: absolute;
+                top: 5px;
+                left: 5px;
+                right: 5px;
+                bottom: 5px;
+                border: 1px solid var(--brand-secondary) !important;
+                pointer-events: none;
             }
 
             .card-header-professional {
-                margin-bottom: 0.3rem !important;
-                padding-bottom: 0.3rem !important;
+                margin-bottom: 0 !important;
+                padding-bottom: 1.2rem !important;
+                border-bottom: 2px double #ddd !important;
             }
 
             .card-header-professional h2 {
-                font-size: 1.5rem !important;
-                margin-bottom: 0 !important;
+                font-size: 2.2rem !important;
+                margin-bottom: 0.4rem !important;
+                color: var(--brand-primary) !important;
             }
 
             .report-title {
-                font-size: 0.9rem !important;
-                margin-bottom: 0.3rem !important;
-                letter-spacing: 0.1em !important;
+                font-size: 1.15rem !important;
+                margin-bottom: 0.8rem !important;
+                letter-spacing: 0.25em !important;
+                color: var(--brand-secondary) !important;
             }
 
             .branch-mini-grid {
-                display: flex !important;
-                justify-content: space-between !important;
-                gap: 0.2rem !important;
-                font-size: 6pt !important;
+                display: grid !important;
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 1rem !important;
+                font-size: 8.5pt !important;
+                color: var(--text-muted) !important;
+                text-align: left !important;
+            }
+
+            .branch-mini-grid .branch {
+                display: block !important;
             }
 
             .student-particulars-section {
-                margin-bottom: 0.5rem !important;
+                margin-bottom: 0 !important;
+                text-align: center !important;
             }
 
             .section-tag {
-                margin-bottom: 0.3rem !important;
-                font-size: 0.7rem !important;
+                margin-bottom: 1rem !important;
+                font-size: 0.9rem !important;
+                color: var(--brand-primary) !important;
+                border-bottom: 1px solid var(--brand-primary) !important;
+                display: inline-block !important;
+            }
+
+            .particulars-table {
+                width: 100% !important;
+            }
+
+            .particulars-table tr {
+                display: table-row !important;
             }
 
             .particulars-table tr td {
-                padding: 0.15rem 0 !important;
+                padding: 0.6rem 0 !important;
+                display: table-cell !important;
             }
 
             .particulars-table .lbl {
-                font-size: 7.5pt !important;
+                width: 35% !important;
+                font-size: 9.5pt !important;
+                text-align: left !important;
+                color: var(--text-muted) !important;
             }
 
             .particulars-table .val {
-                font-size: 8.5pt !important;
+                width: 65% !important;
+                font-size: 11pt !important;
+                text-align: right !important;
+                color: var(--text-main) !important;
+            }
+
+            .performance-section-wrapper {
+                margin-bottom: 0 !important;
+                display: block !important;
             }
 
             .performance-grid {
-                margin-bottom: 0.5rem !important;
-                gap: 0.3rem !important;
-                display: flex !important;
+                display: grid !important;
+                grid-template-columns: 1fr 1fr !important;
+                gap: 1.5rem !important;
+                margin-bottom: 0 !important;
             }
 
-            .performance-grid>div {
-                flex: 1 !important;
+            .result-box-academic {
+                padding: 1.5rem !important;
+                border: 1px solid #eee !important;
+                background: #fcfaff !important;
+                display: block !important;
             }
 
-            .result-box-academic,
-            .scholarship-badge-official {
-                padding: 0.3rem !important;
-                min-height: auto !important;
+            .result-box-academic label {
+                font-size: 9.5pt !important;
+                color: var(--text-muted) !important;
             }
 
             .result-box-academic .big-val {
-                font-size: 2.2rem !important;
+                font-size: 3.2rem !important;
+                color: var(--brand-primary) !important;
+            }
+
+            .scholarship-badge-official {
+                padding: 1.5rem !important;
+                min-height: 130px !important;
+                background: linear-gradient(135deg, white, #f8f0ff) !important;
+                border: 3px double var(--brand-primary) !important;
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: center !important;
+                align-items: center !important;
+            }
+
+            .scholarship-badge-official p {
+                font-size: 9.5pt !important;
+                color: var(--brand-secondary) !important;
             }
 
             .scholarship-badge-official .amount {
-                font-size: 1.8rem !important;
+                font-size: 2.8rem !important;
+                color: var(--brand-primary) !important;
             }
 
             .footer-auth {
-                margin-top: 0.4rem !important;
-                padding-top: 0.3rem !important;
+                margin-top: 0 !important;
+                padding-top: 1.5rem !important;
+                border-top: 1px solid #eee !important;
                 display: flex !important;
                 justify-content: space-between !important;
                 align-items: flex-end !important;
             }
 
+            .auth-item {
+                display: block !important;
+                text-align: center !important;
+            }
+
             .official-seal {
-                width: 40px !important;
-                height: 40px !important;
-                margin: 0 !important;
+                width: 75px !important;
+                height: 75px !important;
+                opacity: 1 !important;
+                filter: none !important;
+                margin-bottom: 0.4rem !important;
+                display: inline-block !important;
             }
 
             .card-watermark {
-                font-size: 2.5rem !important;
-                opacity: 0.01 !important;
+                font-size: 6rem !important;
+                color: rgba(106, 0, 122, 0.03) !important;
+                opacity: 1 !important;
+                display: block !important;
             }
 
             .signature-line {
-                width: 120px !important;
-                margin-bottom: 0.2rem !important;
+                width: 150px !important;
+                height: 1px !important;
+                background: #333 !important;
+                margin: 0 auto 0.5rem !important;
+                display: block !important;
             }
         }
 
-        @media (max-width: 768px) {
+        @media screen and (max-width: 768px) {
             .results-hero {
                 padding: 120px 0 60px;
             }
@@ -729,15 +832,17 @@
                                 </table>
                             </div>
 
-                            <div class="section-tag">Performance Appraisal</div>
-                            <div class="performance-grid">
-                                <div class="result-box-academic">
-                                    <label>Total Marks Secured</label>
-                                    <div class="big-val" id="studentScore">85/100</div>
-                                </div>
-                                <div class="scholarship-badge-official">
-                                    <p>Tuition Fee Waiver Awarded</p>
-                                    <div class="amount" id="scholarshipAmount">50% OFF</div>
+                            <div class="performance-section-wrapper">
+                                <div class="section-tag">Performance Appraisal</div>
+                                <div class="performance-grid">
+                                    <div class="result-box-academic">
+                                        <label>Total Marks Secured</label>
+                                        <div class="big-val" id="studentScore">85/100</div>
+                                    </div>
+                                    <div class="scholarship-badge-official">
+                                        <p>Tuition Fee Waiver Awarded</p>
+                                        <div class="amount" id="scholarshipAmount">50% OFF</div>
+                                    </div>
                                 </div>
                             </div>
 
