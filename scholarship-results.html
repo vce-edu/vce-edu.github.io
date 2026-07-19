@@ -974,7 +974,8 @@
                     let scholarshipText = "Processing";
                     if (data.score !== null) {
                         const marks = data.score;
-                        if (marks >= 81) scholarshipText = "100% OFF";
+                        if (marks >=91) scholarshipText = "100% OFF";
+                        else if (marks >= 81) scholarshipText = "90% OFF";
                         else if (marks >= 71) scholarshipText = "75% OFF";
                         else if (marks >= 61) scholarshipText = "70% OFF";
                         else if (marks >= 41) scholarshipText = "65% OFF";
